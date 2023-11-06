@@ -14,31 +14,47 @@ import demo.entity.Lop;
 
 @Repository
 public interface LopRepository extends JpaRepository<Lop, Long>{
-	@Query(value = "SELECT * FROM lop WHERE tieude LIKE %:key% OR diachi LIKE %:key% OR "
-			+ "motahs LIKE %:key% OR yeucaukhac LIKE %:key% OR truonggs LIKE %:key%", nativeQuery = true)
-	public List<Lop> findByKeyword(@Param("key") String keyword);
+	@Query(value = "SELECT * FROM lop WHERE id:=key OR tieude LIKE %:key% OR diachi LIKE %:key% OR "
+			+ "motahs LIKE %:key% OR yeucaukhac LIKE %:key% OR truonggs LIKE %:key% "
+			+ "trangthailop=:trangthailop "
+			+ "ORDER BY ngaytao DESC", nativeQuery = true)
+	public List<Lop> findByKeyword(@Param("key") String keyword, @Param("trangthailop") String trangthailop);
 	
-	@Query(value = "SELECT * FROM lop WHERE tieude LIKE %:key% OR diachi LIKE %:key% OR "
-			+ "motahs LIKE %:key% OR yeucaukhac LIKE %:key% OR truonggs LIKE %:key%", nativeQuery = true)
-	public Page<Lop> findByKeyword(@Param("key") String keyword, Pageable pageable);
-	
-	@Query(value = "SELECT DISTINCT l.* FROM lop l "
-			+ "INNER JOIN chude c ON l.chudeid=c.id "
-			+ "WHERE l.quan LIKE %:quan% AND l.hinhthuc LIKE %:hinhthuc% AND "
-			+ "l.hocphi >= :hocphi AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo%", nativeQuery = true)
-	public List<Lop> findByFilter(@Param("quan") String quan, @Param("hinhthuc") String hinhthuc,
-			@Param("hocphi") Long hocphi, @Param("mon") String mon, @Param("trinhdo") String trinhdo);
+	@Query(value = "SELECT * FROM lop WHERE id:=key OR tieude LIKE %:key% OR diachi LIKE %:key% OR "
+			+ "motahs LIKE %:key% OR yeucaukhac LIKE %:key% OR truonggs LIKE %:key% "
+			+ "trangthailop=:trangthailop "
+			+ "ORDER BY ngaytao DESC", nativeQuery = true)
+	public Page<Lop> findByKeyword(@Param("key") String keyword, @Param("trangthailop") String trangthailop, Pageable pageable);
 	
 	@Query(value = "SELECT DISTINCT l.* FROM lop l "
 			+ "INNER JOIN chude c ON l.chudeid=c.id "
-			+ "WHERE l.quan LIKE %:quan% AND l.hinhthuc LIKE %:hinhthuc% AND "
-			+ "l.hocphi >= :hocphi AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo%", nativeQuery = true)
-	public Page<Lop> findByFilter(@Param("quan") String quan, @Param("hinhthuc") String hinhthuc,
-			@Param("hocphi") Long hocphi, @Param("mon") String mon, @Param("trinhdo") String trinhdo, 
-			Pageable pageable);
+			+ "WHERE (l.tieude LIKE %:key% OR l.diachi LIKE %:key% OR "
+			+ "l.motahs LIKE %:key% OR l.yeucaukhac LIKE %:key% OR l.truonggs LIKE %:key%) AND "
+			+ "l.quan LIKE %:quan% AND l.hinhthuc LIKE %:hinhthuc% AND l.hocphi >= :hocphimin AND "
+			+ "l.hocphi < :hocphimax AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo% AND "
+			+ "l.trangthailop=:trangthailop "
+			+ "ORDER BY l.ngaytao DESC", nativeQuery = true)
+	public List<Lop> findByFilter(@Param("key") String keyword, @Param("quan") String quan, @Param("hinhthuc") String hinhthuc,
+			@Param("hocphimin") Long hocphimin, @Param("hocphimax") Long hocphimax, @Param("mon") String mon, 
+			@Param("trinhdo") String trinhdo, @Param("trangthailop") String trangthailop);
 	
-	public List<Lop> findByTrangthailop(TrangThaiLop trangthailop);
+	@Query(value = "SELECT DISTINCT l.* FROM lop l "
+			+ "INNER JOIN chude c ON l.chudeid=c.id "
+			+ "WHERE (l.tieude LIKE %:key% OR l.diachi LIKE %:key% OR "
+			+ "l.motahs LIKE %:key% OR l.yeucaukhac LIKE %:key% OR l.truonggs LIKE %:key%) AND "
+			+ "l.quan LIKE %:quan% AND l.hinhthuc LIKE %:hinhthuc% AND l.hocphi >= :hocphimin AND "
+			+ "l.hocphi < :hocphimax AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo% AND "
+			+ "l.trangthailop=:trangthailop "
+			+ "ORDER BY l.ngaytao DESC", nativeQuery = true)
+	public Page<Lop> findByFilter(@Param("key") String keyword, @Param("quan") String quan, @Param("hinhthuc") String hinhthuc,
+			@Param("hocphimin") Long hocphimin, @Param("hocphimax") Long hocphimax, @Param("mon") String mon, 
+			@Param("trinhdo") String trinhdo, @Param("trangthailop") String trangthailop, Pageable pageable);
 	
-	public Page<Lop> findByTrangthailop(TrangThaiLop trangthailop, Pageable pageable);
+	public List<Lop> findByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop);
+	public Page<Lop> findByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop, Pageable pageable);
 	
+	public List<Lop> findAllByOrderByNgaytaoDesc();
+	public Page<Lop> findAllByOrderByNgaytaoDesc(Pageable pageable);
+	
+	public List<Lop> findTop5ByOrderByNgaytaoDesc();
 }

@@ -114,18 +114,30 @@ public class LopController {
 		}
 	}
 	
+	@GetMapping(value = "/topnew", produces = "application/json")
+	public BaseResponse<?> getListLop(){
+		try {
+			List<Lop> listLop = lopService.getTopNewListLop();
+			List<LopDTO> data = LopMapper.toListDTO(listLop);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	@GetMapping(value = "/search", produces = "application/json")
 	public BaseResponse<?> getListLopByKey(
 			@RequestParam(name = "key") String key,
+			@RequestParam(name = "trangthai") String trangthai,
 			@RequestParam(name = "page") Optional<Integer> page){
 		try {
 			if(page.isPresent()) {
-				Page<Lop> pageLop = lopService.findBykey(key, PageRequest.of(page.orElse(0), sizeOfPage));
+				Page<Lop> pageLop = lopService.findBykey(key, TrangThaiLop.valueOf(trangthai), PageRequest.of(page.orElse(0), sizeOfPage));
 				Page<LopDTO> data = LopMapper.toPageDTO(pageLop);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}
 			else {
-				List<Lop> listLop = lopService.findByKey(key);
+				List<Lop> listLop = lopService.findByKey(key, TrangThaiLop.valueOf(trangthai));
 				List<LopDTO> data = LopMapper.toListDTO(listLop);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}
@@ -136,20 +148,22 @@ public class LopController {
 	
 	@GetMapping(value = "/filter", produces = "application/json")
 	public BaseResponse<?> getListLopByFilter(
+			@RequestParam(name = "key", defaultValue = "") String key,
 			@RequestParam(name = "quan", defaultValue = "") String quan,
-			@RequestParam(name = "hocphi", defaultValue = "0") Long hocphi,
+			@RequestParam(name = "hocphimin", defaultValue = "0") Long hocphimin,
+			@RequestParam(name = "hocphimax", defaultValue = "1000000000") Long hocphimax,
 			@RequestParam(name = "hinhthuc", defaultValue = "") String hinhthuc,
 			@RequestParam(name = "mon", defaultValue = "") String mon,
 			@RequestParam(name = "trinhdo", defaultValue = "") String trinhdo,
 			@RequestParam(name = "page") Optional<Integer> page){
 		try {
 			if(page.isPresent()) {
-				Page<Lop> pageLop = lopService.findByFilter(quan, hinhthuc, hocphi, mon, trinhdo, PageRequest.of(page.orElse(0), sizeOfPage));
+				Page<Lop> pageLop = lopService.findByFilter(key, quan, hinhthuc, hocphimin, hocphimax, mon, trinhdo, PageRequest.of(page.orElse(0), sizeOfPage));
 				Page<LopDTO> data = LopMapper.toPageDTO(pageLop);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}
 			else {
-				List<Lop> listLop = lopService.findByFilter(quan, hinhthuc, hocphi, mon, trinhdo);
+				List<Lop> listLop = lopService.findByFilter(key, quan, hinhthuc, hocphimin, hocphimax, mon, trinhdo);
 				List<LopDTO> data = LopMapper.toListDTO(listLop);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}

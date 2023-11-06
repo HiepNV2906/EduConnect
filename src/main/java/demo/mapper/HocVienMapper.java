@@ -11,6 +11,7 @@ import demo.dto.HocVienDTO;
 import demo.dto.LopDTO;
 import demo.dto.ThongBaoDTO;
 import demo.entity.HocVien;
+import demo.request.RegisterHocVienRequest;
 
 public class HocVienMapper {
 	
@@ -23,6 +24,7 @@ public class HocVienMapper {
 		h.setAvata(hocVien.getAvata());
 		h.setGioitinh(hocVien.getGioitinh());
 		h.setNgaysinh(hocVien.getNgaysinh());
+		h.setNgaytao(hocVien.getNgaytao());
 		h.setQuan(hocVien.getQuan());
 		h.setDiachi(hocVien.getDiachi());
 		h.setCccd(hocVien.getCccd());
@@ -43,6 +45,7 @@ public class HocVienMapper {
 		u.setAvata(hocVienDTO.getAvata());
 		u.setGioitinh(hocVienDTO.getGioitinh());
 		u.setNgaysinh(hocVienDTO.getNgaysinh());
+		u.setNgaytao(hocVienDTO.getNgaytao());
 		u.setQuan(hocVienDTO.getQuan());
 		u.setDiachi(hocVienDTO.getDiachi());
 		u.setCccd(hocVienDTO.getCccd());
@@ -52,15 +55,13 @@ public class HocVienMapper {
 		return u;
 	}
 	
-	public static HocVien update(HocVien hocVien, HocVienDTO hocVienDTO) {
-		hocVien.setHoten(hocVienDTO.getHoten());
-		hocVien.setSdt(hocVienDTO.getSdt());
-		hocVien.setAvata(hocVienDTO.getAvata());
-		hocVien.setGioitinh(hocVienDTO.getGioitinh());
-		hocVien.setNgaysinh(hocVienDTO.getNgaysinh());
-		hocVien.setQuan(hocVienDTO.getQuan());
-		hocVien.setDiachi(hocVienDTO.getDiachi());
-		hocVien.setCccd(hocVienDTO.getCccd());
+	public static HocVien update(HocVien hocVien, RegisterHocVienRequest registerHocVienRequest) {
+		hocVien.setHoten(registerHocVienRequest.getHoten());
+		hocVien.setSdt(registerHocVienRequest.getSdt());
+		hocVien.setGioitinh(registerHocVienRequest.getGioitinh());
+		hocVien.setNgaysinh(registerHocVienRequest.getNgaysinh());
+		hocVien.setQuan(registerHocVienRequest.getQuan());
+		hocVien.setDiachi(registerHocVienRequest.getDiachi());
 		return hocVien;
 	}
 	

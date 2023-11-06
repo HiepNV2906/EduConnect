@@ -18,6 +18,7 @@ public class UserDTO {
 	protected String avata;
 	protected String gioitinh;
 	protected Date ngaysinh;
+	protected Date ngaytao;
 	protected List<ThongBaoDTO> dsthongbao;
 
 }

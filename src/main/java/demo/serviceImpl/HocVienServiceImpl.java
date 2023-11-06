@@ -1,17 +1,20 @@
 package demo.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import demo.Enum.TrangThaiUser;
 import demo.Enum.VaiTro;
-import demo.dto.HocVienDTO;
 import demo.entity.HocVien;
 import demo.entity.User;
+import demo.exception.StorageException;
 import demo.exception.UserException;
 import demo.mapper.HocVienMapper;
 import demo.mapper.ThongBaoModel;
@@ -20,6 +23,7 @@ import demo.repository.ThongBaoRepository;
 import demo.repository.UserRepository;
 import demo.request.RegisterHocVienRequest;
 import demo.service.HocVienService;
+import demo.service.StorageService;
 
 @Service
 public class HocVienServiceImpl implements HocVienService{
@@ -30,17 +34,38 @@ public class HocVienServiceImpl implements HocVienService{
 	UserRepository userRepository;
 	@Autowired
 	ThongBaoRepository thongBaoRepository;
+	@Autowired
+	StorageService storageService;
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	//	Tạo tài khoản học viên
 	@Override
-	public HocVien addHocVien(RegisterHocVienRequest registerHocVienRequest) {
+	public HocVien addHocVien(RegisterHocVienRequest registerHocVienRequest) throws StorageException {
 		if(userRepository.findByEmail(registerHocVienRequest.getEmail()).isPresent()) {
 			throw new UserException("Email đã tồn tại!!!");
 		}
 		HocVien h = registerHocVienRequest.toHocVienEntity();
 		h.setId(null);
+		h.setNgaytao(new Date());
 		h.setVaitro(VaiTro.HOCVIEN);
+		h.setPassword(bCryptPasswordEncoder.encode(registerHocVienRequest.getPassword()));
 		h.setTrangthai(TrangThaiUser.CHUAPHEDUYET);
+		
+		if(!registerHocVienRequest.getAvata().isEmpty() && !registerHocVienRequest.getCccd().isEmpty()) {
+			UUID uuid1=UUID.randomUUID();
+			String uuString1=uuid1.toString();
+			UUID uuid2=UUID.randomUUID();
+			String uuString2=uuid2.toString();
+			h.setAvata(storageService.getStoredFilename(registerHocVienRequest.getAvata(), uuString1));
+			storageService.store(registerHocVienRequest.getAvata(), h.getAvata());
+			h.setCccd(storageService.getStoredFilename(registerHocVienRequest.getCccd(), uuString2));
+			storageService.store(registerHocVienRequest.getCccd(), h.getCccd());
+		}
+		else {
+			throw new StorageException("File trống");
+		}
+		
 		HocVien hocvien = hocVienRepository.save(h);
 		
 		//		Thông Báo
@@ -53,8 +78,19 @@ public class HocVienServiceImpl implements HocVienService{
 	}
 
 	@Override
-	public HocVien updateHocVien(HocVienDTO hocvienDTO) {
-		HocVien h = HocVienMapper.update(getHocVienById(hocvienDTO.getId()), hocvienDTO);
+	public HocVien updateHocVien(RegisterHocVienRequest registerHocVienRequest) throws StorageException {
+		HocVien h = HocVienMapper.update(getHocVienById(registerHocVienRequest.getId()), registerHocVienRequest);
+		
+		if(!registerHocVienRequest.getAvata().isEmpty()) {
+			h.setAvata(storageService.getStoredFilename(registerHocVienRequest.getAvata(), h.getAvata()));
+			storageService.store(registerHocVienRequest.getAvata(), h.getAvata());
+		}
+		
+		if(!registerHocVienRequest.getCccd().isEmpty()) {
+			h.setCccd(storageService.getStoredFilename(registerHocVienRequest.getCccd(), h.getCccd()));
+			storageService.store(registerHocVienRequest.getCccd(), h.getCccd());
+		}
+		
 		HocVien hocvien = hocVienRepository.save(h);
 		
 		//	Thông báo	

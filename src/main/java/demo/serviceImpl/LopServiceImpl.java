@@ -1,5 +1,6 @@
 package demo.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +45,10 @@ public class LopServiceImpl implements LopService{
 	public Lop addLop(LopDTO lopDTO) {
 		Lop l = LopMapper.toEntity(lopDTO);
 		l.setId(null);
+		l.setNgaytao(new Date());
 		l.setTrangthailop(TrangThaiLop.CHOPHEDUYET);
 		l.setHocvien(hocVienRepository.findById(lopDTO.getHocvienid()).get());
-		l.setChude(chuDeRepository.findById(lopDTO.getChudeid()).get());
+		l.setChude(chuDeRepository.findById(lopDTO.getChude().getId()).get());
 		Lop lop = lopRepository.save(l);
 		for (LichTrongDTO i : lopDTO.getDslichtrong()) {
 			i.setLopid(lop.getId());
@@ -65,7 +67,7 @@ public class LopServiceImpl implements LopService{
 	@Override
 	public Lop updateLop(LopDTO lopDTO) {
 		Lop l = LopMapper.update(getLopById(lopDTO.getId()), lopDTO);
-		l.setChude(chuDeRepository.findById(lopDTO.getChudeid()).get());
+		l.setChude(chuDeRepository.findById(lopDTO.getChude().getId()).get());
 		Lop lop = lopRepository.save(l);
 		for (LichTrongDTO i : lopDTO.getDslichtrong()) {
 			i.setLopid(lop.getId());
@@ -87,50 +89,54 @@ public class LopServiceImpl implements LopService{
 
 	@Override
 	public List<Lop> getListLop() {
-		List<Lop> list = lopRepository.findAll();
+		List<Lop> list = lopRepository.findAllByOrderByNgaytaoDesc();
 		return list;
 	}
 
 	@Override
 	public Page<Lop> getListLop(Pageable pageable) {
-		Page<Lop> page = lopRepository.findAll(pageable);
+		Page<Lop> page = lopRepository.findAllByOrderByNgaytaoDesc(pageable);
 		return page;
 	}
 
 	@Override
-	public List<Lop> findByKey(String key) {
-		List<Lop> list = lopRepository.findByKeyword(key);
+	public List<Lop> findByKey(String key, TrangThaiLop trangThaiLop) {
+		List<Lop> list = lopRepository.findByKeyword(key, trangThaiLop.toString());
 		return list;
 	}
 
 	@Override
-	public Page<Lop> findBykey(String key, Pageable pageable) {
-		Page<Lop> page = lopRepository.findByKeyword(key, pageable);
+	public Page<Lop> findBykey(String key, TrangThaiLop trangThaiLop, Pageable pageable) {
+		Page<Lop> page = lopRepository.findByKeyword(key, trangThaiLop.toString(), pageable);
 		return page;
 	}
 
 	@Override
-	public List<Lop> findByFilter(String quan, String hinhthuc, Long hocphi, String mon, String trinhdo) {
-		List<Lop> list = lopRepository.findByFilter(quan, hinhthuc, hocphi, mon, trinhdo);
+	public List<Lop> findByFilter(String key, String quan, String hinhthuc, Long hocphimin, 
+			Long hocphimax, String mon, String trinhdo) {
+		List<Lop> list = lopRepository.findByFilter(key, quan, hinhthuc, hocphimin, hocphimax, 
+				mon, trinhdo, TrangThaiLop.DANGTIM.toString());
 		return list;
 	}
 
 	@Override
-	public Page<Lop> findByFilter(String quan, String hinhthuc, Long hocphi, String mon, String trinhdo,
+	public Page<Lop> findByFilter(String key, String quan, String hinhthuc, Long hocphimin, 
+			Long hocphimax, String mon, String trinhdo,
 			Pageable pageable) {
-		Page<Lop> page = lopRepository.findByFilter(quan, hinhthuc, hocphi, mon, trinhdo, pageable);
+		Page<Lop> page = lopRepository.findByFilter(key, quan, hinhthuc, hocphimin, hocphimax, 
+				mon, trinhdo, TrangThaiLop.DANGTIM.toString(), pageable);
 		return page;
 	}
 
 	@Override
 	public List<Lop> findByTrangThai(TrangThaiLop trangThaiLop) {
-		List<Lop> list = lopRepository.findByTrangthailop(trangThaiLop);
+		List<Lop> list = lopRepository.findByTrangthailopOrderByNgaytaoDesc(trangThaiLop);
 		return list;
 	}
 
 	@Override
 	public Page<Lop> findByTrangThai(TrangThaiLop trangThaiLop, Pageable pageable) {
-		Page<Lop> page = lopRepository.findByTrangthailop(trangThaiLop, pageable);
+		Page<Lop> page = lopRepository.findByTrangthailopOrderByNgaytaoDesc(trangThaiLop, pageable);
 		return page;
 	}
 
@@ -156,6 +162,12 @@ public class LopServiceImpl implements LopService{
 			thongBaoRepository.save(ThongBaoModel.chonDuocGiaSu(lop.getHocvien()));
 		}
 		return lop;
+	}
+
+	@Override
+	public List<Lop> getTopNewListLop() {
+		List<Lop> list = lopRepository.findTop5ByOrderByNgaytaoDesc();
+		return list;
 	}
 
 }

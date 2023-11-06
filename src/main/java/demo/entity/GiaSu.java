@@ -3,7 +3,6 @@ package demo.entity;
 import java.util.List;
 
 import demo.Enum.TrangThaiUser;
-import demo.dto.GiaSuDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -64,7 +63,7 @@ public class GiaSu extends User{
 	@OneToMany(mappedBy = "giasu", cascade = CascadeType.ALL)
 	private List<LoiMoi> dsloimoi;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable( name = "giasu_chude", 
 				joinColumns = @JoinColumn(columnDefinition = "giasuid"),
 				inverseJoinColumns = @JoinColumn(columnDefinition = "chudeid"))

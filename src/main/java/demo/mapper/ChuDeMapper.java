@@ -13,6 +13,7 @@ public class ChuDeMapper {
 		c.setId(chude.getId());
 		c.setTenmonhoc(chude.getTenmonhoc());
 		c.setTrinhdo(chude.getTrinhdo());
+		c.setAnh(chude.getAnh());
 		return c;
 	}
 	
@@ -21,6 +22,7 @@ public class ChuDeMapper {
 		c.setId(chudeDTO.getId());
 		c.setTenmonhoc(chudeDTO.getTenmonhoc());
 		c.setTrinhdo(chudeDTO.getTrinhdo());
+		c.setAnh(chudeDTO.getAnh());
 		return c;
 	}
 	

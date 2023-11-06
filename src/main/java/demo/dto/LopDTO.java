@@ -33,6 +33,6 @@ public class LopDTO {
 	private List<LichTrongDTO> dslichtrong;
 	private List<UngTuyenDTO> dsungtuyen;
 	private Long hocvienid;
-	private Long chudeid;
+	private ChuDeDTO chude;
 	
 }

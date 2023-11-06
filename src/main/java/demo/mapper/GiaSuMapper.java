@@ -13,6 +13,7 @@ import demo.dto.ThongBaoDTO;
 import demo.dto.UngTuyenDTO;
 import demo.entity.ChuDe;
 import demo.entity.GiaSu;
+import demo.request.RegisterGiaSuRequest;
 
 public class GiaSuMapper {
 	
@@ -25,6 +26,7 @@ public class GiaSuMapper {
 		g.setAvata(giaSu.getAvata());
 		g.setGioitinh(giaSu.getGioitinh());
 		g.setNgaysinh(giaSu.getNgaysinh());
+		g.setNgaytao(giaSu.getNgaytao());
 		g.setQuan(giaSu.getQuan());
 		g.setDiachi(giaSu.getDiachi());
 		g.setQuequan(giaSu.getQuequan());
@@ -54,6 +56,7 @@ public class GiaSuMapper {
 		u.setAvata(giaSuDTO.getAvata());
 		u.setGioitinh(giaSuDTO.getGioitinh());
 		u.setNgaysinh(giaSuDTO.getNgaysinh());
+		u.setNgaytao(giaSuDTO.getNgaytao());
 		u.setQuan(giaSuDTO.getQuan());
 		u.setDiachi(giaSuDTO.getDiachi());
 		u.setQuequan(giaSuDTO.getQuequan());
@@ -72,23 +75,21 @@ public class GiaSuMapper {
 		return u;
 	}
 	
-	public static GiaSu update(GiaSu giaSu, GiaSuDTO giaSuDTO) {
-		giaSu.setHoten(giaSuDTO.getHoten());
-		giaSu.setSdt(giaSuDTO.getSdt());
-		giaSu.setAvata(giaSuDTO.getAvata());
-		giaSu.setGioitinh(giaSuDTO.getGioitinh());
-		giaSu.setNgaysinh(giaSuDTO.getNgaysinh());
-		giaSu.setQuan(giaSuDTO.getQuan());
-		giaSu.setDiachi(giaSuDTO.getDiachi());
-		giaSu.setQuequan(giaSuDTO.getQuequan());
-		giaSu.setNghenghiep(giaSuDTO.getNghenghiep());
-		giaSu.setTruong(giaSuDTO.getTruong());
-		giaSu.setGioithieu(giaSuDTO.getGioithieu());
-		giaSu.setKinhnghiem(giaSuDTO.getKinhnghiem());
-		giaSu.setThanhtich(giaSuDTO.getThanhtich());
-		giaSu.setCccd(giaSuDTO.getCccd());
-		giaSu.setKhuvucday(giaSuDTO.getKhuvucday());
-		List<ChuDe> listchude = ChuDeMapper.toListEntity(giaSuDTO.getDschude());
+	public static GiaSu update(GiaSu giaSu, RegisterGiaSuRequest registerGiaSuRequest) {
+		giaSu.setHoten(registerGiaSuRequest.getHoten());
+		giaSu.setSdt(registerGiaSuRequest.getSdt());
+		giaSu.setGioitinh(registerGiaSuRequest.getGioitinh());
+		giaSu.setNgaysinh(registerGiaSuRequest.getNgaysinh());
+		giaSu.setQuan(registerGiaSuRequest.getQuan());
+		giaSu.setDiachi(registerGiaSuRequest.getDiachi());
+		giaSu.setQuequan(registerGiaSuRequest.getQuequan());
+		giaSu.setNghenghiep(registerGiaSuRequest.getNghenghiep());
+		giaSu.setTruong(registerGiaSuRequest.getTruong());
+		giaSu.setGioithieu(registerGiaSuRequest.getGioithieu());
+		giaSu.setKinhnghiem(registerGiaSuRequest.getKinhnghiem());
+		giaSu.setThanhtich(registerGiaSuRequest.getThanhtich());
+		giaSu.setKhuvucday(registerGiaSuRequest.getKhuvucday());
+		List<ChuDe> listchude = ChuDeMapper.toListEntity(registerGiaSuRequest.getDschude());
 		giaSu.setDschude(listchude);
 		return giaSu;
 	}

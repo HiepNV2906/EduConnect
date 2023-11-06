@@ -3,7 +3,6 @@ package demo.entity;
 import java.util.List;
 
 import demo.Enum.TrangThaiUser;
-import demo.dto.HocVienDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

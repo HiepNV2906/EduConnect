@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import demo.dto.ThongBaoDTO;
 import demo.dto.UserDTO;
 import demo.entity.User;
+import demo.request.RegisterUserRequest;
 
 public class UserMapper {
 	
@@ -21,6 +22,7 @@ public class UserMapper {
 		u.setAvata(user.getAvata());
 		u.setGioitinh(user.getGioitinh());
 		u.setNgaysinh(user.getNgaysinh());
+		u.setNgaytao(user.getNgaytao());
 		List<ThongBaoDTO> list = ThongBaoMapper.toListDTO(user.getDsthongbao());
 		u.setDsthongbao(list);
 		return u;
@@ -35,15 +37,15 @@ public class UserMapper {
 		u.setAvata(userDTO.getAvata());
 		u.setGioitinh(userDTO.getGioitinh());
 		u.setNgaysinh(userDTO.getNgaysinh());
+		u.setNgaytao(userDTO.getNgaytao());
 		return u;
 	}
 	
-	public static User update(User user, UserDTO userDTO) {
-		user.setHoten(userDTO.getHoten());
-		user.setSdt(userDTO.getSdt());
-		user.setAvata(userDTO.getAvata());
-		user.setGioitinh(userDTO.getGioitinh());
-		user.setNgaysinh(userDTO.getNgaysinh());
+	public static User update(User user, RegisterUserRequest registerUserRequest) {
+		user.setHoten(registerUserRequest.getHoten());
+		user.setSdt(registerUserRequest.getSdt());
+		user.setGioitinh(registerUserRequest.getGioitinh());
+		user.setNgaysinh(registerUserRequest.getNgaysinh());
 		return user;
 	}
 	

@@ -44,4 +44,9 @@ public interface GiaSuRepository extends JpaRepository<GiaSu, Long>{
 	
 	public List<GiaSu> findByTrangthai(TrangThaiUser trangthai);
 	public Page<GiaSu> findByTrangthai(TrangThaiUser trangthai, Pageable pageable);
+	
+	public List<GiaSu> findAllByOrderByNgaytaoDesc();
+	public Page<GiaSu> findAllByOrderByNgaytaoDesc(Pageable pageable);
+	
+	public List<GiaSu> findTop10ByOrderByNgaytaoDesc();
 }

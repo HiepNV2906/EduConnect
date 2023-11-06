@@ -2,6 +2,8 @@ package demo.request;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import demo.Enum.TrangThaiUser;
 import demo.dto.ChuDeDTO;
 import demo.entity.GiaSu;
@@ -21,7 +23,7 @@ public class RegisterGiaSuRequest extends RegisterUserRequest{
 	private String gioithieu;
 	private String kinhnghiem;
 	private String thanhtich;
-	private String cccd;
+	private MultipartFile cccd;
 	private String khuvucday;
 	private String trangthai;
 	private List<ChuDeDTO> dschude;
@@ -33,7 +35,6 @@ public class RegisterGiaSuRequest extends RegisterUserRequest{
 		u.setSdt(sdt);
 		u.setEmail(email);
 		u.setPassword(password);
-		u.setAvata(avata);
 		u.setGioitinh(gioitinh);
 		u.setNgaysinh(ngaysinh);
 		u.setQuan(quan);
@@ -44,7 +45,6 @@ public class RegisterGiaSuRequest extends RegisterUserRequest{
 		u.setGioithieu(gioithieu);
 		u.setKinhnghiem(kinhnghiem);
 		u.setThanhtich(thanhtich);
-		u.setCccd(cccd);
 		u.setKhuvucday(khuvucday);
 		return u;
 	}

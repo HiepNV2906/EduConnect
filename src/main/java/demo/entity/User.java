@@ -9,12 +9,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,7 +42,7 @@ public class User {
 	@Column(name = "email", length = 255, nullable = false, unique = true)
 	protected String email;
 	
-	@Column(name = "password", length = 50, nullable = false)
+	@Column(name = "password", length = 255, nullable = false)
 	protected String password;
 	
 	@Column(name = "avata", length = 255, nullable = false)
@@ -52,6 +54,9 @@ public class User {
 	@Column(name = "ngaysinh", nullable = false)
 	protected Date ngaysinh;
 	
+	@Column(name = "ngaytao", nullable = false)
+	protected Date ngaytao;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "vaitro", length = 50, nullable = false)
 	protected VaiTro vaitro;
@@ -59,4 +64,6 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	protected List<ThongBao> dsthongbao;
 	
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	protected RefreshToken refreshtoken;
 }

@@ -34,7 +34,7 @@ public class LopMapper {
 		l.setHinhthuc(lop.getHinhthuc());
 		l.setTrangthailop(lop.getTrangthailop().toString());
 		l.setHocvienid(lop.getHocvien().getId());
-		l.setChudeid(lop.getChude().getId());
+		l.setChude(ChuDeMapper.toDTO(lop.getChude()));
 		l.setDslichtrong(LichTrongMapper.toListDTO(lop.getDslichtrong()));
 		l.setDsungtuyen(UngTuyenMapper.toListDTO(lop.getDsungtuyen()));
 		return l;

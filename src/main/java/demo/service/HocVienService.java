@@ -6,13 +6,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import demo.Enum.TrangThaiUser;
-import demo.dto.HocVienDTO;
 import demo.entity.HocVien;
+import demo.exception.StorageException;
 import demo.request.RegisterHocVienRequest;
 
 public interface HocVienService {
-	public HocVien addHocVien(RegisterHocVienRequest registerHocVienRequest);
-	public HocVien updateHocVien(HocVienDTO hocvienDTO);
+	public HocVien addHocVien(RegisterHocVienRequest registerHocVienRequest) throws StorageException;
+	public HocVien updateHocVien(RegisterHocVienRequest registerHocVienRequest) throws StorageException;
 	public void deleteHocVien(Long id);
 	public HocVien getHocVienById(Long id);
 	public Page<HocVien> getListHocVien(Pageable pageable);

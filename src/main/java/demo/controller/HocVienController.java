@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import demo.Enum.TrangThaiUser;
 import demo.dto.HocVienDTO;
@@ -27,21 +30,28 @@ import demo.response.BaseResponse;
 import demo.service.HocVienService;
 
 @RestController
-@RequestMapping("/api/hocvien")
+@RequestMapping(value = "/api/hocvien")
 public class HocVienController {
 	private final int sizeOfPage = 10;
 	
 	@Autowired
 	HocVienService hocVienService;
 	
-	@PostMapping(value = "", produces = "application/json")
+	@PostMapping(value = "")
 	public BaseResponse<?> addHocVien(
-			@RequestBody RegisterHocVienRequest registerHocVienRequest){
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata,
+            @RequestParam("cccd") MultipartFile cccd){
 		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterHocVienRequest registerHocVienRequest = objectMapper.readValue(infoGS, RegisterHocVienRequest.class);
+			registerHocVienRequest.setAvata(avata);
+			registerHocVienRequest.setCccd(cccd);
 			HocVien h = hocVienService.addHocVien(registerHocVienRequest);
 			HocVienDTO data = HocVienMapper.toDTO(h);
 			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
 		} catch(Exception e) {
+			System.out.println(e);
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -61,11 +71,17 @@ public class HocVienController {
 	
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateHocVien(
-			@RequestBody HocVienDTO hocVienDTO,
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata,
+            @RequestParam("cccd") MultipartFile cccd,
 			@PathVariable("id") Long id){
 		try {
-			hocVienDTO.setId(id);
-			HocVien h = hocVienService.updateHocVien(hocVienDTO);
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterHocVienRequest registerHocVienRequest = objectMapper.readValue(infoGS, RegisterHocVienRequest.class);
+			registerHocVienRequest.getId();
+			registerHocVienRequest.setAvata(avata);
+			registerHocVienRequest.setCccd(cccd);
+			HocVien h = hocVienService.updateHocVien(registerHocVienRequest);
 			HocVienDTO data = HocVienMapper.toDTO(h);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		} catch(Exception e) {

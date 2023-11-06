@@ -11,5 +11,5 @@ public class ChuDeDTO {
 	private Long id;
 	private String tenmonhoc;
 	private String trinhdo;
-	
+	private String anh;
 }

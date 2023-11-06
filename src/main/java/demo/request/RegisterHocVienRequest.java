@@ -1,5 +1,7 @@
 package demo.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import demo.entity.HocVien;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class RegisterHocVienRequest extends RegisterUserRequest{
 	private String quan;
 	private String diachi;
-	private String cccd;
+	private MultipartFile cccd;
 	
 	public HocVien toHocVienEntity() {
 		HocVien u = new HocVien();
@@ -20,12 +22,10 @@ public class RegisterHocVienRequest extends RegisterUserRequest{
 		u.setSdt(sdt);
 		u.setEmail(email);
 		u.setPassword(password);
-		u.setAvata(avata);
 		u.setGioitinh(gioitinh);
 		u.setNgaysinh(ngaysinh);
 		u.setQuan(quan);
 		u.setDiachi(diachi);
-		u.setCccd(cccd);
 		return u;
 	}
 }

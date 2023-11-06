@@ -1,6 +1,8 @@
 package demo.request;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import demo.entity.User;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,7 @@ public class RegisterUserRequest {
 	protected String sdt;
 	protected String email;
 	protected String password;
-	protected String avata;
+	protected MultipartFile avata;
 	protected String gioitinh;
 	protected Date ngaysinh;
 	
@@ -27,7 +29,6 @@ public class RegisterUserRequest {
 		u.setSdt(sdt);
 		u.setEmail(email);
 		u.setPassword(password);
-		u.setAvata(avata);
 		u.setGioitinh(gioitinh);
 		u.setNgaysinh(ngaysinh);
 		return u;

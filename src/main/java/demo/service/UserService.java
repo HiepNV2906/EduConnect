@@ -6,13 +6,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import demo.Enum.VaiTro;
-import demo.dto.UserDTO;
 import demo.entity.User;
+import demo.exception.StorageException;
+import demo.request.ChangePassword;
+import demo.request.ForgetPassword;
 import demo.request.RegisterUserRequest;
 
 public interface UserService {
-	public User addUser(RegisterUserRequest registerUserRequest);
-	public User updateUser(UserDTO userDTO);
+	public User addUser(RegisterUserRequest registerUserRequest) throws StorageException;
+	public User updateUser(RegisterUserRequest registerUserRequest) throws StorageException;
+	public User changePassword(String username, ChangePassword changePassword);
+	public User forgetPassword(ForgetPassword forgetPassword);
 	public void deleteUser(Long id);
 	public User getUserById(Long id);
 	public List<User> getListUser();

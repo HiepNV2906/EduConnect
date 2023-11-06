@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import demo.Enum.VaiTro;
 import demo.dto.UserDTO;
@@ -35,9 +38,14 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@PostMapping(value = "", produces = "application/json")
-	public BaseResponse<?> addUser(@RequestBody RegisterUserRequest registerUserRequest){
+	@PostMapping(value = "")
+	public BaseResponse<?> addUser(
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata){
 		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterUserRequest registerUserRequest = objectMapper.readValue(infoGS, RegisterUserRequest.class);
+			registerUserRequest.setAvata(avata);
 			User u = userService.addUser(registerUserRequest);
 			UserDTO data = UserMapper.toDTO(u);
 			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
@@ -48,11 +56,15 @@ public class UserController {
 	
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateUser(
-			@RequestBody UserDTO userDTO,
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata,
 			@PathVariable("id") Long id){
 		try {
-			userDTO.setId(id);
-			User u = userService.updateUser(userDTO);
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterUserRequest registerUserRequest = objectMapper.readValue(infoGS, RegisterUserRequest.class);
+			registerUserRequest.setId(id);
+			registerUserRequest.setAvata(avata);
+			User u = userService.updateUser(registerUserRequest);
 			UserDTO data = UserMapper.toDTO(u);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		}catch (Exception e) {

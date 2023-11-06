@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import demo.Enum.TrangThaiUser;
-import demo.dto.ChuDeDTO;
 import demo.dto.GiaSuDTO;
 import demo.entity.GiaSu;
 import demo.mapper.GiaSuMapper;
@@ -35,12 +37,16 @@ public class GiaSuController {
 	@Autowired
 	GiaSuService giaSuService;
 	
-	@PostMapping(value = "", produces = "application/json")
-	public BaseResponse<?> addGiaSu(@RequestBody RegisterGiaSuRequest registerGiaSuRequest){
+	@PostMapping(value = "")
+	public BaseResponse<?> addGiaSu(
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata,
+            @RequestParam("cccd") MultipartFile cccd){
 		try {
-			for (ChuDeDTO i : registerGiaSuRequest.getDschude()) {
-				System.out.println(i.getId());
-			}
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterGiaSuRequest registerGiaSuRequest = objectMapper.readValue(infoGS, RegisterGiaSuRequest.class);
+			registerGiaSuRequest.setAvata(avata);
+			registerGiaSuRequest.setCccd(cccd);
 			GiaSu g = giaSuService.addGiaSu(registerGiaSuRequest);
 			GiaSuDTO data = GiaSuMapper.toDTO(g);
 			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
@@ -61,10 +67,18 @@ public class GiaSuController {
 	}
 	
 	@PutMapping(value = "/{id}", produces = "application/json")
-	public BaseResponse<?> updateGiaSu(@RequestBody GiaSuDTO giaSuDTO, @PathVariable("id") Long id){
+	public BaseResponse<?> updateGiaSu(
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata,
+            @RequestParam("cccd") MultipartFile cccd, 
+            @PathVariable("id") Long id){
 		try {
-			giaSuDTO.setId(id);
-			GiaSu g = giaSuService.updateGiaSu(giaSuDTO);
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterGiaSuRequest registerGiaSuRequest = objectMapper.readValue(infoGS, RegisterGiaSuRequest.class);
+			registerGiaSuRequest.setId(id);
+			registerGiaSuRequest.setAvata(avata);
+			registerGiaSuRequest.setCccd(cccd);
+			GiaSu g = giaSuService.updateGiaSu(registerGiaSuRequest);
 			GiaSuDTO data = GiaSuMapper.toDTO(g);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		} catch (Exception e){
@@ -87,6 +101,17 @@ public class GiaSuController {
 		try {
 			GiaSu g = giaSuService.getGiaSuById(id);
 			GiaSuDTO data = GiaSuMapper.toDTO(g);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		} catch (Exception e){
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping(value = "/topnew", produces = "application/json")
+	public BaseResponse<?> getTop10GiaSuMoi(){
+		try {
+			List<GiaSu> listGiaSu = giaSuService.findTop10New();
+			List<GiaSuDTO> data = GiaSuMapper.toListDTO(listGiaSu);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		} catch (Exception e){
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);

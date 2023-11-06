@@ -30,6 +30,9 @@ public class ChuDe {
 	@Column(name = "trinhdo", length = 50, nullable = false)
 	private String trinhdo;
 	
+	@Column(name = "anh", length = 255, nullable = true)
+	private String anh;
+	
 	@OneToMany(mappedBy = "chude", cascade = CascadeType.ALL)
 	private List<Lop> dslop;
 	
