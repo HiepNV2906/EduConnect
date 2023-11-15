@@ -237,7 +237,7 @@
     // blog-dtails-page
 
     if (document.getElementById('default-select')) {
-      $('select').niceSelect();
+      // $('select').niceSelect();
     }
 
     //about-pro-active
@@ -320,7 +320,7 @@
     $("#search_input").focus();
   });
   $(document).ready(function () {
-    $('select').niceSelect();
+    // $('select').niceSelect();
   });
 
 

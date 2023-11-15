@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Lớp đã giao</title>
+    <title>Lớp hết hạn ứng tuyển</title>
 
     <!-- Fontfaces CSS-->
     <link href="../../css/font-face.css" rel="stylesheet" media="all">
@@ -66,12 +66,20 @@
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>Lớp của tôi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
+                                    <a href="E_postWaiting.html">Chờ phê duyệt</a>
+                                </li>
+                                <li>
                                     <a href="E_postFinding.html">Lớp đang tìm</a>
                                 </li>
                                 <li>
-                                    <a href="E_postHanded.html">Lớp đã giao</a>
+                                    <a href="E_postHanded.html">Kết thúc ứng tuyển</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="E_listTutorInvited.html">
+                                <i class="fa fa-handshake-o" aria-hidden="true"></i> Mời gia sư
+                            </a>
                         </li>
                         <li>
                             <a href="E_listNotificationS.html">
@@ -105,12 +113,20 @@
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>Lớp của tôi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
+                                    <a href="E_postWaiting.html">Chờ phê duyệt</a>
+                                </li>
+                                <li>
                                     <a href="E_postFinding.html">Lớp đang tìm</a>
                                 </li>
                                 <li>
-                                    <a href="E_postHanded.html">Lớp đã giao</a>
+                                    <a href="E_postHanded.html">Kết thúc ứng tuyển</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="E_listTutorInvited.html">
+                                <i class="fa fa-handshake-o" aria-hidden="true"></i> Mời gia sư
+                            </a>
                         </li>
                         <li>
                             <a href="E_listNotificationS.html">
@@ -205,7 +221,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a id="nutdangxuat">
                                                     <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
@@ -222,7 +238,7 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <h4>Các lớp đã giao</h4>
+                        <h4>Danh sách lớp hết hạn ứng tuyển</h4>
                         <div class="row m-t-30">
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
@@ -230,22 +246,25 @@
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
-                                                <th>Ngày tạo lớp</th>
-                                                <th>Mã lớp</th>
-                                                <th>Tiêu đề lớp</th>
-                                                <th>Ngày giao lớp</th>
-                                                <th>Gia sư nhận</th>
+                                                <th>ID</th>
+                                                <th>Tiêu đề</th>
+                                                <th>Trạng thái</th>
+                                                <th>Chi tiết</th>
+                                                <th>Kết quả</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="listclasshanded">
                                             <tr>
                                                 <td>2018-09-29 05:57</td>
                                                 <td>Mobile</td>
                                                 <td>iPhone X 64Gb Grey</td>
-                                                <td class="process">Processed</td>
                                                 <td>
                                                     <button type="button" class="btn btn-outline-primary btn-sm">Xem gia
                                                         sư</button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm">Xem
+                                                        lớp</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -354,11 +373,15 @@
     <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../../vendor/select2/select2.min.js">
-    </script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!-- Main JS-->
     <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/student/E_postHanded.js"></script>
 
 </body>
 

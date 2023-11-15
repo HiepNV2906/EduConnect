@@ -40,46 +40,49 @@
                 <div class="container-fluid ">
                     <div class="header_bottom_border">
                         <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
+                            <div class="col-xl-3 col-lg-2 col-md-1">
                                 <div class="logo">
                                     <a href="E_home.html">
                                         <img src="../../img/logo/logo.png" alt="">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-7">
+                            <div class="col-xl-9 col-lg-10 col-md-11">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="E_home.html">Trang chủ</a></li>
-                                            <li><a href="E_jobs.html">Tìm lớp mới</a></li>
-                                            <li><a href="E_candidate.html">Tìm gia sư</a></li>
+                                            <li><a href="E_jobs.html">Danh sách lớp</a></li>
+                                            <li><a href="E_candidate.html">Danh sách gia sư</a></li>
                                             <li><a href="#">Hướng dẫn<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_contract.html">Hợp đồng mẫu</a></li>
                                                     <li><a href="E_regulation.html">Quy định chung</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Đăng ký tài khoản<i class="ti-angle-down"></i></a>
+                                            <li><a href="#">Đăng ký<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_register_tutor.html">Tôi là gia sư</a></li>
                                                     <li><a href="E_register_student.html">Tôi cần tìm gia sư</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="E_postclass.html">Tìm gia sư</a></li>
+                                            <li class='account'>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <!-- <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="Appointment">
-                                    <div class="phone_num d-none d-xl-block">
+                                    <div class="phone_num d-none d-xl-block dangnhap">
                                         <a href="E_login.html">Đăng nhập</a>
                                     </div>
-                                    <div class="d-none d-lg-block">
+                                    <div class="d-none d-lg-block taolopmoi">
                                         <a class="boxed-btn3" href="#">Tạo lớp mới</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
@@ -109,7 +112,50 @@
     <!-- featured_candidates_area_start  -->
     <div class="featured_candidates_area candidate_page_padding">
         <div class="container">
+
             <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="single_field  gsfilter">
+                        <select id="monhocfilter" class="wide">
+                            <option value="" data-display="Môn">Môn</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="single_field  gsfilter">
+                        <select id="trinhdofilter" class="wide">
+                            <option value="" data-display="Trình độ">Trình độ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="single_field  gsfilter">
+                        <select id="quanfilter" class="wide">
+                            <option value="" data-display="Quận/Huyện">Quận/Huyện</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="single_field  gsfilter">
+                        <select id="gioitinhfilter" class="wide">
+                            <option value="" data-display="Giới tính">Giới tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="single_field  gsfilter">
+                        <input id="input-search" type="text" placeholder="Tìm kiếm">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <button id="nutfilter" class="boxed-btn3 w-100" type="submit">Tìm</button>
+                </div>
+            </div>
+            <div id="listtutors" class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="single_candidates">
                         <div class="thumb">
@@ -423,7 +469,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="pagination_wrap">
-                        <ul>
+                        <ul id="pageable">
                             <li><a href="#"> <i class="ti-angle-left"></i> </a></li>
                             <li><a href="#"><span>01</span></a></li>
                             <li><a href="#"><span>02</span></a></li>
@@ -546,6 +592,8 @@
     <script src="../../js/jquery.magnific-popup.min.js"></script>
     <script src="../../js/plugins.js"></script>
     <script src="../../js/gijgo.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
 
 
@@ -558,6 +606,8 @@
 
 
     <script src="../../js/main.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/home/E_candidate.js"></script>
 </body>
 
 </html>

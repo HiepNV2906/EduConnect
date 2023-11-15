@@ -41,46 +41,49 @@
                 <div class="container-fluid ">
                     <div class="header_bottom_border">
                         <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
+                            <div class="col-xl-3 col-lg-2 col-md-1">
                                 <div class="logo">
                                     <a href="E_home.html">
                                         <img src="../../img/logo/logo.png" alt="">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-7">
+                            <div class="col-xl-9 col-lg-10 col-md-11">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="E_home.html">Trang chủ</a></li>
-                                            <li><a href="E_jobs.html">Tìm lớp mới</a></li>
-                                            <li><a href="E_candidate.html">Tìm gia sư</a></li>
+                                            <li><a href="E_jobs.html">Danh sách lớp</a></li>
+                                            <li><a href="E_candidate.html">Danh sách gia sư</a></li>
                                             <li><a href="#">Hướng dẫn<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_contract.html">Hợp đồng mẫu</a></li>
                                                     <li><a href="E_regulation.html">Quy định chung</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Đăng ký tài khoản<i class="ti-angle-down"></i></a>
+                                            <li><a href="#">Đăng ký<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_register_tutor.html">Tôi là gia sư</a></li>
                                                     <li><a href="E_register_student.html">Tôi cần tìm gia sư</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="E_postclass.html">Tìm gia sư</a></li>
+                                            <li class='account'>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <!-- <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="Appointment">
-                                    <div class="phone_num d-none d-xl-block">
+                                    <div class="phone_num d-none d-xl-block dangnhap">
                                         <a href="E_login.html">Đăng nhập</a>
                                     </div>
-                                    <div class="d-none d-lg-block">
+                                    <div class="d-none d-lg-block taolopmoi">
                                         <a class="boxed-btn3" href="#">Tạo lớp mới</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
@@ -113,7 +116,7 @@
                 <div class="col-lg-8">
                     <div class="job_details_header">
                         <div class="single_jobs white-bg d-flex justify-content-between">
-                            <div class="jobs_left d-flex align-items-center">
+                            <div class="jobs_left d-flex align-items-center coban">
                                 <div class="thumb">
                                     <img src="../../img/subject/tiengviet.jpg" alt="">
                                 </div>
@@ -137,36 +140,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="jobs_right">
+                            <!-- <div class="jobs_right">
                                 <div class="apply_now">
                                     <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="descript_wrap white-bg">
-                        <div class="single_wrap">
+                        <div class="single_wrap motahs">
                             <h4>Thông tin học sinh</h4>
                             <p>Học sinh nữ, trường Thanh Liệt, học sách kết nối tri thức, lực học TB</p>
                         </div>
                         <div class="single_wrap">
                             <h4>Yêu cầu Gia sư</h4>
-                            <ul>
+                            <ul class="yeucaugs">
                                 <li>Trình độ: Giáo viên</li>
                                 <li>Giới tính: Nữ</li>
                                 <li>Trường: Đại học Bách khoa Hà Nội</li>
                                 <li>Yêu cầu khác: tính cách thân thiện, kiên trì. Kinh nghiệm 6 tháng trở lên làm gia sư
                                 </li>
-                            </ul>
-                        </div>
-                        <div class="single_wrap">
-                            <h4>Qualifications</h4>
-                            <ul>
-                                <li>The applicants should have experience in the following areas.
-                                </li>
-                                <li>Have sound knowledge of commercial activities.</li>
-                                <li>Leadership, analytical, and problem-solving abilities.</li>
-                                <li>Should have vast knowledge in IAS/ IFRS, Company Act, Income Tax, VAT.</li>
                             </ul>
                         </div>
                         <div class="single_wrap">
@@ -283,17 +276,18 @@
                         </div>
                     </div>
                     <div class="apply_job_form white-bg">
-                        <!-- <h4>Apply for the job</h4> -->
-                        <form action="#">
-                            <div class="row">
-
-                                <div class="col-md-12">
-                                    <div class="submit_btn">
-                                        <button class="boxed-btn3 w-100" type="submit">Ứng tuyển</button>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="submit_btn">
+                                    <div class="ungtuyen">
+                                        <button id="nutungtuyen" class="boxed-btn3 w-100">Ứng
+                                            tuyển</button>
+                                    </div>
+                                    <div class="ketquaungtuyen">
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -302,7 +296,7 @@
                             <h3>Tóm tắt lớp</h3>
                         </div>
                         <div class="job_content">
-                            <ul>
+                            <ul class="tomtatlop">
                                 <li>Ngày tạo: <span>12 Nov, 2019</span></li>
                                 <li>Số buổi/tuần: <span>2</span></li>
                                 <li>Số giờ/buổi: <span>2.5</span></li>
@@ -428,6 +422,8 @@
     <script src="../../js/jquery.magnific-popup.min.js"></script>
     <script src="../../js/plugins.js"></script>
     <script src="../../js/gijgo.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
 
 
@@ -440,6 +436,8 @@
 
 
     <script src="../../js/main.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/home/E_job_details.js"></script>
 </body>
 
 </html>

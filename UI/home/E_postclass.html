@@ -40,46 +40,49 @@
                 <div class="container-fluid ">
                     <div class="header_bottom_border">
                         <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
+                            <div class="col-xl-3 col-lg-2 col-md-1">
                                 <div class="logo">
                                     <a href="E_home.html">
                                         <img src="../../img/logo/logo.png" alt="">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-7">
+                            <div class="col-xl-9 col-lg-10 col-md-11">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="E_home.html">Trang chủ</a></li>
-                                            <li><a href="E_jobs.html">Tìm lớp mới</a></li>
-                                            <li><a href="E_candidate.html">Tìm gia sư</a></li>
+                                            <li><a href="E_jobs.html">Danh sách lớp</a></li>
+                                            <li><a href="E_candidate.html">Danh sách gia sư</a></li>
                                             <li><a href="#">Hướng dẫn<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_contract.html">Hợp đồng mẫu</a></li>
                                                     <li><a href="E_regulation.html">Quy định chung</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Đăng ký tài khoản<i class="ti-angle-down"></i></a>
+                                            <li><a href="#">Đăng ký<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_register_tutor.html">Tôi là gia sư</a></li>
                                                     <li><a href="E_register_student.html">Tôi cần tìm gia sư</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="E_postclass.html">Tìm gia sư</a></li>
+                                            <li class='account'>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <!-- <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="Appointment">
-                                    <div class="phone_num d-none d-xl-block">
+                                    <div class="phone_num d-none d-xl-block dangnhap">
                                         <a href="E_login.html">Đăng nhập</a>
                                     </div>
-                                    <div class="d-none d-lg-block">
+                                    <div class="d-none d-lg-block taolopmoi">
                                         <a class="boxed-btn3" href="#">Tạo lớp mới</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
@@ -114,35 +117,12 @@
                 <form action="#">
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Tiêu đề*:</span>
-                        <input type="text" name="title" required class="single-input col-lg-9">
+                        <input type="text" name="title" required class="single-input col-lg-9 tieude">
                     </div>
                     <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Địa chỉ*:</span>
-                        <input type="text" name="address" required class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Học phí/buổi*:</span>
-                        <input type="number" name="tuition" min="1000" step="1000" value="1000" required
-                            class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Số buổi/tuần*:</span>
-                        <input type="number" name="numlession" min="1" max="7" value="1" required
-                            class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Số giờ/buổi*:</span>
-                        <input type="number" name="numhour" min="1" max="5" step="0.5" value="1" required
-                            class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Số HS*:</span>
-                        <input type="number" name="numstudent" min="1" value="1" required class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Giới tính HS*:</span>
+                        <span class="col-lg-3 label_form"> Quận/Huyện*:</span>
                         <div class="default-select col-lg-9" id="default-select">
-                            <select class="gender">
+                            <select class="quanhuyen">
                                 <option value=" 1">Nam</option>
                                 <option value="1">Nữ</option>
                                 <option value="1">Nam + Nữ</option>
@@ -150,18 +130,56 @@
                         </div>
                     </div>
                     <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Địa chỉ*:</span>
+                        <input type="text" name="address" required class="single-input col-lg-9 diachi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Học phí/buổi*:</span>
+                        <input type="number" name="tuition" min="1000" step="1000" value="1000" required
+                            class="single-input col-lg-9 hocphi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số buổi/tuần*:</span>
+                        <input type="number" name="numlession" min="1" max="7" value="1" required
+                            class="single-input col-lg-9 sobuoi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số giờ/buổi*:</span>
+                        <input type="number" name="numhour" min="1" max="5" step="0.5" value="1" required
+                            class="single-input col-lg-9 sogio">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số HS*:</span>
+                        <input type="number" name="numstudent" min="1" value="1" required
+                            class="single-input col-lg-9 sohs">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Giới tính HS*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="gioitinhhs">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Nam + Nữ">Nam + Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Mô tả học sinh:</span>
+                        <textarea class="single-textarea col-lg-9 detailstudent motahs"></textarea>
+                    </div>
+                    <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Hình thức*:</span>
                         <div class="default-select col-lg-9" id="default-select">
-                            <select class="gender">
-                                <option value=" 1">Online</option>
-                                <option value="1">Offline</option>
+                            <select class="hinhthuc">
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
                             </select>
                         </div>
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Chủ đề dạy*:</span>
                         <div class="default-select col-lg-3" id="default-select">
-                            <select class="subject">
+                            <select class="mon">
                                 <option value=" 1">Toán</option>
                                 <option value="1">Văn</option>
                                 <option value="1">Tiếng Anh</option>
@@ -170,17 +188,14 @@
                             </select>
                         </div>
                         <div class="default-select col-lg-3" id="default-select">
-                            <select class="level">
-                                <option value="1">Tiểu học</option>
-                                <option value="1">THCS</option>
-                                <option value="1">THPT</option>
-                                <option value="1">Thi Đại Học</option>
+                            <select class="trinhdo">
+                                <option value="" data-display="Trình độ">Trình độ</option>
                             </select>
                         </div>
                     </div>
                     <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Mô tả học sinh:</span>
-                        <textarea class="single-textarea col-lg-9 detailstudent"></textarea>
+                        <span class="col-lg-3 label_form"> Hạn ứng tuyển*:</span>
+                        <input type="date" name="numstudent" required class="single-input col-lg-9 hanungtuyen">
                     </div>
                 </form>
                 <h3 class="mb-30 mt-30">Yêu cầu gia sư</h3>
@@ -188,31 +203,30 @@
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Nghề nghiệp:</span>
                         <div class="default-select col-lg-9" id="default-select">
-                            <select class="career">
-                                <option value=" 1">Không</option>
-                                <option value=" 1">Sinh viên</option>
-                                <option value="1">Giáo viên</option>
-                                <option value="1">Khác</option>
+                            <select class="nghenghiepgs">
+                                <option value="">Không</option>
+                                <option value="Sinh viên">Sinh viên</option>
+                                <option value="Giáo viên">Giáo viên</option>
                             </select>
                         </div>
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Giới tính GS:</span>
                         <div class="default-select col-lg-9" id="default-select">
-                            <select class="gender">
-                                <option value="1">Không</option>
-                                <option value=" 1">Nam</option>
-                                <option value="1">Nữ</option>
+                            <select class="gioitinhgs">
+                                <option value="">Không</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
                             </select>
                         </div>
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Trường:</span>
-                        <input type="text" name="university" required class="single-input col-lg-9">
+                        <input type="text" name="university" required class="single-input col-lg-9 truonggs">
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Yêu cầu khác:</span>
-                        <textarea class="single-textarea col-lg-9 morerequirement"></textarea>
+                        <textarea class="single-textarea col-lg-9 morerequirement yeucaukhac"></textarea>
                     </div>
                 </form>
                 <h3 class="mb-30 mt-30">Thời gian có thể học</h3>
@@ -224,7 +238,7 @@
             </div>
 
             <div class="mt-30 col-12 text-center">
-                <div class="boxed-btn3">Đăng bài</div>
+                <div id="nutdangbai" class="boxed-btn3">Đăng bài</div>
             </div>
         </div>
     </div>
@@ -239,13 +253,13 @@
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="../../img/logo.png" alt="">
+                                    <img src="../../img/logo/logo1.png" alt="">
                                 </a>
                             </div>
                             <p>
-                                finloan@support.com <br>
-                                +10 873 672 6782 <br>
-                                600/D, Green road, NewYork
+                                educonnect@support.com <br>
+                                0123456789 <br>
+                                Nguyễn Trãi, Hà Đông, Hà Nội
                             </p>
                             <div class="socail_links">
                                 <ul>
@@ -274,16 +288,27 @@
 
                         </div>
                     </div>
-                    <div class="col-xl-2 col-md-6 col-lg-2">
+                    <div class="col-xl-3 col-md-6 col-lg-3">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".4s">
                             <h3 class="footer_title">
-                                Company
+                                Dành cho Gia sư
                             </h3>
                             <ul>
-                                <li><a href="#">About </a></li>
-                                <li><a href="#"> Pricing</a></li>
-                                <li><a href="#">Carrier Tips</a></li>
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="E_register_tutor.html">Đăng ký</a></li>
+                                <li><a href="E_jobs.html">Lớp mới</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
+                            <h3 class="footer_title">
+                                Dành cho PH-HS
+                            </h3>
+                            <ul>
+                                <li><a href="E_register_student.html">Đăng ký</a></li>
+                                <li><a href="E_postclass.html">Tạo lớp mới</a></li>
+                                <li><a href="E_candidate.html">Tìm gia sư</a></li>
                             </ul>
 
                         </div>
@@ -291,45 +316,15 @@
                     <div class="col-xl-3 col-md-6 col-lg-3">
                         <div class="footer_widget wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
                             <h3 class="footer_title">
-                                Category
+                                Hướng dẫn
                             </h3>
                             <ul>
-                                <li><a href="#">Design & Art</a></li>
-                                <li><a href="#">Engineering</a></li>
-                                <li><a href="#">Sales & Marketing</a></li>
-                                <li><a href="#">Finance</a></li>
+                                <li><a href="E_regulation.html">Quy định chung</a></li>
+                                <li><a href="E_contract.html">Hợp đông mẫu</a></li>
+                                <li><a href="#">Cách thức nhận lớp</a></li>
+                                <li><a href="#">Chính sách hoàn phí</a></li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-lg-4">
-                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
-                            <h3 class="footer_title">
-                                Subscribe
-                            </h3>
-                            <form action="#" class="newsletter_form">
-                                <input type="text" placeholder="Enter your mail">
-                                <button type="submit">Subscribe</button>
-                            </form>
-                            <p class="newsletter_text">Esteem spirit temper too say adieus who direct esteem esteems
-                                luckily.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="copy-right_text wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".3s">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This
-                            template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
                     </div>
                 </div>
             </div>
@@ -357,6 +352,7 @@
     <script src="../../js/jquery.magnific-popup.min.js"></script>
     <script src="../../js/plugins.js"></script>
     <script src="../../js/gijgo.min.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!--contact js-->
     <script src="../../js/contact.js"></script>
@@ -366,84 +362,8 @@
     <script src="../../js/mail-script.js"></script>
 
     <script src="../../js/main.js"></script>
-    <script>
-        var quan = ['Ba Đình', 'Bắc Từ Liêm', 'Cầu Giấy', 'Đống Đa', 'Hà Đông', 'Hai Bà Trưng',
-            'Hoàn Kiếm', 'Hoàng Mai', 'Long Biên', 'Nam Từ Liêm', 'Tây Hồ', 'Thanh Xuân']
-        var huyen = ['Ba Vì', 'Chương Mỹ', 'Đan Phượng', 'Đông Anh', 'Gia Lâm', 'Hoài Đức',
-            'Mê Linh', 'Mỹ Đức', 'Phúc Thọ', 'Quốc Oai', 'Sóc Sơn', 'Sơn Tây',
-            'Thạch Thất', 'Thanh Oai', 'Thanh Trì', 'Thường Tín', 'Ứng Hoà']
-        var lich = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "CN"]
-        function addList(list, classElement) {
-            var result = ``;
-            list.forEach((value) => {
-                result += `<div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-10">
-                                    <div class="row">
-                                        <input type="checkbox" name="region" required class="single-input col-3">
-                                        <span>${value}</span>
-                                    </div>
-                                </div>`
-            })
-            $(classElement).html(result);
-        }
-        function addNewSubject() {
-            var listRow = $('.multi_subject .row').length + 1;
-            var newId = "subject_row" + listRow;
-            var newRow = `<div class="mt-10 row" id=${newId}>
-                            <span class="col-lg-1 label_form"> ${listRow}:</span>
-                            <div class="default-select col-lg-3" id="default-select">
-                                <select class="subject">
-                                    <option value=" 1">Toán</option>
-                                    <option value="1">Văn</option>
-                                    <option value="1">Tiếng Anh</option>
-                                    <option value="1">Tiếng Việt</option>
-                                    <option value="1">Lịch Sử</option>
-                                </select>
-                            </div>
-                            <div class="default-select col-lg-3" id="default-select">
-                                <select class="level">
-                                    <option value="1">Tiểu học</option>
-                                    <option value="1">THCS</option>
-                                    <option value="1">THPT</option>
-                                    <option value="1">Thi Đại Học</option>
-                                </select>
-                            </div>
-                            <span class="col-lg-1 genric-btn danger-border circle medium deleteSubjectBtn"
-                                    onclick="removeSubject('${newId}')">
-                                x
-                            </span>
-                        </div>`;
-            $('.multi_subject').append(newRow);
-            $('select').niceSelect();
-        }
-        function removeSubject(id) {
-            $('#' + id).remove();
-        }
-        function addCalender(list, classElement) {
-            var result = ``;
-            list.forEach((value) => {
-                result += `<div class="row day-in-week" ng-repeat="day in days">
-                                <p class="ng-binding col-lg-2">${value}: </p>
-                                <div class="col-lg-10">
-                                    <div class="row time-in-day">
-                                        <label class="form-check-label col-md-3">
-                                            <input type="checkbox" name="" value="S" class="form-check-input">Sáng
-                                        </label>
-                                        <label class="form-check-label col-md-3">
-                                            <input type="checkbox" name="" value="C" class="form-check-input">Chiều
-                                        </label>
-                                        <label class="form-check-label col-md-3">
-                                            <input type="checkbox" name="" value="T" class="form-check-input">Tối
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>`
-            })
-            $(classElement).html(result);
-        }
-        addList(quan, '.quanHN');
-        addList(huyen, '.huyenHN');
-        addCalender(lich, '.block-calender')
-    </script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/home/E_postclass.js"></script>
 </body>
 
 </html>

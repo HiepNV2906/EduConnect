@@ -40,46 +40,49 @@
                 <div class="container-fluid ">
                     <div class="header_bottom_border">
                         <div class="row align-items-center">
-                            <div class="col-xl-3 col-lg-2">
+                            <div class="col-xl-3 col-lg-2 col-md-1">
                                 <div class="logo">
                                     <a href="E_home.html">
                                         <img src="../../img/logo/logo.png" alt="">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-lg-7">
+                            <div class="col-xl-9 col-lg-10 col-md-11">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="E_home.html">Trang chủ</a></li>
-                                            <li><a href="E_jobs.html">Tìm lớp mới</a></li>
-                                            <li><a href="E_candidate.html">Tìm gia sư</a></li>
+                                            <li><a href="E_jobs.html">Danh sách lớp</a></li>
+                                            <li><a href="E_candidate.html">Danh sách gia sư</a></li>
                                             <li><a href="#">Hướng dẫn<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_contract.html">Hợp đồng mẫu</a></li>
                                                     <li><a href="E_regulation.html">Quy định chung</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Đăng ký tài khoản<i class="ti-angle-down"></i></a>
+                                            <li><a href="#">Đăng ký<i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="E_register_tutor.html">Tôi là gia sư</a></li>
                                                     <li><a href="E_register_student.html">Tôi cần tìm gia sư</a></li>
                                                 </ul>
                                             </li>
+                                            <li><a href="E_postclass.html">Tìm gia sư</a></li>
+                                            <li class='account'>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <!-- <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="Appointment">
-                                    <div class="phone_num d-none d-xl-block">
+                                    <div class="phone_num d-none d-xl-block dangnhap">
                                         <a href="E_login.html">Đăng nhập</a>
                                     </div>
-                                    <div class="d-none d-lg-block">
+                                    <div class="d-none d-lg-block taolopmoi">
                                         <a class="boxed-btn3" href="#">Tạo lớp mới</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
@@ -144,58 +147,63 @@
                 <h3 class="mb-30 mt-30">Thông tin cá nhân</h3>
                 <form action="#">
                     <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Họ tên PHHS*:</span>
-                        <input type="text" name="name_parent" required class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Họ tên HS*:</span>
-                        <input type="text" name="first_name" required class="single-input col-lg-9">
+                        <input type="text" name="first_name" required class="single-input col-lg-9 hoten">
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Giới tính*:</span>
                         <div class="default-select col-lg-9" id="default-select">
-                            <select class="gender">
+                            <select class="gioitinh">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Ngày sinh*:</span>
+                        <input type="date" name="date_of_birth" required class="single-input col-lg-9 ngaysinh">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số điện thoại*:</span>
+                        <input type="text" name="last_name" required class="single-input col-lg-9 sdt">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Quận*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="quanhuyen">
                                 <option value=" 1">Nam</option>
                                 <option value="1">Nữ</option>
                             </select>
                         </div>
                     </div>
                     <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Ngày sinh*:</span>
-                        <input type="date" name="date_of_birth" required class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
-                        <span class="col-lg-3 label_form"> Số điện thoại*:</span>
-                        <input type="text" name="last_name" required class="single-input col-lg-9">
-                    </div>
-                    <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Địa chỉ*:</span>
-                        <input type="text" name="address" required class="single-input col-lg-9">
+                        <input type="text" name="address" required class="single-input col-lg-9 diachi">
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Mặt trước CCCD*:</span>
-                        <input type="file" name="cccd" required class="single-input col-lg-9">
+                        <input type="file" name="cccd" required class="single-input col-lg-9 cccd">
                     </div>
                 </form>
                 <h3 class="mb-30 mt-30">Tài khoản</h3>
                 <form action="#">
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Email*:</span>
-                        <input type="email" name="email" required class="single-input col-lg-9">
+                        <input type="email" name="email" required class="single-input col-lg-9 email">
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Mật khẩu*:</span>
-                        <input type="password" name="password" required class="single-input col-lg-9">
+                        <input type="password" name="password" required class="single-input col-lg-9 password">
                     </div>
                     <div class="mt-10 row">
                         <span class="col-lg-3 label_form"> Nhập lại mật khẩu*:</span>
-                        <input type="password" name="repassword" required class="single-input col-lg-9">
+                        <input type="password" name="repassword" required class="single-input col-lg-9 repassword">
                     </div>
                 </form>
 
             </div>
             <div class="mt-30 col-12 text-center">
-                <div class="boxed-btn3">Đăng ký</div>
+                <div id="nutdangky" class="boxed-btn3">Đăng ký</div>
             </div>
         </div>
     </div>
@@ -309,6 +317,7 @@
     <script src="../../js/jquery.magnific-popup.min.js"></script>
     <script src="../../js/plugins.js"></script>
     <script src="../../js/gijgo.min.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!--contact js-->
     <script src="../../js/contact.js"></script>
@@ -318,6 +327,8 @@
     <script src="../../js/mail-script.js"></script>
 
     <script src="../../js/main.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/home/E_register_student.js"></script>
 
 </body>
 

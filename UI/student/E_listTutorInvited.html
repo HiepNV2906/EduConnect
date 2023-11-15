@@ -10,12 +10,12 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Profile</title>
+    <title>Mời gia sư ứng tuyển</title>
 
     <!-- Fontfaces CSS-->
     <link href="../../css/font-face.css" rel="stylesheet" media="all">
-    <link href="../../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="../../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
@@ -66,12 +66,20 @@
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>Lớp của tôi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
+                                    <a href="E_postWaiting.html">Chờ phê duyệt</a>
+                                </li>
+                                <li>
                                     <a href="E_postFinding.html">Lớp đang tìm</a>
                                 </li>
                                 <li>
-                                    <a href="E_postHanded.html">Lớp đã giao</a>
+                                    <a href="E_postHanded.html">Kết thúc ứng tuyển</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="E_listTutorInvited.html">
+                                <i class="fa fa-handshake-o" aria-hidden="true"></i> Mời gia sư
+                            </a>
                         </li>
                         <li>
                             <a href="E_listNotificationS.html">
@@ -105,12 +113,20 @@
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>Lớp của tôi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
+                                    <a href="E_postWaiting.html">Chờ phê duyệt</a>
+                                </li>
+                                <li>
                                     <a href="E_postFinding.html">Lớp đang tìm</a>
                                 </li>
                                 <li>
-                                    <a href="E_postHanded.html">Lớp đã giao</a>
+                                    <a href="E_postHanded.html">Kết thúc ứng tuyển</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="E_listTutorInvited.html">
+                                <i class="fa fa-handshake-o" aria-hidden="true"></i> Mời gia sư
+                            </a>
                         </li>
                         <li>
                             <a href="E_listNotificationS.html">
@@ -205,7 +221,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a id="nutdangxuat">
                                                     <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
@@ -216,106 +232,83 @@
                     </div>
                 </div>
             </header>
-            <!-- HEADER DESKTOP-->
+            <!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row">
+                        <h4>Lịch sử mời gia sư ứng tuyển</h4>
+                        <div class="row m-t-30">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE-->
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>Ngày mời</th>
+                                                <th>Gia sư</th>
+                                                <th>Lớp</th>
+                                                <th>Kết quả</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="listInvited">
+                                            <tr>
+                                                <td class="loimoi">2018-09-29 05:57</td>
+                                                <td class="loimoi">Mobile</td>
+                                                <td class="loimoi">iPhone X 64Gb Grey</td>
+                                                <td class="loimoi">iPhone X 64Gb Grey</td>
+                                                <td class="loimoi">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm">Chi
+                                                        tiết</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="">2018-09-29 05:57</td>
+                                                <td class="">Mobile</td>
+                                                <td class="">iPhone X 64Gb Grey</td>
+                                                <td class="">iPhone X 64Gb Grey</td>
+                                                <td class="">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm">Chi
+                                                        tiết</button>
+                                                </td>
+                                            </tr>
 
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <strong>Thông tin tài khoản</strong>
-                                    </div>
-                                    <div class="card-body card-block">
-                                        <form action="" method="post" enctype="multipart/form-data"
-                                            class="form-horizontal">
-                                            <div class="row form-group">
-                                                <div class="col-md-6 col-12">
-                                                    <div class="row text-center">
-                                                        <label for="file-input" class="col-12 form-control-label">Ảnh
-                                                            đại diện</label>
-                                                        <div class="col-12">
-                                                            <img src="../../img/user.jpg" class="form-avata" alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <div class="row text-center">
-                                                        <label for="file-input" class="col-12 form-control-label">Mặt
-                                                            trước CCCD</label>
-                                                        <div class="col-12">
-                                                            <img src="../../img/bg-title-01.jpg" class="form-cccd"
-                                                                alt="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Họ tên PHHS*</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">Username</p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Họ tên HS*</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">Username</p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Giới tính</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">Username</p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label class=" form-control-label">Ngày sinh</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">Username</p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="text-input" class=" form-control-label">Số điện
-                                                        thoại</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">Username</p>
-                                                </div>
-                                            </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="text-input" class=" form-control-label">Địa chỉ</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <p class="form-control-static">Username</p>
-                                                </div>
-                                            </div>
-
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Phê duyệt</button>
-                                    <button type="button" class="btn btn-warning">Từ chối</button>
-                                </div>
+                                <!-- END DATA TABLE-->
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Jquery JS-->
@@ -336,32 +329,15 @@
     <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../../vendor/select2/select2.min.js">
-    </script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!-- Main JS-->
     <script src="../../js/main1.js"></script>
-    <script>
-        var quan = ['Ba Đình', 'Bắc Từ Liêm', 'Cầu Giấy', 'Đống Đa', 'Hà Đông', 'Hai Bà Trưng',
-            'Hoàn Kiếm', 'Hoàng Mai', 'Long Biên', 'Nam Từ Liêm', 'Tây Hồ', 'Thanh Xuân']
-        var huyen = ['Ba Vì', 'Chương Mỹ', 'Đan Phượng', 'Đông Anh', 'Gia Lâm', 'Hoài Đức',
-            'Mê Linh', 'Mỹ Đức', 'Phúc Thọ', 'Quốc Oai', 'Sóc Sơn', 'Sơn Tây',
-            'Thạch Thất', 'Thanh Oai', 'Thanh Trì', 'Thường Tín', 'Ứng Hoà']
-        function addList(list, classElement) {
-            var result = ``;
-            list.forEach((value) => {
-                result += `<div class="checkbox">
-                                        <label class="form-check-label ">
-                                            <input type="checkbox" name=""
-                                                value="${value}" class="form-check-input">${value}
-                                        </label>
-                                    </div>`
-            })
-            $(classElement).html(result);
-        }
-        addList(quan, '.quanHN');
-        addList(huyen, '.huyenHN');
-    </script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/student/E_listTutorInvited.js"></script>
 
 </body>
 

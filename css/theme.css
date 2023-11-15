@@ -1420,6 +1420,9 @@ section {
 
 .account-item .image>img {
     width: 100%;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .account-item>.content {
@@ -1952,9 +1955,8 @@ section {
 }
 
 .mess__item {
-    padding: 19px 22px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #f2f2f2;
+    padding: 10px 22px;
+    border-bottom: 1px solid #cbc8c8;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -1967,7 +1969,7 @@ section {
 }
 
 .mess__item:hover {
-    background: #f7f7f7;
+    background: #dbd6d6;
 }
 
 .mess__item .image {
@@ -1979,6 +1981,7 @@ section {
     width: -moz-calc(100% - 55px);
     width: calc(100% - 55px);
     text-align: left;
+    width: 100%;
 }
 
 .mess__item .content h6 {
@@ -14681,6 +14684,7 @@ section {
     border-radius: 50%;
     border: 1px solid #a9bbe3;
     margin: 20px 0;
+    object-fit: cover;
 }
 
 .form-cccd {
@@ -14688,6 +14692,7 @@ section {
     height: 200px;
     border: 1px solid #a9bbe3;
     margin: 20px 0;
+    object-fit: cover;
 }
 
 .form-control-label {
@@ -14702,4 +14707,62 @@ section {
 
 .logo img {
     height: inherit;
+}
+
+.xacthuc {
+    color: green !important;
+    font-weight: 600 !important;
+}
+
+.dinhchi {
+    color: red !important;
+    font-weight: 600 !important;
+}
+
+.choxacthuc {
+    color: orange !important;
+    font-weight: 600 !important;
+}
+
+.page_selected {
+    color: white !important;
+    background-color: #007bff !important;
+}
+
+.titlenotify {
+    font-weight: 700;
+}
+
+.timenotify {
+    font-size: 14px;
+    font-style: italic;
+    float: right;
+}
+
+.anotify {
+    transition: transform 0.7s;
+    width: 100%;
+}
+
+.anotify:hover {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #89938b;
+    transform: scale(1.02);
+}
+
+.lichtrong input {
+    width: 20px;
+    height: 20px;
+}
+
+.loimoi {
+    background-color: #8bed8b !important;
+}
+
+.account-dropdown .info .image img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
 }

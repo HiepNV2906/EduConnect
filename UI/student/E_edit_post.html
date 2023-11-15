@@ -66,6 +66,9 @@
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>Lớp của tôi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
+                                    <a href="E_postWaiting.html">Chờ phê duyệt</a>
+                                </li>
+                                <li>
                                     <a href="E_postFinding.html">Lớp đang tìm</a>
                                 </li>
                                 <li>
@@ -104,6 +107,9 @@
                             <a class="js-arrow" href="#">
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>Lớp của tôi</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_postWaiting.html">Chờ phê duyệt</a>
+                                </li>
                                 <li>
                                     <a href="E_postFinding.html">Lớp đang tìm</a>
                                 </li>
@@ -230,14 +236,21 @@
                                         <strong>Thông tin lớp</strong>
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="" method="post" enctype="multipart/form-data"
-                                            class="form-horizontal">
+                                        <div class="form-horizontal">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">ID</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 maId">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="text-input" class=" form-control-label">Tiêu
                                                         đề*:</label>
                                                 </div>
-                                                <div class="col-12 col-md-9">
+                                                <div class="col-12 col-md-9 tieude">
                                                     <input type="text" id="text-input" name="text-input" placeholder=""
                                                         class="form-control">
                                                 </div>
@@ -344,6 +357,7 @@
                                                         placeholder="Content..." class="form-control"></textarea>
                                                 </div>
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card">

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Thông tin lớp</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="../../css/font-face.css" rel="stylesheet" media="all">
+    <link href="../../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="../../vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="../../vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="../../vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="../../vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="../../css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="../home/E_home.html">
+                            <h3>Edu-connect</h3>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a href="E_profileAdmin.html">
+                                <i class="fa fa-id-badge" aria-hidden="true"></i> Tài khoản
+                            </a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>Quản lý gia sư</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTutor.html">Danh sách gia sư</a>
+                                </li>
+                                <li>
+                                    <a href="E_listRegisterTutor.html">Đăng ký làm gia sư</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>Quản lý học viên</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listStudent.html">Danh sách học viên</a>
+                                </li>
+                                <li>
+                                    <a href="E_listRegisterStudent.html">Đăng ký làm học viên</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>Quản lý lớp</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listRegisterClass.html">Yêu cầu tạo lớp</a>
+                                </li>
+                                <li>
+                                    <a href="E_listClassFinding.html">Lớp đang tìm</a>
+                                </li>
+                                <li>
+                                    <a href="E_listClassHanding.html">Lớp cần xếp gia sư</a>
+                                </li>
+                                <li>
+                                    <a href="E_listClassHanded.html">Lớp đã giao</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="E_listNotificationA.html">
+                                <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="../home/E_home.html">
+                    <img src="../../img/logo/logo2.png" alt="Cool Admin" />
+                    <h4>Edu-connect</h4>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="E_profileAdmin.html">
+                                <i class="fa fa-id-badge" aria-hidden="true"></i> Tài khoản
+                            </a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>Quản lý gia sư</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTutor.html">Danh sách gia sư</a>
+                                </li>
+                                <li>
+                                    <a href="E_listRegisterTutor.html">Đăng ký làm gia sư</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>Quản lý học viên</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listStudent.html">Danh sách học viên</a>
+                                </li>
+                                <li>
+                                    <a href="E_listRegisterStudent.html">Đăng ký làm học viên</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i>Quản lý lớp</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listRegisterClass.html">Yêu cầu tạo lớp</a>
+                                </li>
+                                <li>
+                                    <a href="E_listClassFinding.html">Lớp đang tìm</a>
+                                </li>
+                                <li>
+                                    <a href="E_listClassHanding.html">Lớp cần xếp gia sư</a>
+                                </li>
+                                <li>
+                                    <a href="E_listClassHanded.html">Lớp đã giao</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="E_listNotificationA.html">
+                                <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <form class="form-header" action="" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Tìm kiếm..." />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form>
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                    <div class="noti__item js-item-menu">
+                                        <i class="zmdi zmdi-notifications"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="mess-dropdown js-dropdown">
+                                            <div class="mess__title">
+                                                <p>Bạn có 2 thông báo mới</p>
+                                            </div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
+                                                </div>
+                                                <div class="content">
+                                                    <h6>Michelle Moreno</h6>
+                                                    <p>Have sent a photo</p>
+                                                    <span class="time">3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
+                                                </div>
+                                                <div class="content">
+                                                    <h6>Diane Myers</h6>
+                                                    <p>You are now connected on message</p>
+                                                    <span class="time">Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__footer">
+                                                <a href="E_listNotificationA.html">Xem tất cả</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image">
+                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                        </div>
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#">john doe</a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#">john doe</a>
+                                                    </h5>
+                                                    <span class="email">johndoe@example.com</span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="E_profileStudent.html">
+                                                        <i class="zmdi zmdi-account"></i>Tài khoản</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="E_changePassA.html">
+                                                        <i class="zmdi zmdi-settings"></i>Đổi mật khẩu</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a id="nutdangxuat">
+                                                    <i class="zmdi zmdi-power"></i>Đăng xuất</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Chi tiết lớp</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-horizontal">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">ID</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 maId">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Tiêu đề</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 tieude">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Quận/Huyện</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 quanhuyen">
+                                                    <select name="select" id="quan" class="form-control">
+                                                        <option value=" 1">Nam</option>
+                                                        <option value="1">Nữ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Địa chỉ</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 diachi">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Học phí &#40VNĐ&#41</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 hocphi">
+                                                    <input type="number" min="1000" step="1000" value="1000"
+                                                        id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Phí ứng tuyển &#40VNĐ&#41</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 phiungtuyen">
+                                                    <input type="number" min="1000" step="1000" value="1000"
+                                                        id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Số buổi/tuần</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 sobuoi">
+                                                    <input type="number" min="1" max="7" value="1" id="text-input"
+                                                        name="text-input" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Số giờ/buổi</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 sogio">
+                                                    <input type="number" min="1" max="5" step="0.5" value="1"
+                                                        id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Số HS</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 sohs">
+                                                    <input type="number" min="1" value="1" id="text-input"
+                                                        name="text-input" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Giới tính HS</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 gioitinhhs">
+                                                    <select name="select" id="gender" class="form-control">
+                                                        <option value="Nam">Nam</option>
+                                                        <option value="Nữ">Nữ</option>
+                                                        <option value="Nam + Nữ">Nam + Nữ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Mô tả học
+                                                        sinh</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 motahs">
+                                                    <textarea name="textarea-input" id="textarea-input" rows="9"
+                                                        placeholder="Content..." class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Hình thức</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 hinhthuc">
+                                                    <select name="select" id="gender" class="form-control">
+                                                        <option value="Online">Online</option>
+                                                        <option value="Offline">Offline</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="textarea-input" class=" form-control-label">Chủ đề
+                                                        dạy</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 chudeday">
+                                                    <div class="row">
+                                                        <div class="col-6 col-md-6 mon">
+                                                            <select name="select" id="select" class="form-control">
+                                                                <option value="Sinh viên">Môn</option>
+                                                                <option value="Giáo viên">Giáo viên</option>
+                                                                <option value="Khác">Khác</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-6 col-md-6 trinhdo">
+                                                            <select name="select" id="select" class="form-control">
+                                                                <option value="">Trình độ</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Hạn ứng tuyển</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 hanungtuyen">
+                                                    <input type="date" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Nghề nghiệp gia sư</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 nghenghiepgs">
+                                                    <select name="select" id="gender" class="form-control">
+                                                        <option value="">Không</option>
+                                                        <option value="Sinh viên">Sinh viên</option>
+                                                        <option value="Giáo viên">Giáo viên</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Giới tính gia sư</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 gioitinhgs">
+                                                    <select name="select" id="gender" class="form-control">
+                                                        <option value="">Không</option>
+                                                        <option value="Nam">Nam</option>
+                                                        <option value="Nữ">Nữ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Trường</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 truonggs">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Yêu cầu
+                                                        khác</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 yeucaukhac">
+                                                    <textarea name="textarea-input" id="textarea-input" rows="9"
+                                                        placeholder="Content..." class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Thời gian có thể
+                                                        học</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 lichtrong">
+                                                    <div id="" class="row ml-2 mb-2">
+                                                        <span>Thứ 2</span>
+                                                        <div class="form-check-inline form-check">
+                                                            <label for="inline-checkbox1" class="form-check-label ml-5">
+                                                                <input type="checkbox" id="inline-checkbox1"
+                                                                    name="inline-checkbox1" value="option1"
+                                                                    class="form-check-input">Sáng
+                                                            </label>
+                                                            <label for="inline-checkbox2" class="form-check-label ml-5">
+                                                                <input type="checkbox" id="inline-checkbox2"
+                                                                    name="inline-checkbox2" value="option2"
+                                                                    class="form-check-input">Chiều
+                                                            </label>
+                                                            <label for="inline-checkbox3" class="form-check-label ml-5">
+                                                                <input type="checkbox" id="inline-checkbox3"
+                                                                    name="inline-checkbox3" value="option3"
+                                                                    class="form-check-input">Tối
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row ml-2">
+                                                        <span>Thứ 2</span>
+                                                        <div class="form-check-inline form-check">
+                                                            <label for="inline-checkbox1" class="form-check-label ml-5">
+                                                                <input type="checkbox" id="inline-checkbox1"
+                                                                    name="inline-checkbox1" value="option1"
+                                                                    class="form-check-input">Sáng
+                                                            </label>
+                                                            <label for="inline-checkbox2" class="form-check-label ml-5">
+                                                                <input type="checkbox" id="inline-checkbox2"
+                                                                    name="inline-checkbox2" value="option2"
+                                                                    class="form-check-input">Chiều
+                                                            </label>
+                                                            <label for="inline-checkbox3" class="form-check-label ml-5">
+                                                                <input type="checkbox" id="inline-checkbox3"
+                                                                    name="inline-checkbox3" value="option3"
+                                                                    class="form-check-input">Tối
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Trạng thái</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 trangthai">
+                                                    <select name="select" id="status" class="form-control quanhuyen">
+                                                        <option value="CHOPHEDUYET">Chờ phê duyệt</option>
+                                                        <option value="DANGTIM">Đang tìm</option>
+                                                        <option value="CANGIAO">Cần giao</option>
+                                                        <option value="DAGIAO">Đã giao</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="nutcapnhat" class="btn btn-primary">Cập nhật</button>
+                                    <button id="nutxoa" class="btn btn-danger">Xoá</button>
+                                    <button id="nutquaylai" class="btn btn-warning">Quay lại</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="../../vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="../../vendor/slick/slick.min.js">
+    </script>
+    <script src="../../vendor/wow/wow.min.js"></script>
+    <script src="../../vendor/animsition/animsition.min.js"></script>
+    <script src="../../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="../../vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="../../vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!-- Main JS-->
+    <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/admin/E_detailClass.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
