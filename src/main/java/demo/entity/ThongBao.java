@@ -26,21 +26,26 @@ public class ThongBao {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "tieude", length = 255, nullable = false)
+	@Column(name = "tieude", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String tieude;
 	
-	@Column(name = "noidung", columnDefinition = "text", nullable = false)
+	@Column(name = "noidung", nullable = false,
+			columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String noidung;
 	
 	@Column(name = "ngay", columnDefinition = "DATETIME", nullable = false)
 	private Date ngay;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "trangthaithongbao", length = 50, nullable = false)
+	@Column(name = "trangthaithongbao", nullable = false,
+			columnDefinition = "VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private TrangThaiThongBao trangthaithongbao;
 	
 	@ManyToOne
 	@JoinColumn(name = "userid", referencedColumnName = "id")
 	private User user;
 	
+	@Column(name = "link", nullable = false, length = 50)
+	private String link;
 }

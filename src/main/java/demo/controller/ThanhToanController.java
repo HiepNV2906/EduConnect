@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,7 @@ public class ThanhToanController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateThanhToan(
 			@RequestBody ThanhToanDTO thanhToanDTO,
@@ -57,6 +59,7 @@ public class ThanhToanController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> deleteThanhToan(
 			@PathVariable("id") String id){
@@ -80,6 +83,7 @@ public class ThanhToanController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping(value = "", produces = "application/json")
 	public BaseResponse<?> getListThanhToan(
 			@RequestParam(name="page") Optional<Integer> page){

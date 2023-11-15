@@ -75,7 +75,6 @@ public class LopMapper {
 		l.setSobuoi(lopDTO.getSobuoi());
 		l.setSogio(lopDTO.getSogio());
 		l.setHocphi(lopDTO.getHocphi());
-		l.setPhiungtuyen(phiUT);
 		l.setSohs(lopDTO.getSohs());
 		l.setGioitinhhs(lopDTO.getGioitinhhs());
 		l.setMotahs(lopDTO.getMotahs());
@@ -85,6 +84,14 @@ public class LopMapper {
 		l.setYeucaukhac(lopDTO.getYeucaukhac());
 		l.setHanungtuyen(lopDTO.getHanungtuyen());
 		l.setHinhthuc(lopDTO.getHinhthuc());
+		if(lopDTO.getTrangthailop() != null) {
+			l.setTrangthailop(TrangThaiLop.valueOf(lopDTO.getTrangthailop()));
+		}
+		if(lopDTO.getPhiungtuyen()!=null) {
+			l.setPhiungtuyen(lopDTO.getPhiungtuyen());
+		} else {
+			l.setPhiungtuyen(phiUT);
+		}
 		return l;
 	}
 	

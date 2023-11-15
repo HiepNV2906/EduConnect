@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +36,7 @@ public class UngTuyenController {
 	@Autowired
 	UngTuyenService ungTuyenService;
 	
+	@PreAuthorize("hasAuthority('GIASU')")
 	@PostMapping(value = "", produces = "application/json")
 	public BaseResponse<?> addUngTuyen(@RequestBody UngTuyenDTO ungTuyenDTO){
 		try {
@@ -46,6 +48,7 @@ public class UngTuyenController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateUngTuyen(
 			@RequestBody UngTuyenDTO ungTuyenDTO,
@@ -60,6 +63,7 @@ public class UngTuyenController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/changeungtuyen/{id}", produces = "application/json")
 	public BaseResponse<?> updateTrangThaiUngTuyen(
 			@RequestBody Status changeStatus,
@@ -73,6 +77,7 @@ public class UngTuyenController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/changecongno/{id}", produces = "application/json")
 	public BaseResponse<?> updateTrangThaiCongNo(
 			@RequestBody Status changeStatus,
@@ -86,18 +91,7 @@ public class UngTuyenController {
 		}
 	}
 	
-	@PutMapping(value = "/chongiasu/{ungtuyenid}", produces = "application/json")
-	public BaseResponse<?> chonGiaSu(
-			@PathVariable("ungtuyenid") Long ungtuyenid){
-		try {
-			List<UngTuyen> list = ungTuyenService.sapXepGiaSu(ungtuyenid);
-			List<UngTuyenDTO> data = UngTuyenMapper.toListDTO(list);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
-		}catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
-		}
-	}
-	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> deleteUngTuyen(
 			@PathVariable("id") Long id){
@@ -121,6 +115,20 @@ public class UngTuyenController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping(value = "/sapxepgiasu/{ungtuyenid}", produces = "application/json")
+	public BaseResponse<?> sapXepGiaSu(
+			@PathVariable("ungtuyenid") Long ungtuyenid){
+		try {
+			List<UngTuyen> u = ungTuyenService.sapXepGiaSu(ungtuyenid);
+			List<UngTuyenDTO> data = UngTuyenMapper.toListDTO(u);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
 	@GetMapping(value = "/giasu/{id}", produces = "application/json")
 	public BaseResponse<?> getUngTuyenByGiaSuId(
 			@PathVariable("id") Long id,
@@ -141,6 +149,20 @@ public class UngTuyenController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
+	@GetMapping(value = "/trangthaicongno", produces = "application/json")
+	public BaseResponse<?> getUngTuyenByTrangThaiCongNo(
+			@RequestParam(name = "state") String state){
+		try {
+			List<UngTuyen> listUngTuyen = ungTuyenService.findByTrangThaiCongNo(TrangThaiCongNo.valueOf(state));
+			List<UngTuyenDTO> data = UngTuyenMapper.toListDTO(listUngTuyen);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('HOCVIEN')")
 	@GetMapping(value = "/lop/{id}", produces = "application/json")
 	public BaseResponse<?> getUngTuyenByLopId(
 			@PathVariable("id") Long id,

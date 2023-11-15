@@ -17,9 +17,10 @@ public class UngTuyenMapper {
 		UngTuyenDTO u = new UngTuyenDTO();
 		u.setId(ungTuyen.getId());
 		u.setGiasuid(ungTuyen.getGiasu().getId());
+		u.setTengs(ungTuyen.getGiasu().getHoten());
 		u.setLopid(ungTuyen.getLop().getId());
 		if(ungTuyen.getLoimoi()!=null) {
-			u.setLoimoiid(ungTuyen.getLoimoi().getId());
+			u.setLoimoi(LoiMoiMapper.toDTO(ungTuyen.getLoimoi()));
 		}
 		u.setNgayungtuyen(ungTuyen.getNgayungtuyen());
 		u.setHanthanhtoan(ungTuyen.getHanthanhtoan());

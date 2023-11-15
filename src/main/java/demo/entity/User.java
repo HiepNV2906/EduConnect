@@ -33,22 +33,28 @@ public class User {
 	@Column(name = "id")
 	protected Long id;
 	
-	@Column(name = "hoten", length = 255, nullable = false)
+	@Column(name = "hoten", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	protected String hoten;
 	
-	@Column(name = "sdt", length = 15, nullable = false)
+	@Column(name = "sdt", nullable = false,
+			columnDefinition = "VARCHAR(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	protected String sdt;
 	
-	@Column(name = "email", length = 255, nullable = false, unique = true)
+	@Column(name = "email", nullable = false, unique = true,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	protected String email;
 	
-	@Column(name = "password", length = 255, nullable = false)
+	@Column(name = "password", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	protected String password;
 	
-	@Column(name = "avata", length = 255, nullable = false)
+	@Column(name = "avata", nullable = true,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	protected String avata;
 	
-	@Column(name = "gioitinh", length = 50, nullable = false)
+	@Column(name = "gioitinh", nullable = false,
+			columnDefinition = "VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	protected String gioitinh;
 	
 	@Column(name = "ngaysinh", nullable = false)
@@ -58,7 +64,7 @@ public class User {
 	protected Date ngaytao;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "vaitro", length = 50, nullable = false)
+	@Column(name = "vaitro", nullable = false, length = 50)
 	protected VaiTro vaitro;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

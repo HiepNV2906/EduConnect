@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import demo.Enum.TrangThaiLop;
+import demo.entity.HocVien;
 import demo.entity.Lop;
 
 @Repository
@@ -28,7 +29,7 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 	
 	@Query(value = "SELECT DISTINCT l.* FROM lop l "
 			+ "INNER JOIN chude c ON l.chudeid=c.id "
-			+ "WHERE (l.tieude LIKE %:key% OR l.diachi LIKE %:key% OR "
+			+ "WHERE (l.id=:key OR l.tieude LIKE %:key% OR l.diachi LIKE %:key% OR "
 			+ "l.motahs LIKE %:key% OR l.yeucaukhac LIKE %:key% OR l.truonggs LIKE %:key%) AND "
 			+ "l.quan LIKE %:quan% AND l.hinhthuc LIKE %:hinhthuc% AND l.hocphi >= :hocphimin AND "
 			+ "l.hocphi < :hocphimax AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo% AND "
@@ -40,7 +41,7 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 	
 	@Query(value = "SELECT DISTINCT l.* FROM lop l "
 			+ "INNER JOIN chude c ON l.chudeid=c.id "
-			+ "WHERE (l.tieude LIKE %:key% OR l.diachi LIKE %:key% OR "
+			+ "WHERE (l.id=:key OR l.tieude LIKE %:key% OR l.diachi LIKE %:key% OR "
 			+ "l.motahs LIKE %:key% OR l.yeucaukhac LIKE %:key% OR l.truonggs LIKE %:key%) AND "
 			+ "l.quan LIKE %:quan% AND l.hinhthuc LIKE %:hinhthuc% AND l.hocphi >= :hocphimin AND "
 			+ "l.hocphi < :hocphimax AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo% AND "
@@ -52,6 +53,9 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 	
 	public List<Lop> findByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop);
 	public Page<Lop> findByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop, Pageable pageable);
+	public List<Lop> findByTrangthailopOrderByHanungtuyenAsc(TrangThaiLop trangthailop);
+	
+	public List<Lop> findByHocvienAndTrangthailopOrderByNgaytaoDesc(HocVien hocvien, TrangThaiLop trangthailop);
 	
 	public List<Lop> findAllByOrderByNgaytaoDesc();
 	public Page<Lop> findAllByOrderByNgaytaoDesc(Pageable pageable);

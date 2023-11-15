@@ -17,5 +17,5 @@ public class ThongBaoDTO {
 	private Date ngay;
 	private String trangthaithongbao;
 	private Long userid;
-	
+	private String link;
 }

@@ -20,6 +20,7 @@ public class ThongBaoMapper {
 		t.setTieude(thongbao.getTieude());
 		t.setNoidung(thongbao.getNoidung());
 		t.setNgay(thongbao.getNgay());
+		t.setLink(thongbao.getLink());
 		t.setTrangthaithongbao(thongbao.getTrangthaithongbao().toString());
 		t.setUserid(thongbao.getUser().getId());
 		return t;
@@ -31,6 +32,7 @@ public class ThongBaoMapper {
 		t.setTieude(thongbaoDTO.getTieude());
 		t.setNoidung(thongbaoDTO.getNoidung());
 		t.setNgay(thongbaoDTO.getNgay());
+		t.setLink(thongbaoDTO.getLink());
 		if(thongbaoDTO.getTrangthaithongbao() != null) {
 			t.setTrangthaithongbao(TrangThaiThongBao.valueOf(thongbaoDTO.getTrangthaithongbao()));
 		}

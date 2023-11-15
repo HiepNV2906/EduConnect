@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,6 +57,7 @@ public class HocVienController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/changeStatus/{id}", produces = "application/json")
 	public BaseResponse<?> changStatusHocVien(
 			@RequestBody Status changeStatus,
@@ -69,16 +71,17 @@ public class HocVienController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('HOCVIEN')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateHocVien(
 			@RequestParam("infoGS") String infoGS,
-            @RequestParam("avata") MultipartFile avata,
-            @RequestParam("cccd") MultipartFile cccd,
+            @RequestParam(name = "avata", required = false) MultipartFile avata,
+            @RequestParam(name = "cccd", required = false) MultipartFile cccd,
 			@PathVariable("id") Long id){
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			RegisterHocVienRequest registerHocVienRequest = objectMapper.readValue(infoGS, RegisterHocVienRequest.class);
-			registerHocVienRequest.getId();
+			registerHocVienRequest.setId(id);
 			registerHocVienRequest.setAvata(avata);
 			registerHocVienRequest.setCccd(cccd);
 			HocVien h = hocVienService.updateHocVien(registerHocVienRequest);
@@ -89,6 +92,7 @@ public class HocVienController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> deleteHocVien(
 			@PathVariable("id") Long id){
@@ -100,6 +104,7 @@ public class HocVienController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('HOCVIEN')")
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> getHocVienById(
 			@PathVariable("id") Long id){
@@ -112,6 +117,7 @@ public class HocVienController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping(value = "", produces = "application/json")
 	public BaseResponse<?> getListHocVien(
 			@RequestParam(name="page") Optional<Integer> page){
@@ -131,6 +137,21 @@ public class HocVienController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping(value = "/trangthai", produces = "application/json")
+	public BaseResponse<?> getListHocVienByStatus(
+			@RequestParam(name="status") String status, 
+			@RequestParam(name="page") Optional<Integer> page){
+		try {
+			List<HocVien> listHocVien = hocVienService.findByTrangThai(TrangThaiUser.valueOf(status));
+			List<HocVienDTO> data = HocVienMapper.toListDTO(listHocVien);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		} catch(Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping(value = "/search", produces = "application/json")
 	public BaseResponse<?> getListHocVienByKey(
 			@RequestParam(name="key") String key,

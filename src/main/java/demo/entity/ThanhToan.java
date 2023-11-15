@@ -22,13 +22,16 @@ public class ThanhToan {
 	@Column(name = "id")
 	private String id;
 	
-	@Column(name = "nganhang", length = 255, nullable = false)
+	@Column(name = "nganhang", nullable = false, 
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String nganhang;
 	
-	@Column(name = "magiaodichnganhang", length = 255, nullable = false)
+	@Column(name = "magiaodichnganhang", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String magiaodichnganhang;
 	
-	@Column(name = "noidung", length = 255, nullable = false)
+	@Column(name = "noidung", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String noidung;
 	
 	@Column(name = "sotien", nullable = false)

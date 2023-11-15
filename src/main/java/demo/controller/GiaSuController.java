@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,11 +38,12 @@ public class GiaSuController {
 	@Autowired
 	GiaSuService giaSuService;
 	
+
 	@PostMapping(value = "")
 	public BaseResponse<?> addGiaSu(
 			@RequestParam("infoGS") String infoGS,
-            @RequestParam("avata") MultipartFile avata,
-            @RequestParam("cccd") MultipartFile cccd){
+            @RequestParam(name = "avata") MultipartFile avata,
+            @RequestParam(name = "cccd") MultipartFile cccd){
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			RegisterGiaSuRequest registerGiaSuRequest = objectMapper.readValue(infoGS, RegisterGiaSuRequest.class);
@@ -55,6 +57,7 @@ public class GiaSuController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/changeStatus/{id}", produces = "application/json")
 	public BaseResponse<?> updateGiaSu(@RequestBody Status changeStatus, @PathVariable("id") Long id){
 		try {
@@ -66,11 +69,12 @@ public class GiaSuController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateGiaSu(
 			@RequestParam("infoGS") String infoGS,
-            @RequestParam("avata") MultipartFile avata,
-            @RequestParam("cccd") MultipartFile cccd, 
+            @RequestParam(name = "avata", required = false) MultipartFile avata,
+            @RequestParam(name = "cccd", required = false) MultipartFile cccd, 
             @PathVariable("id") Long id){
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -86,6 +90,7 @@ public class GiaSuController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> deleteGiaSu(@PathVariable("id") Long id){
 		try {
@@ -136,6 +141,19 @@ public class GiaSuController {
 		}
 	}
 	
+	@GetMapping(value = "/trangthai", produces = "application/json")
+	public BaseResponse<?> getDSGiaSuByStatus(
+			@RequestParam(name="status") String status,
+			@RequestParam(name="page") Optional<Integer> page){
+		try {
+			List<GiaSu> listGiaSu = giaSuService.findByTrangThai(TrangThaiUser.valueOf(status));
+			List<GiaSuDTO> data = GiaSuMapper.toListDTO(listGiaSu);
+			return new BaseResponse<>("Successful", data, HttpStatus.OK);
+		} catch (Exception e){
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	@GetMapping(value = "/search", produces = "application/json")
 	public BaseResponse<?> getDSGiaSuByKey(
 			@RequestParam(name="page") Optional<Integer> page,
@@ -158,6 +176,7 @@ public class GiaSuController {
 	
 	@GetMapping(value = "/filter", produces = "application/json")
 	public BaseResponse<?> getDSGiaSuByFilter(
+			@RequestParam(name="key", defaultValue = "") String key,
 			@RequestParam(name="page") Optional<Integer> page,
 			@RequestParam(name="quan", defaultValue = "") String quan,
 			@RequestParam(name="nghenghiep", defaultValue = "") String nghenghiep,
@@ -166,13 +185,13 @@ public class GiaSuController {
 			@RequestParam(name="trinhdo", defaultValue = "") String trinhdo){
 		try {
 			if(page.isPresent()) {
-				Page<GiaSu> pageGiaSu = giaSuService.findByFilter(quan, nghenghiep, gioitinh, mon, trinhdo,
+				Page<GiaSu> pageGiaSu = giaSuService.findByFilter(key, quan, gioitinh, mon, trinhdo,
 						PageRequest.of(page.orElse(0), sizeOfPage));
 				Page<GiaSuDTO> data = GiaSuMapper.toPageDTO(pageGiaSu);
 				return new BaseResponse<>("Successful", data, HttpStatus.OK);
 			}
 			else {
-				List<GiaSu> listGiaSu = giaSuService.findByFilter(quan, nghenghiep, gioitinh, mon, trinhdo);
+				List<GiaSu> listGiaSu = giaSuService.findByFilter(key, quan, gioitinh, mon, trinhdo);
 				List<GiaSuDTO> data = GiaSuMapper.toListDTO(listGiaSu);
 				return new BaseResponse<>("Successful", data, HttpStatus.OK);
 			}

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ public class LoiMoiController {
 	@Autowired
 	LoiMoiService loiMoiService;
 	
+	@PreAuthorize("hasAuthority('HOCVIEN')")
 	@PostMapping(value = "", produces = "application/json")
 	public BaseResponse<?> addLoiMoi(@RequestBody LoiMoiDTO loiMoiDTO){
 		try {
@@ -45,6 +47,7 @@ public class LoiMoiController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('HOCVIEN')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateLoiMoi(
 			@RequestBody LoiMoiDTO loiMoiDTO,
@@ -59,6 +62,7 @@ public class LoiMoiController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/changeloimoi/{id}", produces = "application/json")
 	public BaseResponse<?> updateTrangThaiLoiMoi(
 			@RequestBody Status changeStatus,
@@ -72,6 +76,7 @@ public class LoiMoiController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('HOCVIEN')")
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> deleteLoiMoi(
 			@PathVariable("id") Long id){
@@ -130,6 +135,19 @@ public class LoiMoiController {
 				List<LoiMoiDTO> data = LoiMoiMapper.toListDTO(listLoiMoi);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('HOCVIEN')")
+	@GetMapping(value = "/hocvien/{id}", produces = "application/json")
+	public BaseResponse<?> getLoiMoiByHocVienId(
+			@PathVariable("id") Long id){
+		try {
+			List<LoiMoi> listLoiMoi = loiMoiService.findByHocVienId(id);
+			List<LoiMoiDTO> data = LoiMoiMapper.toListDTO(listLoiMoi);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		}catch (Exception e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}

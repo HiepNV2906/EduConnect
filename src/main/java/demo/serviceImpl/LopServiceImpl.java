@@ -121,8 +121,7 @@ public class LopServiceImpl implements LopService{
 
 	@Override
 	public Page<Lop> findByFilter(String key, String quan, String hinhthuc, Long hocphimin, 
-			Long hocphimax, String mon, String trinhdo,
-			Pageable pageable) {
+			Long hocphimax, String mon, String trinhdo, Pageable pageable) {
 		Page<Lop> page = lopRepository.findByFilter(key, quan, hinhthuc, hocphimin, hocphimax, 
 				mon, trinhdo, TrangThaiLop.DANGTIM.toString(), pageable);
 		return page;
@@ -167,6 +166,13 @@ public class LopServiceImpl implements LopService{
 	@Override
 	public List<Lop> getTopNewListLop() {
 		List<Lop> list = lopRepository.findTop5ByOrderByNgaytaoDesc();
+		return list;
+	}
+
+	@Override
+	public List<Lop> findByHocVienAndTrangThai(Long hocvienid, TrangThaiLop trangThaiLop) {
+		List<Lop> list = lopRepository.findByHocvienAndTrangthailopOrderByNgaytaoDesc(
+				hocVienRepository.findById(hocvienid).get(), trangThaiLop);
 		return list;
 	}
 

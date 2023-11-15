@@ -60,7 +60,7 @@ public class GiaSuServiceImpl implements GiaSuService{
 			chuDeRepository.findById(c.getId()).get()).collect(Collectors.toList());
 		g.setDschude(listChuDe);
 		
-		if(!registerGiaSuRequest.getAvata().isEmpty() && !registerGiaSuRequest.getCccd().isEmpty()) {
+		if(registerGiaSuRequest.getAvata()!=null && registerGiaSuRequest.getCccd()!=null) {
 			UUID uuid1=UUID.randomUUID();
 			String uuString1=uuid1.toString();
 			UUID uuid2=UUID.randomUUID();
@@ -79,7 +79,7 @@ public class GiaSuServiceImpl implements GiaSuService{
 		//		Thông báo
 		List<User> admin = userRepository.findByVaitro(VaiTro.ADMIN);
 		for (User user : admin) {
-			thongBaoRepository.save(ThongBaoModel.ycDangKyTaiKhoan(user));
+			thongBaoRepository.save(ThongBaoModel.ycDangKyTaiKhoanGiasu(user));
 		}
 		thongBaoRepository.save(ThongBaoModel.dangKyThanhCong(giaSu));
 		return giaSu;
@@ -93,12 +93,12 @@ public class GiaSuServiceImpl implements GiaSuService{
 		g.setDschude(listChuDe);
 		GiaSu giaSu = giaSuRepository.save(g);
 		
-		if(!registerGiaSuRequest.getAvata().isEmpty()) {
+		if(registerGiaSuRequest.getAvata()!=null) {
 			g.setAvata(storageService.getStoredFilename(registerGiaSuRequest.getAvata(), g.getAvata()));
 			storageService.store(registerGiaSuRequest.getAvata(), g.getAvata());
 		}
 		
-		if(!registerGiaSuRequest.getCccd().isEmpty()) {
+		if(registerGiaSuRequest.getCccd()!=null) {
 			g.setCccd(storageService.getStoredFilename(registerGiaSuRequest.getCccd(), g.getCccd()));
 			storageService.store(registerGiaSuRequest.getCccd(), g.getCccd());
 		}
@@ -144,14 +144,17 @@ public class GiaSuServiceImpl implements GiaSuService{
 	}
 
 	@Override
-	public Page<GiaSu> findByFilter(String quan, String nghenghiep, String gioitinh, String mon, String trinhdo, Pageable pageable) {
-		Page<GiaSu> page = giaSuRepository.findByFilter(quan, nghenghiep, gioitinh, mon, trinhdo, pageable);
+	public Page<GiaSu> findByFilter(String key, String quan, String gioitinh,
+			String mon, String trinhdo, Pageable pageable) {
+		Page<GiaSu> page = giaSuRepository.findByFilter(key, quan, gioitinh, 
+				mon, trinhdo, pageable);
 		return page;
 	}
 
 	@Override
-	public List<GiaSu> findByFilter(String quan, String nghenghiep, String gioitinh, String mon, String trinhdo) {
-		List<GiaSu> list = giaSuRepository.findByFilter(quan, nghenghiep, gioitinh, mon, trinhdo);
+	public List<GiaSu> findByFilter(String key, String quan, String gioitinh, String mon, String trinhdo) {
+		List<GiaSu> list = giaSuRepository.findByFilter(key, quan, gioitinh, 
+				mon, trinhdo);
 		return list;
 	}
 

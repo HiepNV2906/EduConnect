@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,10 +39,11 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@PreAuthorize("hasAuthority('MANAGER')")
 	@PostMapping(value = "")
 	public BaseResponse<?> addUser(
 			@RequestParam("infoGS") String infoGS,
-            @RequestParam("avata") MultipartFile avata){
+            @RequestParam(name = "avata") MultipartFile avata){
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			RegisterUserRequest registerUserRequest = objectMapper.readValue(infoGS, RegisterUserRequest.class);
@@ -54,10 +56,11 @@ public class UserController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateUser(
 			@RequestParam("infoGS") String infoGS,
-            @RequestParam("avata") MultipartFile avata,
+            @RequestParam(name = "avata", required = false) MultipartFile avata,
 			@PathVariable("id") Long id){
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -72,6 +75,7 @@ public class UserController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('MANAGER')")
 	@DeleteMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> deleteUser(
 			@PathVariable("id") Long id){
@@ -83,6 +87,7 @@ public class UserController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> getUserById(
 			@PathVariable("id") Long id){
@@ -95,6 +100,7 @@ public class UserController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
 	@GetMapping(value = "", produces = "application/json")
 	public BaseResponse<?> getListUser(
 			@RequestParam(name="page") Optional<Integer> page){
@@ -114,6 +120,7 @@ public class UserController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
 	@GetMapping(value = "/role", produces = "application/json")
 	public BaseResponse<?> getListUserByVaiTro(
 			@RequestBody Status status,
@@ -134,6 +141,7 @@ public class UserController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
 	@GetMapping(value = "/search", produces = "application/json")
 	public BaseResponse<?> getListUserByKey(
 			@RequestParam(name="key") String key,

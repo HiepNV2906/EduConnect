@@ -2,6 +2,7 @@ package demo.request;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import demo.Enum.TrangThaiUser;
 import demo.entity.HocVien;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class RegisterHocVienRequest extends RegisterUserRequest{
 	private String quan;
 	private String diachi;
 	private MultipartFile cccd;
+	private String trangthai;
 	
 	public HocVien toHocVienEntity() {
 		HocVien u = new HocVien();
@@ -26,6 +28,9 @@ public class RegisterHocVienRequest extends RegisterUserRequest{
 		u.setNgaysinh(ngaysinh);
 		u.setQuan(quan);
 		u.setDiachi(diachi);
+		if(trangthai!=null) {
+			u.setTrangthai(TrangThaiUser.valueOf(trangthai));
+		}
 		return u;
 	}
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -69,7 +68,6 @@ public class LoginController {
 	@GetMapping(value = "/logout/{userid}", produces = "application/json")
 	public BaseResponse<?> logout(@PathVariable("userid") Long userid) {
 		try {
-			refreshTokenService.deleteByUserId(userid);
 			SecurityContextHolder.clearContext();
 			return new BaseResponse<>("Successful",null, HttpStatus.OK);
 		}
@@ -93,14 +91,12 @@ public class LoginController {
 		}
 	}
 	
-	@PutMapping(value = "/changePassword", produces = "application/json")
+	@PutMapping(value = "/changePassword/{userid}", produces = "application/json")
 	public BaseResponse<?> changePassword(
-			@RequestHeader("Authorization") String headerAuth, 
+			@PathVariable("userid") Long userid, 
 			@RequestBody ChangePassword changePassword) {
 		try {
-			String token = jwtFilter.parseJwt(headerAuth);
-			String username = jwtUtil.extractUsername(token);
-			userService.changePassword(username, changePassword);
+			userService.changePassword(userid, changePassword);
 			return new BaseResponse<>("Successful",null, HttpStatus.OK);
 		}
 		catch (Exception e) {
@@ -108,7 +104,7 @@ public class LoginController {
 		}
 	}
 	
-	@PutMapping(value = "/forgetPassword", produces = "application/json")
+	@PostMapping(value = "/forgetPassword", produces = "application/json")
 	public BaseResponse<?> forgetPassword(@RequestBody ForgetPassword forgetPassword) {
 		try {
 			userService.forgetPassword(forgetPassword);

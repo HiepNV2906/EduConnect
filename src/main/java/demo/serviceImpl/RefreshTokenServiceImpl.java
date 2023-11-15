@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import demo.entity.RefreshToken;
+import demo.entity.User;
 import demo.exception.RefreshTokenException;
 import demo.repository.RefreshTokenRepository;
 import demo.repository.UserRepository;
@@ -33,8 +34,15 @@ public class RefreshTokenServiceImpl implements RefreshTokenService{
 	}
 	
 	public RefreshToken createRefreshToken(Long userId) {
-		RefreshToken refreshToken = new RefreshToken();
-		refreshToken.setUser(userRepository.findById(userId).get());
+		User user = userRepository.findById(userId).get();
+		Optional<RefreshToken> optional = refreshTokenRepository.findByUser(user);
+		RefreshToken refreshToken;
+		if(optional.isPresent()) {
+			refreshToken = optional.get();
+		} else {
+			refreshToken = new RefreshToken();
+			refreshToken.setUser(userRepository.findById(userId).get());
+		}
 		refreshToken.setExpirydate(Instant.now().plusMillis(refreshTokenDurationMs));
 		refreshToken.setToken(UUID.randomUUID().toString());
 		

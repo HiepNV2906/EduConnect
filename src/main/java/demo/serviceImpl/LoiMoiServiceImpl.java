@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import demo.Enum.TrangThaiLoiMoi;
 import demo.dto.LoiMoiDTO;
 import demo.entity.LoiMoi;
+import demo.entity.UngTuyen;
+import demo.exception.LoiMoiException;
 import demo.mapper.LoiMoiMapper;
 import demo.mapper.ThongBaoModel;
 import demo.repository.GiaSuRepository;
@@ -36,18 +38,25 @@ public class LoiMoiServiceImpl implements LoiMoiService{
 	
 	@Override
 	public LoiMoi addLoiMoi(LoiMoiDTO loiMoiDTO) {
+		Optional<LoiMoi> loimoi = loiMoiRepository.findByGiaSuIdAndLopId(loiMoiDTO.getGiasuid(), loiMoiDTO.getLopid());
+		if(loimoi.isPresent()) {
+			throw new LoiMoiException("Bạn đã mời gia sư ứng tuyển lớp ID:" + loiMoiDTO.getLopid());
+		}
 		LoiMoi l = LoiMoiMapper.toEntity(loiMoiDTO);
 		l.setId(null);
 		l.setGiasu(giaSuRepository.findById(loiMoiDTO.getGiasuid()).get());
 		l.setLop(lopRepository.findById(loiMoiDTO.getLopid()).get());
-		if(loiMoiDTO.getUngtuyenid()!=null) {
-			l.setUngTuyen(ungTuyenRepository.findById(loiMoiDTO.getUngtuyenid()).get());
+		Optional<UngTuyen> ungtuyen = ungTuyenRepository.findByGiaSuIdAndLopId(loiMoiDTO.getGiasuid(), loiMoiDTO.getLopid());
+		if(ungtuyen.isPresent()) {
+			l.setUngTuyen(ungtuyen.get());
+			l.setTrangthailoimoi(TrangThaiLoiMoi.THANHCONG);
+		} else {
+			l.setTrangthailoimoi(TrangThaiLoiMoi.CHO);
 		}
-		l.setTrangthailoimoi(TrangThaiLoiMoi.CHO);
 		l = loiMoiRepository.save(l);
 		
 //		Thông báo
-		thongBaoRepository.save(ThongBaoModel.nhanLoiMoiUngTuyen(l.getGiasu()));
+		thongBaoRepository.save(ThongBaoModel.nhanLoiMoiUngTuyen(l.getGiasu(), l.getId()));
 		
 		return l;
 	}
@@ -121,6 +130,12 @@ public class LoiMoiServiceImpl implements LoiMoiService{
 		if(loimoi.isPresent())
 			return loimoi.get();
 		return null;
+	}
+
+	@Override
+	public List<LoiMoi> findByHocVienId(Long hocvienid) {
+		List<LoiMoi> list = loiMoiRepository.findByHocVienId(hocvienid);
+		return list;
 	}
 
 }

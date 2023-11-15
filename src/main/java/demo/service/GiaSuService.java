@@ -19,9 +19,9 @@ public interface GiaSuService {
 	public List<GiaSu> getListGiaSu();
 	public Page<GiaSu> findByKey(String key, Pageable pageable);
 	public List<GiaSu> findByKey(String key);
-	public Page<GiaSu> findByFilter(String quan, String nghenghiep,
+	public Page<GiaSu> findByFilter(String key, String quan,
 			String gioitinh, String mon, String trinhdo, Pageable pageable);
-	public List<GiaSu> findByFilter(String quan, String nghenghiep,
+	public List<GiaSu> findByFilter(String key, String quan,
 			String gioitinh, String mon, String trinhdo);
 	public Page<GiaSu> findByTrangThai(TrangThaiUser trangThaiUser, Pageable pageable);
 	public List<GiaSu> findByTrangThai(TrangThaiUser trangThaiUser);

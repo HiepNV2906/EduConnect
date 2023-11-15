@@ -18,6 +18,7 @@ public interface LoiMoiService {
 	public Page<LoiMoi> findByGiaSuId(Long giasuid, Pageable pageable);
 	public List<LoiMoi> findByLopId(Long lopid);
 	public Page<LoiMoi> findByLopId(Long lopid, Pageable pageable);
+	public List<LoiMoi> findByHocVienId(Long hocvienid);
 	public LoiMoi findByGiaSuIdAndLopId(Long giasuid, Long lopid);
 	public List<LoiMoi> findByTrangThaiLoiMoi(TrangThaiLoiMoi trangThaiLoiMoi);
 	public Page<LoiMoi> findByTrangThaiLoiMoi(TrangThaiLoiMoi trangThaiLoiMoi, Pageable pageable);

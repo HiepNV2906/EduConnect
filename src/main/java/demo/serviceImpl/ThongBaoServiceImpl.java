@@ -66,14 +66,22 @@ public class ThongBaoServiceImpl implements ThongBaoService{
 	}
 
 	@Override
-	public List<ThongBao> getListThongBaoByUserId(Long id) {
-		List<ThongBao> list = thongBaoRepository.findByUserId(id);
-		return list;
+	public List<ThongBaoDTO> getListThongBaoByUserId(Long id) {
+		List<ThongBao> list = thongBaoRepository.findByUserOrderByNgayDesc(userRepository.findById(id).get());
+		List<ThongBaoDTO> copy = ThongBaoMapper.toListDTO(list);
+		for(int i=0 ; i<list.size() ; i++) {
+			if(list.get(i).getTrangthaithongbao()==TrangThaiThongBao.CHUAXEM) {
+				updateTrangThaiThongBao(list.get(i).getId(), TrangThaiThongBao.DAXEM);
+				System.out.println(i);
+			}
+		}
+		System.out.println(copy.get(0).getTrangthaithongbao());
+		return copy;
 	}
 
 	@Override
 	public Page<ThongBao> getListThongBaoByUserId(Long id, Pageable pageable) {
-		Page<ThongBao> page = thongBaoRepository.findByUserId(id, pageable);
+		Page<ThongBao> page = thongBaoRepository.findByUserOrderByNgayDesc(userRepository.findById(id).get(), pageable);
 		return page;
 	}
 
@@ -96,5 +104,6 @@ public class ThongBaoServiceImpl implements ThongBaoService{
 		thongBaoRepository.save(t);
 		return t;
 	}
+
 
 }

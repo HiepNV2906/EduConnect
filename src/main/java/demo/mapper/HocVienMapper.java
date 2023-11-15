@@ -58,10 +58,14 @@ public class HocVienMapper {
 	public static HocVien update(HocVien hocVien, RegisterHocVienRequest registerHocVienRequest) {
 		hocVien.setHoten(registerHocVienRequest.getHoten());
 		hocVien.setSdt(registerHocVienRequest.getSdt());
+		hocVien.setEmail(registerHocVienRequest.getEmail());
 		hocVien.setGioitinh(registerHocVienRequest.getGioitinh());
 		hocVien.setNgaysinh(registerHocVienRequest.getNgaysinh());
 		hocVien.setQuan(registerHocVienRequest.getQuan());
 		hocVien.setDiachi(registerHocVienRequest.getDiachi());
+		if(registerHocVienRequest.getTrangthai() != null) {
+			hocVien.setTrangthai(TrangThaiUser.valueOf(registerHocVienRequest.getTrangthai()));
+		}
 		return hocVien;
 	}
 	

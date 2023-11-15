@@ -1,6 +1,7 @@
 package demo.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,6 +30,9 @@ public interface UngTuyenRepository extends JpaRepository<UngTuyen, Long>{
 	
 	@Query(value = "SELECT COUNT(*) FROM ungtuyen WHERE lopid = ?1", nativeQuery = true)
 	public Integer countByLopId(Long lopid);
+	
+	@Query(value = "SELECT * FROM ungtuyen WHERE giasuid = ?1 AND lopid = ?2", nativeQuery = true)
+	public Optional<UngTuyen> findByGiaSuIdAndLopId(Long giasuid, Long lopid);
 	
 	public List<UngTuyen> findByTrangthaiungtuyen(TrangThaiUngTuyen trangThaiUngTuyen);
 	

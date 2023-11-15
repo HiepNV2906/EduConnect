@@ -24,13 +24,16 @@ public class ChuDe {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "tenmonhoc", length = 255, nullable = false)
+	@Column(name = "tenmonhoc", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String tenmonhoc;
 	
-	@Column(name = "trinhdo", length = 50, nullable = false)
+	@Column(name = "trinhdo", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String trinhdo;
 	
-	@Column(name = "anh", length = 255, nullable = true)
+	@Column(name = "anh", nullable = true,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String anh;
 	
 	@OneToMany(mappedBy = "chude", cascade = CascadeType.ALL)

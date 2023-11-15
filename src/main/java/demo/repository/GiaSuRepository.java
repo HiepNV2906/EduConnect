@@ -28,17 +28,24 @@ public interface GiaSuRepository extends JpaRepository<GiaSu, Long>{
 	@Query(value = "SELECT DISTINCT g.* FROM giasu_chude gc "
 			+ "INNER JOIN giasu g ON gc.dsgiasu_id=g.id "
 			+ "INNER JOIN chude c ON gc.dschude_id=c.id "
-			+ "WHERE g.quan LIKE %:quan% AND g.nghenghiep LIKE %:nghenghiep% AND g.gioitinh LIKE %:gioitinh% "
+			+ "WHERE (sdt LIKE %:key% OR hoten LIKE %:key% OR diachi LIKE %:key% OR "
+			+ "gioithieu LIKE %:key% OR kinhnghiem LIKE %:key% OR thanhtich LIKE %:key% OR "
+			+ "quequan LIKE %:key% OR truong LIKE %:key%) AND "
+			+ "g.khuvucday LIKE %:quan% AND g.gioitinh LIKE %:gioitinh% "
 			+ "AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo%", nativeQuery = true)
-	public List<GiaSu> findByFilter(@Param("quan") String quan, @Param("nghenghiep") String nghenghiep,
-			@Param("gioitinh") String gioitinh, @Param("mon") String mon, @Param("trinhdo") String trinhdo);
+	public List<GiaSu> findByFilter(@Param("key") String keyword, @Param("quan") String quan, 
+			@Param("gioitinh") String gioitinh, 
+			@Param("mon") String mon, @Param("trinhdo") String trinhdo);
 	
 	@Query(value = "SELECT DISTINCT g.* FROM giasu_chude gc "
 			+ "INNER JOIN giasu g ON gc.dsgiasu_id=g.id "
 			+ "INNER JOIN chude c ON gc.dschude_id=c.id "
-			+ "WHERE g.quan LIKE %:quan% AND g.nghenghiep LIKE %:nghenghiep% AND g.gioitinh LIKE %:gioitinh% "
+			+ "WHERE (sdt LIKE %:key% OR hoten LIKE %:key% OR diachi LIKE %:key% OR "
+			+ "gioithieu LIKE %:key% OR kinhnghiem LIKE %:key% OR thanhtich LIKE %:key% OR "
+			+ "quequan LIKE %:key% OR truong LIKE %:key%) AND "
+			+ "g.khuvucday LIKE %:quan% AND g.gioitinh LIKE %:gioitinh% "
 			+ "AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo%", nativeQuery = true)
-	public Page<GiaSu> findByFilter(@Param("quan") String quan, @Param("nghenghiep") String nghenghiep,
+	public Page<GiaSu> findByFilter(@Param("key") String keyword, @Param("quan") String quan,
 			@Param("gioitinh") String gioitinh, @Param("mon") String mon, @Param("trinhdo") String trinhdo,
 			Pageable pageable);
 	

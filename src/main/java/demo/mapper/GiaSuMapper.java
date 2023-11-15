@@ -78,6 +78,7 @@ public class GiaSuMapper {
 	public static GiaSu update(GiaSu giaSu, RegisterGiaSuRequest registerGiaSuRequest) {
 		giaSu.setHoten(registerGiaSuRequest.getHoten());
 		giaSu.setSdt(registerGiaSuRequest.getSdt());
+		giaSu.setEmail(registerGiaSuRequest.getEmail());
 		giaSu.setGioitinh(registerGiaSuRequest.getGioitinh());
 		giaSu.setNgaysinh(registerGiaSuRequest.getNgaysinh());
 		giaSu.setQuan(registerGiaSuRequest.getQuan());
@@ -89,6 +90,9 @@ public class GiaSuMapper {
 		giaSu.setKinhnghiem(registerGiaSuRequest.getKinhnghiem());
 		giaSu.setThanhtich(registerGiaSuRequest.getThanhtich());
 		giaSu.setKhuvucday(registerGiaSuRequest.getKhuvucday());
+		if(registerGiaSuRequest.getTrangthai()!=null) {
+			giaSu.setTrangthai(TrangThaiUser.valueOf(registerGiaSuRequest.getTrangthai()));
+		}
 		List<ChuDe> listchude = ChuDeMapper.toListEntity(registerGiaSuRequest.getDschude());
 		giaSu.setDschude(listchude);
 		return giaSu;

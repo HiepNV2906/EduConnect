@@ -48,11 +48,11 @@ public class UngTuyen {
 	@Column(name = "ngayungtuyen", columnDefinition = "DATETIME", nullable = false)
 	private Date ngayungtuyen;
 	
-	@Column(name = "hanthanhtoan", nullable = false)
+	@Column(name = "hanthanhtoan", nullable = true)
 	private Date hanthanhtoan;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "trangthaiungtuyen", length = 50, nullable = false)
+	@Column(name = "trangthaiungtuyen", nullable = false, length = 50)
 	private TrangThaiUngTuyen trangthaiungtuyen;
 	
 	@Enumerated(EnumType.STRING)

@@ -18,17 +18,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name = "hocvien")
 public class HocVien extends User{
-	@Column(name = "quan", length = 100, nullable = false)
+	@Column(name = "quan", nullable = false,
+			columnDefinition = "VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String quan;
 	
-	@Column(name = "diachi", length = 255, nullable = false)
+	@Column(name = "diachi", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String diachi;
 	
-	@Column(name = "cccd", length = 255, nullable = false)
+	@Column(name = "cccd", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String cccd;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "trangthai", length = 50, nullable = false)
+	@Column(name = "trangthai", nullable = false, length = 50)
 	private TrangThaiUser trangthai;
 	
 	@OneToMany(mappedBy = "hocvien", cascade = CascadeType.ALL)

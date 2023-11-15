@@ -17,7 +17,7 @@ public interface ThongBaoService {
 	public ThongBao getThongBaoById(Long id);
 	public List<ThongBao> getListThongBao();
 	public Page<ThongBao> getListThongBao(Pageable pageable);
-	public List<ThongBao> getListThongBaoByUserId(Long id);
+	public List<ThongBaoDTO> getListThongBaoByUserId(Long id);
 	public Page<ThongBao> getListThongBaoByUserId(Long id, Pageable pageable);
 	public List<ThongBao> getByTrangThaiThongBao(TrangThaiThongBao trangThaiThongBao);
 	public Page<ThongBao> getByTrangThaiThongBao(TrangThaiThongBao trangThaiThongBao, Pageable pageable);

@@ -31,13 +31,16 @@ public class Lop {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "tieude", length = 255, nullable = false)
+	@Column(name = "tieude", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String tieude;
 	
-	@Column(name = "quan", length = 100, nullable = false)
+	@Column(name = "quan", nullable = false,
+			columnDefinition = "VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String quan;
 	
-	@Column(name = "diachi", length = 255, nullable = false)
+	@Column(name = "diachi", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String diachi;
 	
 	@Column(name = "sobuoi", nullable = false)
@@ -55,22 +58,28 @@ public class Lop {
 	@Column(name = "sohs", nullable = false)
 	private Integer sohs;
 	
-	@Column(name = "gioitinhhs", length = 50, nullable = false)
+	@Column(name = "gioitinhhs", nullable = false,
+			columnDefinition = "VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String gioitinhhs;
 	
-	@Column(name = "motahs", columnDefinition = "text", nullable = false)
+	@Column(name = "motahs", nullable = true,
+			columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String motahs;
 	
-	@Column(name = "nghenghiepgs", length = 100, nullable = false)
+	@Column(name = "nghenghiepgs", nullable = false,
+			columnDefinition = "VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String nghenghiepgs;
 	
-	@Column(name = "gioitinhgs", length = 50, nullable = false)
+	@Column(name = "gioitinhgs", nullable = false,
+			columnDefinition = "VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String gioitinhgs;
 	
-	@Column(name = "truonggs", length = 255, nullable = false)
+	@Column(name = "truonggs", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String truonggs;
 	
-	@Column(name = "yeucaukhac", columnDefinition = "text", nullable = false)
+	@Column(name = "yeucaukhac", nullable = false,
+			columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String yeucaukhac;
 	
 	@Column(name = "ngaytao", nullable = false)
@@ -81,11 +90,12 @@ public class Lop {
 	@Temporal(TemporalType.DATE)
 	private Date hanungtuyen;
 	
-	@Column(name = "hinhthuc", length = 50, nullable = false)
+	@Column(name = "hinhthuc", nullable = false,
+			columnDefinition = "VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String hinhthuc;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "trangthailop", length = 50, nullable = false)
+	@Column(name = "trangthailop", nullable = false, length = 50)
 	private TrangThaiLop trangthailop;
 	
 	@OneToMany(mappedBy = "lop", cascade = CascadeType.ALL)

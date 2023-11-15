@@ -23,38 +23,45 @@ import lombok.NoArgsConstructor;
 @Entity(name = "giasu")
 public class GiaSu extends User{
 	
-	@Column(name = "quan", length = 100, nullable = false)
+	@Column(name = "quan", nullable = false,
+			columnDefinition = "VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String quan;
 	
-	@Column(name = "diachi", length = 255, nullable = false)
+	@Column(name = "diachi", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String diachi;
 	
-	@Column(name = "quequan", length = 255, nullable = false)
+	@Column(name = "quequan", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String quequan;
 	
-	@Column(name = "nghenghiep", length = 100, nullable = false)
+	@Column(name = "nghenghiep", nullable = false,
+			columnDefinition = "VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String nghenghiep;
 	
-	@Column(name = "truong", length = 255, nullable = false)
+	@Column(name = "truong", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String truong;
 	
-	@Column(name = "gioithieu", columnDefinition = "text")
+	@Column(name = "gioithieu", columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String gioithieu;
 	
-	@Column(name = "kinhnghiem", columnDefinition = "text")
+	@Column(name = "kinhnghiem", columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String kinhnghiem;
 	
-	@Column(name = "thanhtich", columnDefinition = "text")
+	@Column(name = "thanhtich", columnDefinition = "TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String thanhtich;
 	
-	@Column(name = "cccd", length = 255, nullable = false)
+	@Column(name = "cccd", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String cccd;
 	
-	@Column(name = "khuvucday", length = 255, nullable = false)
+	@Column(name = "khuvucday", nullable = false,
+			columnDefinition = "VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci")
 	private String khuvucday;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "trangthai", length = 50, nullable = false)
+	@Column(name = "trangthai", nullable = false, length = 50)
 	private TrangThaiUser trangthai;
 	
 	@OneToMany(mappedBy = "giasu", cascade = CascadeType.ALL)

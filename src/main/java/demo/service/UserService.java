@@ -15,7 +15,7 @@ import demo.request.RegisterUserRequest;
 public interface UserService {
 	public User addUser(RegisterUserRequest registerUserRequest) throws StorageException;
 	public User updateUser(RegisterUserRequest registerUserRequest) throws StorageException;
-	public User changePassword(String username, ChangePassword changePassword);
+	public User changePassword(Long userid, ChangePassword changePassword);
 	public User forgetPassword(ForgetPassword forgetPassword);
 	public void deleteUser(Long id);
 	public User getUserById(Long id);

@@ -26,4 +26,5 @@ public interface LopService {
 	public Page<Lop> findByTrangThai(TrangThaiLop trangThaiLop, Pageable pageable);
 	public Lop updateTrangThaiLop(Long lopId, TrangThaiLop trangThaiLop);
 	public List<Lop> getTopNewListLop();
+	public List<Lop> findByHocVienAndTrangThai(Long hocvienid, TrangThaiLop trangThaiLop);
 }

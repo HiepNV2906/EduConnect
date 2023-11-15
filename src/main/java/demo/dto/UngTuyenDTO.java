@@ -12,8 +12,9 @@ import lombok.NoArgsConstructor;
 public class UngTuyenDTO {
 	private Long id;
 	private Long giasuid;
+	private String tengs;
 	private Long lopid;
-	private Long loimoiid;
+	private LoiMoiDTO loimoi;
 	private Date ngayungtuyen;
 	private Date hanthanhtoan;
 	private String trangthaiungtuyen;

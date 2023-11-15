@@ -52,7 +52,7 @@ public class HocVienServiceImpl implements HocVienService{
 		h.setPassword(bCryptPasswordEncoder.encode(registerHocVienRequest.getPassword()));
 		h.setTrangthai(TrangThaiUser.CHUAPHEDUYET);
 		
-		if(!registerHocVienRequest.getAvata().isEmpty() && !registerHocVienRequest.getCccd().isEmpty()) {
+		if(registerHocVienRequest.getAvata()!=null && registerHocVienRequest.getCccd()!=null) {
 			UUID uuid1=UUID.randomUUID();
 			String uuString1=uuid1.toString();
 			UUID uuid2=UUID.randomUUID();
@@ -71,7 +71,7 @@ public class HocVienServiceImpl implements HocVienService{
 		//		Thông Báo
 		List<User> admin = userRepository.findByVaitro(VaiTro.ADMIN);
 		for (User user : admin) {
-			thongBaoRepository.save(ThongBaoModel.ycDangKyTaiKhoan(user));
+			thongBaoRepository.save(ThongBaoModel.ycDangKyTaiKhoanHocVien(user));
 		}
 		thongBaoRepository.save(ThongBaoModel.dangKyThanhCong(hocvien));
 		return hocvien;
@@ -81,12 +81,12 @@ public class HocVienServiceImpl implements HocVienService{
 	public HocVien updateHocVien(RegisterHocVienRequest registerHocVienRequest) throws StorageException {
 		HocVien h = HocVienMapper.update(getHocVienById(registerHocVienRequest.getId()), registerHocVienRequest);
 		
-		if(!registerHocVienRequest.getAvata().isEmpty()) {
+		if(registerHocVienRequest.getAvata()!=null) {
 			h.setAvata(storageService.getStoredFilename(registerHocVienRequest.getAvata(), h.getAvata()));
 			storageService.store(registerHocVienRequest.getAvata(), h.getAvata());
 		}
 		
-		if(!registerHocVienRequest.getCccd().isEmpty()) {
+		if(registerHocVienRequest.getCccd()!=null) {
 			h.setCccd(storageService.getStoredFilename(registerHocVienRequest.getCccd(), h.getCccd()));
 			storageService.store(registerHocVienRequest.getCccd(), h.getCccd());
 		}

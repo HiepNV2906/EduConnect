@@ -44,7 +44,7 @@ public class LoiMoi {
 	private Date ngaymoi;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "trangthailoimoi", length = 50, nullable = false)
+	@Column(name = "trangthailoimoi", nullable = false, length = 50)
 	private TrangThaiLoiMoi trangthailoimoi;
 	
 	@OneToOne(mappedBy = "loimoi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class ThongBaoController {
 	@Autowired
 	ThongBaoService thongBaoService;
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping(value = "", produces = "application/json")
 	public BaseResponse<?> addThongBao(@RequestBody ThongBaoDTO thongBaoDTO){
 		try {
@@ -37,6 +39,7 @@ public class ThongBaoController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping(value = "/{id}", produces = "application/json")
 	public BaseResponse<?> updateThongBao(@RequestBody ThongBaoDTO thongBaoDTO, @PathVariable("id") Long id){
 		try {
@@ -73,8 +76,7 @@ public class ThongBaoController {
 	@GetMapping(value = "/user/{userid}", produces = "application/json")
 	public BaseResponse<?> getThongBaoByUserId(@PathVariable("userid") Long userId){
 		try {
-			List<ThongBao> t = thongBaoService.getListThongBaoByUserId(userId);
-			List<ThongBaoDTO> data = ThongBaoMapper.toListDTO(t);
+			List<ThongBaoDTO> data = thongBaoService.getListThongBaoByUserId(userId);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		} catch (Exception e){
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);

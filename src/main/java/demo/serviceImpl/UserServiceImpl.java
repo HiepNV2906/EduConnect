@@ -51,14 +51,14 @@ public class UserServiceImpl implements UserService{
 		u.setPassword(bCryptPasswordEncoder.encode(registerUserRequest.getPassword()));
 		u.setVaitro(VaiTro.ADMIN);
 		
-		if(!registerUserRequest.getAvata().isEmpty()) {
+		if(registerUserRequest.getAvata()!=null) {
 			UUID uuid1=UUID.randomUUID();
 			String uuString1=uuid1.toString();
 			u.setAvata(storageService.getStoredFilename(registerUserRequest.getAvata(), uuString1));
 			storageService.store(registerUserRequest.getAvata(), u.getAvata());
 		}
 		else {
-			throw new StorageException("File trống");
+//			throw new StorageException("File trống");
 		}
 		
 		User user = userRepository.save(u);
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService{
 	public User updateUser(RegisterUserRequest registerUserRequest) throws StorageException {
 		User u = UserMapper.update(getUserById(registerUserRequest.getId()), registerUserRequest);
 		
-		if(!registerUserRequest.getAvata().isEmpty()) {
+		if(registerUserRequest.getAvata()!=null) {
 			u.setAvata(storageService.getStoredFilename(registerUserRequest.getAvata(), u.getAvata()));
 			storageService.store(registerUserRequest.getAvata(), u.getAvata());
 		}
@@ -151,15 +151,18 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User changePassword(String username, ChangePassword changePassword) {
+	public User changePassword(Long userid, ChangePassword changePassword) {
 		if (!changePassword.getNewPassword().equals(changePassword.getConfirmPassword())) {
 			throw new UserException("Nhập lại mật khẩu không trùng khớp");
 		}
-		Optional<User> userOption = userRepository.findByEmail(username);
+		Optional<User> userOption = userRepository.findById(userid);
 		if(!userOption.isPresent()) {
-			throw new UserException("Email không tồn tại");
+			throw new UserException("User không tồn tại");
 		}
 		User user = userOption.get();
+		if(!bCryptPasswordEncoder.matches(changePassword.getOldPassword(), user.getPassword())) {
+			throw new UserException("Mật khẩu cũ không đúng");
+		}
 		user.setPassword(bCryptPasswordEncoder.encode(changePassword.getNewPassword()));
 		user = userRepository.save(user);
 		return user;

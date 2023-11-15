@@ -99,6 +99,7 @@ public class JwtFilter extends OncePerRequestFilter{
         }
     	if (headerAuth.startsWith("Bearer ")) {
             String jwt = headerAuth.substring(7, headerAuth.length());
+            System.out.println(headerAuth);
             if (jwt != null && jwtUtil.validateToken(jwt)) {
                 String username = jwtUtil.extractUsername(jwt);
                 return username;

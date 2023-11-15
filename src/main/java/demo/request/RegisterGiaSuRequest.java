@@ -46,6 +46,9 @@ public class RegisterGiaSuRequest extends RegisterUserRequest{
 		u.setKinhnghiem(kinhnghiem);
 		u.setThanhtich(thanhtich);
 		u.setKhuvucday(khuvucday);
+		if(trangthai!=null) {
+			u.setTrangthai(TrangThaiUser.valueOf(trangthai));
+		}
 		return u;
 	}
 }

@@ -1,8 +1,10 @@
 package demo.serviceImpl;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,10 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import demo.Enum.TrangThaiCongNo;
+import demo.Enum.TrangThaiLoiMoi;
 import demo.Enum.TrangThaiLop;
 import demo.Enum.TrangThaiUngTuyen;
 import demo.Enum.VaiTro;
 import demo.dto.UngTuyenDTO;
+import demo.entity.LoiMoi;
 import demo.entity.Lop;
 import demo.entity.UngTuyen;
 import demo.entity.User;
@@ -48,24 +52,28 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 	
 	@Override
 	public UngTuyen addUngTuyen(UngTuyenDTO ungtuyenDTO) {
-		Integer count = ungTuyenRepository.countByLopId(ungtuyenDTO.getLoimoiid());
+		Integer count = ungTuyenRepository.countByLopId(ungtuyenDTO.getLopid());
 		if(count>=maxsizeListUngTuyen) {
 			throw new UserException("Số lượng ứng tuyển cho lớp đã đạt tối đa");
 		}
 		UngTuyen u = UngTuyenMapper.toEntity(ungtuyenDTO);
 		u.setId(null);
+		u.setNgayungtuyen(new Date());
 		u.setTrangthaiungtuyen(TrangThaiUngTuyen.CHO);
 		u.setTrangthaicongno(TrangThaiCongNo.KHONG);
 		u.setGiasu(giaSuRepository.findById(ungtuyenDTO.getGiasuid()).get());
 		Lop lop = lopRepository.findById(ungtuyenDTO.getLopid()).get();
 		u.setLop(lop);
-		if(ungtuyenDTO.getLoimoiid()!=null) {
-			u.setLoimoi(loiMoiRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLoimoiid()).get());
+		Optional<LoiMoi> loimoi = loiMoiRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLopid());
+		if(loimoi.isPresent()) {
+			LoiMoi l = loimoi.get();
+			l.setTrangthailoimoi(TrangThaiLoiMoi.THANHCONG);
+			u.setLoimoi(l);
 		}
 		UngTuyen ungTuyen = ungTuyenRepository.save(u);
 
 //		Thông báo
-		thongBaoRepository.save(ThongBaoModel.ungTuyenLop(ungTuyen.getLop().getHocvien(), (ungTuyen.getLoimoi()!=null)));
+		thongBaoRepository.save(ThongBaoModel.ungTuyenLop(ungTuyen.getLop().getHocvien(), (ungTuyen.getLoimoi()!=null), lop.getId()));
 		if(count+1 == maxsizeListUngTuyen) {
 			lop.setTrangthailop(TrangThaiLop.CANGIAO);
 			lopRepository.save(lop);
@@ -82,8 +90,10 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 		UngTuyen u = UngTuyenMapper.update(getUngTuyenById(ungtuyenDTO.getId()), ungtuyenDTO);
 		u.setGiasu(giaSuRepository.findById(ungtuyenDTO.getGiasuid()).get());
 		u.setLop(lopRepository.findById(ungtuyenDTO.getLopid()).get());
-		if(ungtuyenDTO.getLoimoiid()!=null) {
-			u.setLoimoi(loiMoiRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLoimoiid()).get());
+		Optional<LoiMoi> loimoi = loiMoiRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLopid());
+		if(loimoi.isPresent()) {
+			LoiMoi l = loimoi.get();
+			u.setLoimoi(l);
 		}
 		UngTuyen ungTuyen = ungTuyenRepository.save(u);
 		return ungTuyen;
@@ -176,7 +186,8 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 				ungTuyen.setTrangthaiungtuyen(TrangThaiUngTuyen.THANHCONG);
 				ungTuyen.setTrangthaicongno(TrangThaiCongNo.CHUATHANHTOAN);
 				LocalDate han = LocalDate.now().plusMonths(1);
-				ungTuyen.setHanthanhtoan(Date.valueOf(han));
+				Date date = Date.from(han.atStartOfDay(ZoneId.systemDefault()).toInstant());
+				ungTuyen.setHanthanhtoan(date);
 				ungTuyenRepository.save(ungTuyen);
 				
 				//	Thông Báo
