@@ -1,4 +1,4 @@
-var listPost;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -16,9 +16,9 @@ function viewTutorApply(classid) {
 
 function viewDetailClass(classid, edit = false) {
     if (edit) {
-        window.location.href = '../home/E_job_details.html?id=' + classid;
-    } else {
         window.location.href = 'E_editPost.html?id=' + classid;
+    } else {
+        window.location.href = '../home/E_job_details.html?id=' + classid;
     }
 }
 
@@ -54,7 +54,7 @@ function createListDataHTML(data, start, end) {
                         <td class=${statusClass}>${trangthailop}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailClass(${data[i].id, statusClass == 'dinhchi'})">Xem</button>
+                                onClick="viewDetailClass(${data[i].id}, ${statusClass != 'xacthuc'})">Xem</button>
                         </td>
                         <td>
                             ${idgiasu >= 0 ? ketquahtml : ''}

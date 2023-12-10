@@ -98,7 +98,7 @@ function reloadSubjectLevel() {
 function renderData(listdata, totalPages, currentPage, sizeOfPage) {
     var start = (currentPage - 1) * sizeOfPage;
     var end = currentPage * sizeOfPage;
-    if (listdata.length + 1 < end) {
+    if (listdata.length < end) {
         end = listdata.length;
     }
     var classesHTML = createListTutorHTML(listdata, start, end);

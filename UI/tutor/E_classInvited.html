@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Ứng tuyển</title>
+    <title>Lời mời ứng tuyển</title>
 
     <!-- Fontfaces CSS-->
     <link href="../../css/font-face.css" rel="stylesheet" media="all">
@@ -62,18 +62,18 @@
                             </a>
                         </li>
                         <li class="has-sub">
-                            <a href="#">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-bookmark" aria-hidden="true"></i> Ứng tuyển nhận lớp
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
+                                    <a href="E_classTeaching.html">Lớp của tôi</a>
                                 </li>
                                 <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
+                                    <a href="E_classInvited.html">Lời mời ứng tuyển</a>
                                 </li>
                                 <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
+                                    <a href="E_classApplied.html">Lịch sử ứng tuyển</a>
                                 </li>
                             </ul>
                         </li>
@@ -82,9 +82,18 @@
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                        <li class="has-sub">
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -109,18 +118,18 @@
                             </a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-bookmark" aria-hidden="true"></i> Ứng tuyển nhận lớp
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
+                                    <a href="E_classTeaching.html">Lớp của tôi</a>
                                 </li>
                                 <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
+                                    <a href="E_classInvited.html">Lời mời ứng tuyển</a>
                                 </li>
                                 <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
+                                    <a href="E_classApplied.html">Lịch sử ứng tuyển</a>
                                 </li>
                             </ul>
                         </li>
@@ -129,9 +138,18 @@
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                        <li class="has-sub">
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -221,7 +239,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a id="nutdangxuat">
                                                     <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
@@ -238,7 +256,7 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <h4>Các lớp đã ứng tuyển</h4>
+                        <h4>Lời mời ứng tuyển</h4>
                         <div class="row m-t-30">
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
@@ -248,12 +266,12 @@
                                             <tr>
                                                 <th>Ngày mời</th>
                                                 <th>Mã lớp</th>
-                                                <th>Tiêu đề lớp</th>
                                                 <th>Trạng thái</th>
-                                                <th></th>
+                                                <th>Chi tiết lớp</th>
+                                                <th>Ứng tuyển</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="classInvited">
                                             <tr>
                                                 <td>2018-09-29 05:57</td>
                                                 <td>Mobile</td>
@@ -374,11 +392,15 @@
     <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../../vendor/select2/select2.min.js">
-    </script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!-- Main JS-->
     <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/tutor/E_classInvited.js"></script>
 
 </body>
 

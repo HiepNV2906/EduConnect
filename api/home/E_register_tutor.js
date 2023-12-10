@@ -124,7 +124,7 @@ function dangKyGiaSu() {
     formData.append('cccd', cccd);
 
     $.ajax({
-        url: "http://localhost:8080/api/giasu",
+        url: "http://localhost:8080/dangkygiasu",
         type: "POST",
         data: formData,
         enctype: 'multipart/form-data',

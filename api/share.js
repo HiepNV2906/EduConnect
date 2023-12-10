@@ -11,6 +11,8 @@ $(document).ready(function () {
         html = `<a href="../tutor/E_profileTutor.html">Tài khoản</a>`
     } else if (role == "ADMIN") {
         html = `<a href="../admin/E_profileAdmin.html">Tài khoản</a>`
+    } else if (role == "MANAGER") {
+        html = `<a href="../manager/E_profileManager.html">Tài khoản</a>`
     } else {
         html = `<a href="../E_login.html">Đăng nhập</a>`
     }
@@ -86,7 +88,7 @@ function createDistrictFilterHTML(title = 'Quận/Huyện') {
     var quanhuyen = ['Ba Đình', 'Bắc Từ Liêm', 'Cầu Giấy', 'Đống Đa', 'Hà Đông', 'Hai Bà Trưng',
         'Hoàn Kiếm', 'Hoàng Mai', 'Long Biên', 'Nam Từ Liêm', 'Tây Hồ', 'Thanh Xuân',
         'Ba Vì', 'Chương Mỹ', 'Đan Phượng', 'Đông Anh', 'Gia Lâm', 'Hoài Đức',
-        'Mê Linh', 'Mỹ Đức', 'Phúc Thọ', 'Quốc Oai', 'Sóc Sơn', 'Sơn Tây',
+        'Mê Linh', 'Mỹ Đức', 'Phú Xuyên', 'Phúc Thọ', 'Quốc Oai', 'Sóc Sơn', 'Sơn Tây',
         'Thạch Thất', 'Thanh Oai', 'Thanh Trì', 'Thường Tín', 'Ứng Hoà']
     for (let i = 0; i < quanhuyen.length; i++) {
         data += `<option value='${quanhuyen[i]}'>${quanhuyen[i]}</option>`

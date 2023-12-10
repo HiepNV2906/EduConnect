@@ -3,6 +3,47 @@ $(document).ready(function () {
     getAPINewTutor();
 });
 
+function handleUngTuyen(lopid) {
+    console.log('aaa');
+    if ($.cookie('role') == "GIASU") {
+        ungtuyen(lopid);
+    } else {
+        alert("Đăng ký làm gia sư để ứng tuyển nhận lớp");
+    }
+};
+
+function ungtuyen(lopid) {
+    var token = $.cookie('token');
+
+    var infoAcc = {
+        "giasuid": $.cookie('id'),
+        "lopid": lopid
+    }
+
+    var jsonString = JSON.stringify(infoAcc);
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token ? token : ''
+        },
+        method: "POST",
+        url: "http://localhost:8080/api/ungtuyen",
+        data: jsonString,
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+        },
+        error: function (xhr, status, error) {
+            // Xử lý lỗi
+            console.log(error);
+            alert("Có lỗi xảy ra!!!");
+        }
+    });
+}
+
+
 function getAPINewClass() {
     var token = $.cookie('token');
     $.ajax({
@@ -45,8 +86,7 @@ function getAPINewClass() {
                                 </div>
                                 <div class="jobs_right">
                                     <div class="apply_now">
-                                        <!-- <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a> -->
-                                        <a href="E_job_details.html" class="boxed-btn3">Ứng tuyển</a>
+                                        <button class="boxed-btn3" onClick="handleUngTuyen(${data[i].id})">Ứng tuyển</button>
                                     </div>
                                     <div class="date">
                                         <p>Ngày tạo: ${moment(data[i].ngaytao).format('DD-MM-YYYY')}</p>
@@ -86,30 +126,32 @@ function getAPINewTutor() {
                     chudearr.add(dschude[i].tenmonhoc);
                 }
                 chudearr = [...chudearr];
-                html += `<div class="single_candidates">
-                            <div class="thumb">
-                                <img src=${data[i].avata ? 'http://localhost:8080/uploads/images/' + data[i].avata : '../../img/avatadefault.png'} alt="">
-                            </div>
-                            <a href="E_candidate_details.html?id=${data[i].id}" class=" text-center">
-                                <h4>${data[i].hoten}</h4>
-                            </a>
-                            <div>
-                                <p>
-                                    <i class="fa fa-leanpub fa-fw"></i>
-                                    <span>${chudearr.join(', ')}</span>
-                                </p>
-                                <p>
-                                    <i class="fa fa-user fa-fw"></i>
-                                    <span>${data[i].nghenghiep}</span>
-                                </p>
-                                <p>
-                                    <i class="fa fa-graduation-cap fa-fw"></i>
-                                    <span>${data[i].truong}</span>
-                                </p>
-                                <p>
-                                    <i class="fa fa-map-marker fa-fw"></i>
-                                    <span>${data[i].diachi + ", " + data[i].quan}</span>
-                                </p>
+                html += `<div class="col-lg-3 col-md-6 col-1">
+                            <div class="single_candidates">
+                                <div class="thumb">
+                                    <img src=${data[i].avata ? 'http://localhost:8080/uploads/images/' + data[i].avata : '../../img/avatadefault.png'} alt="">
+                                </div>
+                                <a href="E_candidate_details.html?id=${data[i].id}" class=" text-center">
+                                    <h4>${data[i].hoten}</h4>
+                                </a>
+                                <div>
+                                    <p>
+                                        <i class="fa fa-leanpub fa-fw"></i>
+                                        <span>${chudearr.join(', ')}</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user fa-fw"></i>
+                                        <span>${data[i].nghenghiep}</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-graduation-cap fa-fw"></i>
+                                        <span>${data[i].truong}</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-map-marker fa-fw"></i>
+                                        <span>${data[i].diachi + ", " + data[i].quan}</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>`
             }

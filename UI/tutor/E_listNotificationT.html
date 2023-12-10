@@ -63,17 +63,17 @@
                         </li>
                         <li class="has-sub">
                             <a href="#" class="js-arrow">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                                <i class="fa fa-bookmark" aria-hidden="true"></i> Ứng tuyển nhận lớp
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
+                                    <a href="E_classTeaching.html">Lớp của tôi</a>
                                 </li>
                                 <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
+                                    <a href="E_classInvited.html">Lời mời ứng tuyển</a>
                                 </li>
                                 <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
+                                    <a href="E_classApplied.html">Lịch sử ứng tuyển</a>
                                 </li>
                             </ul>
                         </li>
@@ -82,9 +82,18 @@
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                        <li class="has-sub">
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -110,17 +119,17 @@
                         </li>
                         <li class="has-sub">
                             <a href="#" class="js-arrow">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                                <i class="fa fa-bookmark" aria-hidden="true"></i> Ứng tuyển nhận lớp
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
+                                    <a href="E_classTeaching.html">Lớp của tôi</a>
                                 </li>
                                 <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
+                                    <a href="E_classInvited.html">Lời mời ứng tuyển</a>
                                 </li>
                                 <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
+                                    <a href="E_classApplied.html">Lịch sử ứng tuyển</a>
                                 </li>
                             </ul>
                         </li>
@@ -129,9 +138,18 @@
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                        <li class="has-sub">
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -221,7 +239,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a id="nutdangxuat">
                                                     <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
@@ -238,36 +256,27 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <h4>Các lớp đã tạo</h4>
-                        <div class="row m-t-30">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE-->
-                                <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
-                                        <thead>
-                                            <tr>
-                                                <th>Ngày thông báo</th>
-                                                <th>Tiêu đề</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>iPhone X 64Gb Grey fdx hcbdvbduxj ìnvubicfnbifc vnidjfnfik</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-outline-primary btn-sm">Chi
-                                                        tiết</button>
-                                                    <button type="button"
-                                                        class="btn btn-outline-danger btn-sm">Xoá</button>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- END DATA TABLE-->
-                            </div>
+                        <div class="row listnotification">
+                            <a href=""
+                                class="anotify sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-danger">New</span>
+                                <span class="titlenotify">You successfully read this important alert.</span>
+                                <span class="timenotify">11/11/2023 16:00:00</span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem beatae alias
+                                    voluptatum fugiat quis natus eaque dolores, unde impedit omnis molestiae hic
+                                    repellat
+                                    vero itaque exercitationem quibusdam, voluptate a ea?</p>
+                            </a>
+                            <a href=""
+                                class="anotify sufee-alert alert with-close alert-success alert-dismissible fade show">
+                                <span class="badge badge-pill badge-danger">New</span>
+                                <span class="titlenotify">You successfully read this important alert.</span>
+                                <span class="timenotify">11/11/2023 16:00:00</span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem beatae alias
+                                    voluptatum fugiat quis natus eaque dolores, unde impedit omnis molestiae hic
+                                    repellat
+                                    vero itaque exercitationem quibusdam, voluptate a ea?</p>
+                            </a>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -317,11 +326,15 @@
     <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../../vendor/select2/select2.min.js">
-    </script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!-- Main JS-->
     <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/tutor/E_listNotificationT.js"></script>
 
 </body>
 

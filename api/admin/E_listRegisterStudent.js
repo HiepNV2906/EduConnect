@@ -1,4 +1,4 @@
-var listStudent;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 

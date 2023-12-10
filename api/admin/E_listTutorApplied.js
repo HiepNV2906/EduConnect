@@ -1,4 +1,4 @@
-var listApply;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -45,12 +45,14 @@ function handleGiaoLop(id) {
 // }
 
 function createListDataHTML(data, start, end) {
+    $('.malop').text('Mã lớp: ' + data[start].lopid);
+    $('.tieudelop').text('Tiêu đề lớp: ' + data[start].tieudelop);
     var datahtml = ``;
     for (let i = start; i < end; i++) {
         datahtml += `<tr>
                         <td>${data[i].id}</td>
-                        <td>${data[i].hoten}</td>
-                        <td>${data[i].sdt}</td>
+                        <td>${data[i].tengs}</td>
+                        <td>${data[i].sdtgs}</td>
                         <td class="${data[i].trangthaiungtuyen == 'THANHCONG' ? 'process' : 'denied'}">
                             ${data[i].trangthaiungtuyen == 'THANHCONG' ? 'Thành công' : 'Thất bại'}
                         </td>

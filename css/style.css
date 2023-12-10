@@ -3727,6 +3727,7 @@ h3 {
 
 /* line 10, ../../Arafath/CL/December/235. Job board/HTML/scss/_candidates.scss */
 .featured_candidates_area .single_candidates {
+  border: solid 1px #bbbcbd;
   background: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

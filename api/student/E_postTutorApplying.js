@@ -19,21 +19,21 @@ function createListDataHTML(data, start, end) {
     var datahtml = ``;
     for (let i = start; i < end; i++) {
         var trangthaiut, statusUT;
-        if (data[i].trangthailop == 'THANHCONG') {
+        if (data[i].trangthaiungtuyen == 'THANHCONG') {
             trangthaiut = 'THÀNH CÔNG';
             statusUT = 'xacthuc';
-        } else if (data[i].trangthailop == 'TUCHOI') {
+        } else if (data[i].trangthaiungtuyen == 'TUCHOI') {
             trangthaiut = "THẤT BẠI";
             statusUT = 'dinhchi';
         } else {
             trangthaiut = 'CHỜ';
-            statusUT = 'choxacthuc'
+            statusUT = 'choxacthuc';
         }
         var loimoi = data[i].loimoi != null ? 'loimoi' : '';
         datahtml += `<tr>
                         <td class="${loimoi}">${data[i].giasuid}</td>
                         <td class="${loimoi}">${data[i].tengs}</td>
-                        <td class="${loimoi}">${data[i].ngayungtuyen}</td>
+                        <td class="${loimoi}">${moment(data[i].ngayungtuyen).format('DD-MM-YYYY')}</td>
                         <td class="${statusUT} ${loimoi}">${trangthaiut}</td>
                         <td class="${loimoi}">
                             <button type="button" class="btn btn-outline-primary btn-sm" 

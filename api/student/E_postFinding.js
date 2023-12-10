@@ -1,4 +1,4 @@
-var listPost;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -40,7 +40,7 @@ function createListDataHTML(data, start, end) {
 }
 
 // function handlePagenable(currentpage) {
-//     renderData(listPost, totalPages, currentpage, sizeOfPage);
+//     renderData(listItem, totalPages, currentpage, sizeOfPage);
 // }
 
 // function getAPIListClassFinding() {
@@ -57,9 +57,9 @@ function createListDataHTML(data, start, end) {
 //         url: "http://localhost:8080/api/lop/hocvien?hocvienid=" + id + "&status=" + status,
 //         success: function (response) {
 //             console.log(response);
-//             listPost = response.data;
-//             totalPages = Math.ceil(listPost.length / sizeOfPage);
-//             renderData(listPost, totalPages, 1, sizeOfPage);
+//             listItem = response.data;
+//             totalPages = Math.ceil(listItem.length / sizeOfPage);
+//             renderData(listItem, totalPages, 1, sizeOfPage);
 //         },
 //         error: function (xhr, status, error) {
 //             // Xử lý lỗi

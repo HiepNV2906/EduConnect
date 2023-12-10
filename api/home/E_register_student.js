@@ -35,7 +35,7 @@ function dangKyHocVien() {
     formData.append('cccd', cccd);
 
     $.ajax({
-        url: "http://localhost:8080/api/hocvien",
+        url: "http://localhost:8080/dangkyhocvien",
         type: "POST",
         data: formData,
         enctype: 'multipart/form-data',

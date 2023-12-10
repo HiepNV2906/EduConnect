@@ -1,4 +1,4 @@
-var listInvitation;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -38,20 +38,18 @@ function createListDataHTML(data, start, end) {
             trangthailoimoi = 'Chờ';
             statusLM = 'choxacthuc'
         }
-        var huyhtml = `<button type="button" class="btn btn-outline-primary btn-sm" 
-                            onClick="cancelInvitation(${data[i].id})">Huỷ</button>`
+        var huyhtml = `<button type="button" class="btn btn-outline-danger btn-sm" 
+                            onClick="cancelInvitation(${data[i].id})">Huỷ mời</button>`
         datahtml += `<tr>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailTutor(${data[i].giasuid})">Xem</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailClass(${data[i].lopid})">Xem</button>
-                        </td>
                         <td>${moment(data[i].ngaymoi).format('DD-MM-YYYY')}</td>
+                        <td>${data[i].tengs}</td>
+                        <td>${data[i].tieudelop}</td>
                         <td class='${statusLM}'>${trangthailoimoi}</td>
                         <td>
+                            <button type="button" class="btn btn-outline-primary btn-sm" 
+                                onClick="viewDetailTutor(${data[i].giasuid})">Xem GS</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm" 
+                                onClick="viewDetailClass(${data[i].lopid})">Xem lớp</button>
                             ${statusLM == 'choxacthuc' ? huyhtml : ''}
                         </td>
                     </tr>`

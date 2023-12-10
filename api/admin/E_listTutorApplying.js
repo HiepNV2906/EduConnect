@@ -1,4 +1,4 @@
-var listApply;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -30,7 +30,7 @@ function handleGiaoLop(id) {
         url: "http://localhost:8080/api/ungtuyen/sapxepgiasu/" + id,
         success: function (response) {
             console.log(response);
-            window.location.href = 'E_listTutorApplied.html?id=' + applyid;
+            window.location.href = 'E_listTutorApplied.html';
         },
         error: function (xhr, status, error) {
             // Xử lý lỗi
@@ -45,16 +45,19 @@ function handleGiaoLop(id) {
 // }
 
 function createListDataHTML(data, start, end) {
+    $('.malop').text('Mã lớp: ' + data[start].lopid);
+    $('.tieudelop').text('Tiêu đề lớp: ' + data[start].tieudelop);
     var datahtml = ``;
     for (let i = start; i < end; i++) {
+        var loimoi = data[i].loimoi != null ? 'loimoi' : '';
         datahtml += `<tr>
-                        <td>${data[i].id}</td>
-                        <td>${data[i].hoten}</td>
-                        <td>${data[i].email}</td>
-                        <td>${data[i].sdt}</td>
-                        <td>
+                        <td class="${loimoi}">${data[i].id}</td>
+                        <td class="${loimoi}">${data[i].tengs}</td>
+                        <td class="${loimoi}">${data[i].emailgs}</td>
+                        <td class="${loimoi}">${data[i].sdtgs}</td>
+                        <td class="${loimoi}">
                             <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailApply(${data[i].id})">Xem</button>
+                                onClick="viewDetailApply(${data[i].id})">Xem UT</button>
                             <button type="button" class="btn btn-outline-success btn-sm" 
                                 onClick="handleGiaoLop(${data[i].id})">Giao lớp</button>
                         </td>

@@ -1,4 +1,4 @@
-var listDebt;
+var listItem;
 var totalPages;
 var sizeOfPage = 20;
 
@@ -7,7 +7,7 @@ $(document).ready(function () {
         window.location.href = '../E_login.html';
     }
     loadHeaderWraper();
-    getAPIListApplyByStatus('CHUATHANHTOAN', '.listdebt');
+    getAPIListApplyByDebt('CHUATHANHTOAN', '.listdebt');
 });
 
 function viewDetailTutor(tutorid) {
@@ -30,16 +30,11 @@ function createListDataHTML(data, start, end) {
     var datahtml = ``;
     for (let i = start; i < end; i++) {
         datahtml += `<tr>
-                        <td>${data[i].id}</td>
-                        <td>${data[i].hanthanhtoan}</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailClass(${data[i].id})">Xem</button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailTutor(${data[i].id})">Xem</button>
-                        </td>
+                        <td>${data[i].giasuid}</td>
+                        <td>${data[i].tengs}</td>
+                        <td>${data[i].phinhanlop}</td>
+                        <td>${moment(data[i].hanthanhtoan).format('DD-MM-YYYY')}</td>
+                        <td>${data[i].noidungcongno}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm" 
                                 onClick="viewDetailUngtuyen(${data[i].id})">Xem</button>

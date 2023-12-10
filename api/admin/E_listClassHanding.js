@@ -1,4 +1,4 @@
-var listPost;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -26,7 +26,7 @@ function createListDataHTML(data, start, end) {
     var datahtml = ``;
     for (let i = start; i < end; i++) {
         datahtml += `<tr>
-                        <td>${data[i].ngaytao}</td>
+                        <td>${moment(data[i].hanungtuyen).format('DD-MM-YYYY')}</td>
                         <td>${data[i].id}</td>
                         <td>${data[i].tieude}</td>
                         <td class="process">

@@ -59,6 +59,46 @@ function handlePage(currentPage) {
 
 // Function get API
 
+function handleUngTuyen(lopid) {
+    console.log('aaa');
+    if ($.cookie('role') == "GIASU") {
+        ungtuyen(lopid);
+    } else {
+        alert("Đăng ký làm gia sư để ứng tuyển nhận lớp");
+    }
+};
+
+function ungtuyen(lopid) {
+    var token = $.cookie('token');
+
+    var infoAcc = {
+        "giasuid": $.cookie('id'),
+        "lopid": lopid
+    }
+
+    var jsonString = JSON.stringify(infoAcc);
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token ? token : ''
+        },
+        method: "POST",
+        url: "http://localhost:8080/api/ungtuyen",
+        data: jsonString,
+        success: function (response) {
+            console.log(response);
+            alert(response.message);
+        },
+        error: function (xhr, status, error) {
+            // Xử lý lỗi
+            console.log(error);
+            alert("Có lỗi xảy ra!!!");
+        }
+    });
+}
+
 function getAPIListClass() {
     var token = $.cookie('token');
     $.ajax({
@@ -152,7 +192,7 @@ function reloadSubjectLevel() {
 function renderData(listdata, totalPages, currentPage, sizeOfPage) {
     var start = (currentPage - 1) * sizeOfPage;
     var end = currentPage * sizeOfPage;
-    if (listdata.length + 1 < end) {
+    if (listdata.length < end) {
         end = listdata.length;
     }
     var classesHTML = createListClassHTML(listdata, start, end);
@@ -207,8 +247,7 @@ function createListClassHTML(apicontent, start, end) {
                         </div>
                         <div class="jobs_right">
                             <div class="apply_now">
-                                <!-- <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a> -->
-                                <a href="E_job_details.html" class="boxed-btn3">Ứng tuyển</a>
+                                <button class="boxed-btn3" onClick="handleUngTuyen(${apicontent[i].id})">Ứng tuyển</button>
                             </div>
                             <div class="date">
                                 <p>Ngày tạo: ${moment(apicontent[i].ngaytao).format('DD-MM-YYYY')}</p>

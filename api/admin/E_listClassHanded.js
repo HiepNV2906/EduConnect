@@ -1,4 +1,4 @@
-var listPost;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
@@ -10,8 +10,8 @@ $(document).ready(function () {
     getAPIListClassByStatus("DAGIAO", '.listclasshanded');
 });
 
-function viewTutorApply(tutorid) {
-    window.location.href = 'E_detailTutor.html?id=' + tutorid;
+function viewListTutorApplied(classid) {
+    window.location.href = 'E_listTutorApplied.html?id=' + classid;
 }
 
 function viewDetailClass(classid) {
@@ -34,12 +34,12 @@ function createListDataHTML(data, start, end) {
             }
         }
         datahtml += `<tr>
-                        <td>${data[i].ngaygiao}</td>
+                        <td>${moment(data[i].ngaygiao).format('DD-MM-YYYY')}</td>
                         <td>${data[i].id}</td>
                         <td>${data[i].tieude}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewTutorApply(${idgiasu})">Xem gia sư</button>
+                                onClick="viewListTutorApplied(${data[i].id})">Xem</button>
                         </td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm" 

@@ -1,6 +1,6 @@
-var listNotification;
+var listItem;
 var totalPages;
-var sizeOfPage = 20;
+var sizeOfPage = 10;
 
 $(document).ready(function () {
     if (!$.cookie('id')) {
@@ -13,7 +13,7 @@ $(document).ready(function () {
 function createListDataHTML(data, start, end) {
     var datahtml = ``;
     for (let i = start; i < end; i++) {
-        datahtml += `<a href="${data[i].link ? data[i].link : ''}"
+        datahtml += `<a href="${data[i].link ? data[i].link : ''}" 
                         class="anotify sufee-alert alert with-close alert-success alert-dismissible fade show">
                         <span class="badge badge-pill badge-danger">${data[i].trangthaithongbao == 'CHUAXEM' ? 'New' : ''}</span>
                         <span class="titlenotify">${data[i].tieude}</span>

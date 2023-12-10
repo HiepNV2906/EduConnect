@@ -6,7 +6,7 @@ $(document).ready(function () {
     if ($.cookie('role') != "HOCVIEN") {
         $('.moiungtuyen').hide();
     } else {
-        getMyClass();
+        getMyClass("DANGTIM");
     }
 });
 
@@ -40,7 +40,7 @@ function moi() {
             'Authorization': token ? token : ''
         },
         method: "POST",
-        url: "http://localhost:8080/api/moi",
+        url: "http://localhost:8080/api/loimoi",
         data: jsonString,
         success: function (response) {
             var data = response.data;
@@ -55,7 +55,7 @@ function moi() {
     });
 }
 
-function getMyClass() {
+function getMyClass(status) {
     var hocvienid = $.cookie('id');
     var token = $.cookie('token');
     $.ajax({
@@ -65,9 +65,9 @@ function getMyClass() {
             'Authorization': token ? token : ''
         },
         method: "GET",
-        url: "http://localhost:8080/api/hocvien/" + hocvienid,
+        url: "http://localhost:8080/api/lop/hocvien?hocvienid=" + hocvienid + "&status=" + status,
         success: function (response) {
-            var data = response.data.dslop;
+            var data = response.data;
             var myclass = `<option value="" data-display="Lớp của tôi">Lớp của tôi</option>`;
             for (let i = 0; i < data.length; i++) {
                 myclass += `<option value="${data[i].id}">ID: ${data[i].id} - ${data[i].tieude}</option>`;

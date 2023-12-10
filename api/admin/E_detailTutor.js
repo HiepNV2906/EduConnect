@@ -92,7 +92,6 @@ function createDataHTML(data) {
     $(".ngaysinh input").val(moment(data.ngaysinh).format('YYYY-MM-DD'));
     $(".sdt input").val(data.sdt);
     $(".diachi input").val(data.diachi);
-    $(".trangthai select").val(data.trangthai);
     $(".quequan input").val(data.quequan);
     $(".truong input").val(data.truong);
     $(".gioithieu textarea").val(data.gioithieu);
@@ -129,7 +128,7 @@ function createDataHTML(data) {
         h3Element.innerHTML = h3Child;
         document.querySelector('.dschude').appendChild(h3Element);
     }
-    $('.trangthai select').val(data.trangthai)
+    $(".trangthai select").val(data.trangthai)
 }
 
 function handleUpdate() {

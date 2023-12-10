@@ -63,17 +63,17 @@
                         </li>
                         <li class="has-sub">
                             <a href="#" class="js-arrow">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                                <i class="fa fa-bookmark" aria-hidden="true"></i> Ứng tuyển nhận lớp
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
+                                    <a href="E_classTeaching.html">Lớp của tôi</a>
                                 </li>
                                 <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
+                                    <a href="E_classInvited.html">Lời mời ứng tuyển</a>
                                 </li>
                                 <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
+                                    <a href="E_classApplied.html">Lịch sử ứng tuyển</a>
                                 </li>
                             </ul>
                         </li>
@@ -82,9 +82,18 @@
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                        <li class="has-sub">
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -110,17 +119,17 @@
                         </li>
                         <li class="has-sub">
                             <a href="#" class="js-arrow">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                                <i class="fa fa-bookmark" aria-hidden="true"></i> Ứng tuyển nhận lớp
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
+                                    <a href="E_classTeaching.html">Lớp của tôi</a>
                                 </li>
                                 <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
+                                    <a href="E_classInvited.html">Lời mời ứng tuyển</a>
                                 </li>
                                 <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
+                                    <a href="E_classApplied.html">Lịch sử ứng tuyển</a>
                                 </li>
                             </ul>
                         </li>
@@ -129,9 +138,18 @@
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
+                        <li class="has-sub">
+                            <a href="#" class="js-arrow">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i> Thanh toán
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="E_listTransaction.html">Lịch sử giao dịch</a>
+                                </li>
+                                <li>
+                                    <a href="E_listDebt.html">Công nợ</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -213,7 +231,9 @@
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                     <a href="E_profileTutor.html">
-                                                        <i class="zmdi zmdi-account"></i>Tài khoản</a>
+                                                        <i class="zmdi zmdi-account"></i>
+                                                        Tài khoản
+                                                    </a>
                                                 </div>
                                                 <div class="account-dropdown__item">
                                                     <a href="E_changePassT.html">
@@ -221,7 +241,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a id="nutdangxuat">
                                                     <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
@@ -246,14 +266,12 @@
                                         <strong>Đổi mật khẩu</strong>
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="" method="post" enctype="multipart/form-data"
-                                            class="form-horizontal">
-
+                                        <div class="form-horizontal">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label class=" form-control-label">Mật khẩu cũ*:</label>
                                                 </div>
-                                                <div class="col-12 col-md-9">
+                                                <div class="col-12 col-md-9 oldpass">
                                                     <input type="password" class="form-control">
                                                 </div>
                                             </div>
@@ -262,7 +280,7 @@
                                                 <div class="col col-md-3">
                                                     <label class=" form-control-label">Mật khẩu mới*:</label>
                                                 </div>
-                                                <div class="col-12 col-md-9">
+                                                <div class="col-12 col-md-9 newpass">
                                                     <input type="password" class="form-control">
                                                 </div>
                                             </div>
@@ -271,20 +289,18 @@
                                                 <div class="col col-md-3">
                                                     <label class=" form-control-label">Nhập lại mật khẩu*:</label>
                                                 </div>
-                                                <div class="col-12 col-md-9">
+                                                <div class="col-12 col-md-9 renewpass">
                                                     <input type="password" class="form-control">
                                                 </div>
                                             </div>
-
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
-                                    <button type="button" class="btn btn-warning">Quay lại</button>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="card-footer">
+                        <button id="nutdoimatkhau" class="btn btn-primary">Cập nhật</button>
                     </div>
                 </div>
             </div>
@@ -309,11 +325,15 @@
     <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../../vendor/select2/select2.min.js">
-    </script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!-- Main JS-->
     <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/tutor/E_changePassT.js"></script>
 
 
 </body>

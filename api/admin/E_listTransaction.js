@@ -1,4 +1,4 @@
-var listTransaction;
+var listItem;
 var totalPages;
 var sizeOfPage = 20;
 
@@ -25,11 +25,8 @@ function createListDataHTML(data, start, end) {
                         <td>${data[i].id}</td>
                         <td>${data[i].nganhang}</td>
                         <td>${data[i].sotien}</td>
-                        <td>${data[i].ngaythanhtoan}</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailTransaction(${data[i].id})">Xem</button>
-                        </td>
+                        <td>${moment(data.ngaythanhtoan).format('DD-MM-YYYY HH:mm:ss')}</td>
+                        <td>${data[i].noidung}</td>
                     </tr>`
     }
     return datahtml;

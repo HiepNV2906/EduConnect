@@ -124,6 +124,7 @@ function dangKyGiaSu() {
         success: function (response) {
             console.log(response);
             alert(response.message);
+            location.reload();
         },
         error: function (xhr, status, error) {
             alert(error);

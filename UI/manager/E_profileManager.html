@@ -10,12 +10,12 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Ứng tuyển</title>
+    <title>Thông tin tài khoản</title>
 
     <!-- Fontfaces CSS-->
     <link href="../../css/font-face.css" rel="stylesheet" media="all">
-    <link href="../../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../../vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="../../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="../../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
@@ -57,34 +57,19 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a href="E_profileTutor.html">
+                            <a href="E_profileManager.html">
                                 <i class="fa fa-id-badge" aria-hidden="true"></i> Tài khoản
                             </a>
                         </li>
-                        <li class="has-sub">
-                            <a href="#" class="js-arrow">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                        <li>
+                            <a href="E_static.html">
+                                <i class="fa fa-line-chart" aria-hidden="true"></i> Thống kê, báo cáo
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
-                                </li>
-                                <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
-                                </li>
-                                <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="E_listNotificationT.html">
+                            <a href="E_listNotificationM.html">
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
-                        </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
                         </li>
                     </ul>
                 </div>
@@ -104,34 +89,19 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="E_profileTutor.html">
+                            <a href="E_profileManager.html">
                                 <i class="fa fa-id-badge" aria-hidden="true"></i> Tài khoản
                             </a>
                         </li>
-                        <li class="has-sub">
-                            <a href="#" class="js-arrow">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i> Danh sách lớp
+                        <li>
+                            <a href="E_static.html">
+                                <i class="fa fa-line-chart" aria-hidden="true"></i> Thống kê, báo cáo
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="E_classApplied.html">Lớp đang ứng tuyển</a>
-                                </li>
-                                <li>
-                                    <a href="E_classTeaching.html">Lớp đang dạy</a>
-                                </li>
-                                <li>
-                                    <a href="E_classInvited.html">Lời mời nhận lớp</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="E_listNotificationT.html">
+                            <a href="E_listNotificationM.html">
                                 <i class="fa fa-bell" aria-hidden="true"></i> Thông báo
                             </a>
-                        </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>Thanh toán</a>
                         </li>
                     </ul>
                 </nav>
@@ -183,7 +153,7 @@
                                                 </div>
                                             </div>
                                             <div class="mess__footer">
-                                                <a href="E_listNotificationT.html">Xem tất cả</a>
+                                                <a href="E_listNotificationM.html">Xem tất cả</a>
                                             </div>
                                         </div>
                                     </div>
@@ -212,16 +182,16 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="E_profileTutor.html">
+                                                    <a href="E_profileManager.html">
                                                         <i class="zmdi zmdi-account"></i>Tài khoản</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
-                                                    <a href="E_changePassT.html">
+                                                    <a href="E_changePassM.html">
                                                         <i class="zmdi zmdi-settings"></i>Đổi mật khẩu</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a id="nutdangxuat">
                                                     <i class="zmdi zmdi-power"></i>Đăng xuất</a>
                                             </div>
                                         </div>
@@ -232,29 +202,90 @@
                     </div>
                 </div>
             </header>
-            <!-- END HEADER DESKTOP-->
+            <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="card">
-                            <div class="card-header bg-success">
-                                <strong class="card-title text-light">Tiêu đề</strong>
-                            </div>
-                            <div class="card-body text-white bg-warning">
-                                <i>05/10/2023 12:00:00</i>
-                                <p class="card-text text-light">Some quick example text to build on the card
-                                    title and make up the bulk of the card's
-                                    content. https://www.youtube.com/watch?v=mG7SHI1M_SQ
-                                </p>
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Thông tin tài khoản</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-horizontal">
+                                            <div class="row form-group mb-5">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="row text-center">
+                                                        <label for="file-input" class="col-12 form-control-label">Ảnh
+                                                            đại diện</label>
+                                                        <div class="col-12 avata">
+                                                            <img src="../../img/user.jpg" class="form-avata" alt="">
+                                                        </div>
+                                                        <input type="file" id="file-input" name="file-input"
+                                                            class="col-12 form-control-file ipavata">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Họ tên</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 hoten">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Email</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 emailacc">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Giới tính</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 gioitinh">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Ngày sinh</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 ngaysinh">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Số điện
+                                                        thoại</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 sdt">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="nutcapnhat" class="btn btn-primary">Cập nhật</button>
+                                    <button id="nutquaylai" class="btn btn-warning">Quay lại</button>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Jquery JS-->
@@ -275,11 +306,16 @@
     <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
     <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="../../vendor/select2/select2.min.js">
-    </script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
 
     <!-- Main JS-->
     <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/manager/E_profileManager.js"></script>
+
 
 </body>
 

@@ -8,13 +8,14 @@ $(document).ready(function () {
     }
 });
 
-$('#nutungtuyen').click(function () {
+function handleUngTuyen() {
+    console.log('aaa');
     if ($.cookie('role') == "GIASU") {
         ungtuyen();
     } else {
         alert("Đăng ký làm gia sư để ứng tuyển nhận lớp");
     }
-});
+};
 
 function ungtuyen() {
     var token = $.cookie('token');
@@ -125,7 +126,7 @@ function getInfoDetailsClass(id) {
                     }
                 }
                 if (!isApply) {
-                    $(".ungtuyen").html(`<button id="nutungtuyen" class="boxed-btn3 w-100">Ứng tuyển</button>`);
+                    $(".ungtuyen").html(`<button id="nutungtuyen" class="boxed-btn3 w-100" onClick="handleUngTuyen()">Ứng tuyển</button>`);
                 }
             }
             $(".coban").html(coban);

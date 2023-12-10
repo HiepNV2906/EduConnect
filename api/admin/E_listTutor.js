@@ -1,5 +1,5 @@
 
-var listTutor;
+var listItem;
 var totalPages;
 var sizeOfPage = 10;
 
