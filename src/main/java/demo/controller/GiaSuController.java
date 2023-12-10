@@ -113,9 +113,9 @@ public class GiaSuController {
 	}
 	
 	@GetMapping(value = "/topnew", produces = "application/json")
-	public BaseResponse<?> getTop10GiaSuMoi(){
+	public BaseResponse<?> getTop8GiaSuMoi(){
 		try {
-			List<GiaSu> listGiaSu = giaSuService.findTop10New();
+			List<GiaSu> listGiaSu = giaSuService.findTop8New();
 			List<GiaSuDTO> data = GiaSuMapper.toListDTO(listGiaSu);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		} catch (Exception e){

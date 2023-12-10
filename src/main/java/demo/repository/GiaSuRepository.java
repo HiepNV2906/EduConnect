@@ -55,5 +55,19 @@ public interface GiaSuRepository extends JpaRepository<GiaSu, Long>{
 	public List<GiaSu> findAllByOrderByNgaytaoDesc();
 	public Page<GiaSu> findAllByOrderByNgaytaoDesc(Pageable pageable);
 	
-	public List<GiaSu> findTop10ByOrderByNgaytaoDesc();
+	public List<GiaSu> findTop8ByTrangthaiOrderByNgaytaoDesc(TrangThaiUser trangthai);
+	
+	@Query(value = "SELECT DATE_FORMAT(ngaytao, '%m/%Y'), COUNT(*) "
+			+ "FROM giasu "
+			+ "WHERE trangthai=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY DATE_FORMAT(ngaytao, '%m/%Y') "
+			+ "ORDER BY DATE_FORMAT(ngaytao, '%m/%Y')", nativeQuery = true)
+	public List<Object[]> thongkegiasumoitheothang(String from, String to, String trangthai);
+	
+	@Query(value = "SELECT quan, COUNT(*) "
+			+ "FROM giasu "
+			+ "WHERE trangthai=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY quan "
+			+ "ORDER BY quan", nativeQuery = true)
+	public List<Object[]> thongkephanbogiasutheoquan(String from, String to, String trangthai);
 }

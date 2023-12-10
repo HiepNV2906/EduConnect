@@ -12,7 +12,9 @@ import lombok.NoArgsConstructor;
 public class LoiMoiDTO {
 	private Long id;
 	private Long giasuid;
+	private String tengs;
 	private Long lopid;
+	private String tieudelop;
 	private Date ngaymoi;
 	private String trangthailoimoi;
 	private Long ungtuyenid;

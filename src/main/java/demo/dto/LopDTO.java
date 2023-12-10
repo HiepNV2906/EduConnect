@@ -27,6 +27,7 @@ public class LopDTO {
 	private String truonggs;
 	private String yeucaukhac;
 	private Date ngaytao;
+	private Date ngaygiao;
 	private Date hanungtuyen;
 	private String hinhthuc;
 	private String trangthailop;

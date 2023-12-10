@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import demo.Enum.TrangThaiLop;
+import demo.Enum.TrangThaiUngTuyen;
 import demo.dto.LopDTO;
 import demo.entity.Lop;
 
@@ -27,4 +28,5 @@ public interface LopService {
 	public Lop updateTrangThaiLop(Long lopId, TrangThaiLop trangThaiLop);
 	public List<Lop> getTopNewListLop();
 	public List<Lop> findByHocVienAndTrangThai(Long hocvienid, TrangThaiLop trangThaiLop);
+	public List<Lop> findByGiaSuAndTrangThaiUngTuyen(Long giasuid, TrangThaiUngTuyen trangThaiUngTuyen);
 }

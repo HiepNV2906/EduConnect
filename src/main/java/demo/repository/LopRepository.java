@@ -51,6 +51,11 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 			@Param("hocphimin") Long hocphimin, @Param("hocphimax") Long hocphimax, @Param("mon") String mon, 
 			@Param("trinhdo") String trinhdo, @Param("trangthailop") String trangthailop, Pageable pageable);
 	
+	@Query(value = "SELECT DISTINCT l.* FROM lop l "
+			+ "INNER JOIN ungtuyen u ON l.id=u.lopid "
+			+ "WHERE u.giasuid=?1 AND u.trangthaiungtuyen=?2", nativeQuery = true)
+	public List<Lop> findByGiaSuAndTrangThaiUngTuyen(Long giasuid, String trangThaiUngTuyen);
+	
 	public List<Lop> findByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop);
 	public Page<Lop> findByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop, Pageable pageable);
 	public List<Lop> findByTrangthailopOrderByHanungtuyenAsc(TrangThaiLop trangthailop);
@@ -60,5 +65,33 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 	public List<Lop> findAllByOrderByNgaytaoDesc();
 	public Page<Lop> findAllByOrderByNgaytaoDesc(Pageable pageable);
 	
-	public List<Lop> findTop5ByOrderByNgaytaoDesc();
+	public List<Lop> findTop5ByTrangthailopOrderByNgaytaoDesc(TrangThaiLop trangthailop);
+	
+	@Query(value = "SELECT DATE_FORMAT(ngaytao, '%m/%Y'), COUNT(*) "
+			+ "FROM lop "
+			+ "WHERE trangthailop!=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY DATE_FORMAT(ngaytao, '%m/%Y') "
+			+ "ORDER BY DATE_FORMAT(ngaytao, '%m/%Y')", nativeQuery = true)
+	public List<Object[]> thongKeLopMoiTheoThang(String from, String to, String trangthai);
+	
+	@Query(value = "SELECT DATE_FORMAT(ngaygiao, '%m/%Y'), COUNT(*) "
+			+ "FROM lop "
+			+ "WHERE trangthailop=?3 AND (ngaygiao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY DATE_FORMAT(ngaygiao, '%m/%Y') "
+			+ "ORDER BY DATE_FORMAT(ngaygiao, '%m/%Y')", nativeQuery = true)
+	public List<Object[]> thongKeLopDaGiaoTheoThang(String from, String to, String trangthai);
+	
+	@Query(value = "SELECT quan, COUNT(*) "
+			+ "FROM lop "
+			+ "WHERE trangthailop!=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY quan "
+			+ "ORDER BY quan", nativeQuery = true)
+	public List<Object[]> phanBoGiaSuTheoQuanHuyen(String from, String to, String trangthai);
+	
+	@Query(value = "SELECT hocphi, COUNT(*) "
+			+ "FROM lop "
+			+ "WHERE trangthailop!=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY hocphi "
+			+ "ORDER BY hocphi", nativeQuery = true)
+	public List<Object[]> phanBoGiaSuTheoHocPhi(String from, String to, String trangthai);
 }

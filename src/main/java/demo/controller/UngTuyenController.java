@@ -149,12 +149,26 @@ public class UngTuyenController {
 		}
 	}
 	
-	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping(value = "/trangthaicongno", produces = "application/json")
 	public BaseResponse<?> getUngTuyenByTrangThaiCongNo(
-			@RequestParam(name = "state") String state){
+			@RequestParam(name = "status") String status){
 		try {
-			List<UngTuyen> listUngTuyen = ungTuyenService.findByTrangThaiCongNo(TrangThaiCongNo.valueOf(state));
+			List<UngTuyen> listUngTuyen = ungTuyenService.findByTrangThaiCongNo(TrangThaiCongNo.valueOf(status));
+			List<UngTuyenDTO> data = UngTuyenMapper.toListDTO(listUngTuyen);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
+	@GetMapping(value = "/congnogiasu", produces = "application/json")
+	public BaseResponse<?> getUngTuyenByTrangThaiCongNoAndGiaSu(
+			@RequestParam(name = "giasuid") Long giasuid,
+			@RequestParam(name = "status") String status){
+		try {
+			List<UngTuyen> listUngTuyen = ungTuyenService.findByGiaSuAndTrangThaiCongNo(giasuid, TrangThaiCongNo.valueOf(status));
 			List<UngTuyenDTO> data = UngTuyenMapper.toListDTO(listUngTuyen);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		}catch (Exception e) {
@@ -182,6 +196,4 @@ public class UngTuyenController {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
-	
 }

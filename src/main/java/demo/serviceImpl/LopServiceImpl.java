@@ -9,11 +9,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import demo.Enum.TrangThaiLop;
+import demo.Enum.TrangThaiUngTuyen;
+import demo.Enum.TrangThaiUser;
 import demo.Enum.VaiTro;
 import demo.dto.LichTrongDTO;
 import demo.dto.LopDTO;
+import demo.entity.HocVien;
 import demo.entity.Lop;
 import demo.entity.User;
+import demo.exception.UserException;
 import demo.mapper.LopMapper;
 import demo.mapper.ThongBaoModel;
 import demo.repository.ChuDeRepository;
@@ -47,7 +51,11 @@ public class LopServiceImpl implements LopService{
 		l.setId(null);
 		l.setNgaytao(new Date());
 		l.setTrangthailop(TrangThaiLop.CHOPHEDUYET);
-		l.setHocvien(hocVienRepository.findById(lopDTO.getHocvienid()).get());
+		HocVien hocvien = hocVienRepository.findById(lopDTO.getHocvienid()).get();
+		if(hocvien.getTrangthai()!=TrangThaiUser.DAPHEDUYET) {
+			throw new UserException("Tài khoản học viên chưa được phê duyệt");
+		}
+		l.setHocvien(hocvien);
 		l.setChude(chuDeRepository.findById(lopDTO.getChude().getId()).get());
 		Lop lop = lopRepository.save(l);
 		for (LichTrongDTO i : lopDTO.getDslichtrong()) {
@@ -56,6 +64,7 @@ public class LopServiceImpl implements LopService{
 		lop.setDslichtrong(lichTrongService.addListLichTrong(lop, lopDTO.getDslichtrong()));
 		
 		//		Thông báo
+		thongBaoRepository.save(ThongBaoModel.taoLopThanhCong(hocvien));
 		List<User> admin = userRepository.findByVaitro(VaiTro.ADMIN);
 		for (User user : admin) {
 			thongBaoRepository.save(ThongBaoModel.ycTaoLop(user));
@@ -73,6 +82,7 @@ public class LopServiceImpl implements LopService{
 			i.setLopid(lop.getId());
 		}
 		lop.setDslichtrong(lichTrongService.addListLichTrong(lop, lopDTO.getDslichtrong()));
+		thongBaoRepository.save(ThongBaoModel.capNhatLop(l.getHocvien()));
 		return lop;
 	}
 
@@ -165,7 +175,7 @@ public class LopServiceImpl implements LopService{
 
 	@Override
 	public List<Lop> getTopNewListLop() {
-		List<Lop> list = lopRepository.findTop5ByOrderByNgaytaoDesc();
+		List<Lop> list = lopRepository.findTop5ByTrangthailopOrderByNgaytaoDesc(TrangThaiLop.DANGTIM);
 		return list;
 	}
 
@@ -173,6 +183,12 @@ public class LopServiceImpl implements LopService{
 	public List<Lop> findByHocVienAndTrangThai(Long hocvienid, TrangThaiLop trangThaiLop) {
 		List<Lop> list = lopRepository.findByHocvienAndTrangthailopOrderByNgaytaoDesc(
 				hocVienRepository.findById(hocvienid).get(), trangThaiLop);
+		return list;
+	}
+
+	@Override
+	public List<Lop> findByGiaSuAndTrangThaiUngTuyen(Long giasuid, TrangThaiUngTuyen trangThaiUngTuyen) {
+		List<Lop> list = lopRepository.findByGiaSuAndTrangThaiUngTuyen(giasuid, trangThaiUngTuyen.toString());
 		return list;
 	}
 

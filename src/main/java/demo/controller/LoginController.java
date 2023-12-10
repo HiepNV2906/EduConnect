@@ -15,19 +15,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import demo.dto.GiaSuDTO;
+import demo.dto.HocVienDTO;
+import demo.entity.GiaSu;
+import demo.entity.HocVien;
 import demo.entity.RefreshToken;
+import demo.mapper.GiaSuMapper;
+import demo.mapper.HocVienMapper;
 import demo.request.ChangePassword;
 import demo.request.ForgetPassword;
 import demo.request.LoginRequest;
 import demo.request.RefreshTokenRequest;
+import demo.request.RegisterGiaSuRequest;
+import demo.request.RegisterHocVienRequest;
 import demo.response.BaseResponse;
 import demo.response.JwtResponse;
 import demo.response.RefreshTokenResponse;
 import demo.security.CustomUserDetail;
 import demo.security.JwtFilter;
 import demo.security.JwtUtil;
+import demo.service.GiaSuService;
+import demo.service.HocVienService;
 import demo.service.RefreshTokenService;
 import demo.service.UserService;
 
@@ -43,6 +57,10 @@ public class LoginController {
 	JwtUtil jwtUtil;
 	@Autowired
 	UserService userService;
+	@Autowired
+	HocVienService hocVienService;
+	@Autowired
+	GiaSuService giaSuService;
 	@Autowired
 	RefreshTokenService refreshTokenService;
 	
@@ -72,6 +90,43 @@ public class LoginController {
 			return new BaseResponse<>("Successful",null, HttpStatus.OK);
 		}
 		catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PostMapping(value = "/dangkyhocvien")
+	public BaseResponse<?> addHocVien(
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam("avata") MultipartFile avata,
+            @RequestParam("cccd") MultipartFile cccd){
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterHocVienRequest registerHocVienRequest = objectMapper.readValue(infoGS, RegisterHocVienRequest.class);
+			registerHocVienRequest.setAvata(avata);
+			registerHocVienRequest.setCccd(cccd);
+			HocVien h = hocVienService.addHocVien(registerHocVienRequest);
+			HocVienDTO data = HocVienMapper.toDTO(h);
+			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
+		} catch(Exception e) {
+			System.out.println(e);
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PostMapping(value = "/dangkygiasu")
+	public BaseResponse<?> addGiaSu(
+			@RequestParam("infoGS") String infoGS,
+            @RequestParam(name = "avata") MultipartFile avata,
+            @RequestParam(name = "cccd") MultipartFile cccd){
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			RegisterGiaSuRequest registerGiaSuRequest = objectMapper.readValue(infoGS, RegisterGiaSuRequest.class);
+			registerGiaSuRequest.setAvata(avata);
+			registerGiaSuRequest.setCccd(cccd);
+			GiaSu g = giaSuService.addGiaSu(registerGiaSuRequest);
+			GiaSuDTO data = GiaSuMapper.toDTO(g);
+			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
+		} catch (Exception e){
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}
 	}

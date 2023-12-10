@@ -18,12 +18,20 @@ public class UngTuyenMapper {
 		u.setId(ungTuyen.getId());
 		u.setGiasuid(ungTuyen.getGiasu().getId());
 		u.setTengs(ungTuyen.getGiasu().getHoten());
+		u.setEmailgs(ungTuyen.getGiasu().getEmail());
+		u.setSdtgs(ungTuyen.getGiasu().getSdt());
 		u.setLopid(ungTuyen.getLop().getId());
+		u.setTieudelop(ungTuyen.getLop().getTieude());
+		u.setPhinhanlop(ungTuyen.getLop().getPhiungtuyen());
+		u.setNoidungcongno("Phí nhận lớp");
 		if(ungTuyen.getLoimoi()!=null) {
 			u.setLoimoi(LoiMoiMapper.toDTO(ungTuyen.getLoimoi()));
 		}
 		u.setNgayungtuyen(ungTuyen.getNgayungtuyen());
 		u.setHanthanhtoan(ungTuyen.getHanthanhtoan());
+		if(ungTuyen.getThanhtoan()!=null) {
+			u.setThanhtoan(ThanhToanMapper.toDTO(ungTuyen.getThanhtoan()));
+		}
 		u.setTrangthaiungtuyen(ungTuyen.getTrangthaiungtuyen().toString());
 		u.setTrangthaicongno(ungTuyen.getTrangthaicongno().toString());
 		return u;

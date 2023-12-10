@@ -30,6 +30,7 @@ public class LopMapper {
 		l.setTruonggs(lop.getTruonggs());
 		l.setYeucaukhac(lop.getYeucaukhac());
 		l.setNgaytao(lop.getNgaytao());
+		l.setNgaygiao(lop.getNgaygiao());
 		l.setHanungtuyen(lop.getHanungtuyen());
 		l.setHinhthuc(lop.getHinhthuc());
 		l.setTrangthailop(lop.getTrangthailop().toString());
@@ -64,6 +65,9 @@ public class LopMapper {
 		if(lopDTO.getTrangthailop() != null) {
 			l.setTrangthailop(TrangThaiLop.valueOf(lopDTO.getTrangthailop()));
 		}
+		if(lopDTO.getNgaygiao() != null) {
+			l.setNgaygiao(lopDTO.getNgaygiao());
+		}
 		return l;
 	}
 	
@@ -91,6 +95,9 @@ public class LopMapper {
 			l.setPhiungtuyen(lopDTO.getPhiungtuyen());
 		} else {
 			l.setPhiungtuyen(phiUT);
+		}
+		if(lopDTO.getNgaygiao() != null) {
+			l.setNgaygiao(lopDTO.getNgaygiao());
 		}
 		return l;
 	}

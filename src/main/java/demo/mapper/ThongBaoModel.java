@@ -82,12 +82,27 @@ public class ThongBaoModel{
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
 	
+	public static ThongBao taoLopThanhCong(User user) {
+		String tieude = "Gửi yêu cầu tìm gia sư thành công";
+		String noidung = "Yêu cầu tạo lớp tìm gia sư mới được tạo. Vui lòng chờ phê duyệt";
+		String link = "E_postWaiting.html";
+
+		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
+	}
+	
+	public static ThongBao capNhatLop(User user) {
+		String tieude = "Lớp của bạn vừa được cập nhật";
+		String noidung = "Thông tin về lớp của bạn vừa được nhật";
+		String link = "E_postWaiting.html";
+
+		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
+	}
+	
 	public static ThongBao ycTaoLop(User user) {
 		String tieude = "Yêu cầu tạo lớp";
 		String noidung = "Một yêu cầu tạo lớp mới được tạo và đang chờ phê duyệt";
 		String link = "E_listRegisterClass.html";
-		
-		
+
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
 	
@@ -115,7 +130,7 @@ public class ThongBaoModel{
 		if(invited) {
 			noidung = "Một gia sư mà bạn mời ứng tuyển đã ứng tuyển nhận lớp của bạn.";
 		}
-		String link = "E_postTutorAppling.html?id="+lopid;
+		String link = "E_postTutorApplying.html?id="+lopid;
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -144,6 +159,14 @@ public class ThongBaoModel{
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
 	
+	public static ThongBao khongCoUngTuyen(User user) {
+		String tieude = "Không có gia sư ứng tuyển";
+		String noidung = "Một lớp đã hết hạn ứng tuyển nhưng chưa có gia sư ứng tuyển nhận lớp.";
+		String link = "E_postHanded.html";
+		
+		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
+	}
+	
 	public static ThongBao chonDuocGiaSu(User user) {
 		String tieude = "Lớp đã chọn được gia sư";
 		String noidung = "Một lớp của bạn đã chọn được gia sư.";
@@ -156,7 +179,7 @@ public class ThongBaoModel{
 	public static ThongBao ycThanhToan(User user, String date) {
 		String tieude = "Yêu cầu thanh toán";
 		String noidung = "Vui lòng thanh toán phí nhận lớp trước " + date;
-		String link = "E_myDebt.html";
+		String link = "E_listDebt.html";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);

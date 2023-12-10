@@ -15,8 +15,10 @@ import demo.Enum.TrangThaiCongNo;
 import demo.Enum.TrangThaiLoiMoi;
 import demo.Enum.TrangThaiLop;
 import demo.Enum.TrangThaiUngTuyen;
+import demo.Enum.TrangThaiUser;
 import demo.Enum.VaiTro;
 import demo.dto.UngTuyenDTO;
+import demo.entity.GiaSu;
 import demo.entity.LoiMoi;
 import demo.entity.Lop;
 import demo.entity.UngTuyen;
@@ -61,8 +63,15 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 		u.setNgayungtuyen(new Date());
 		u.setTrangthaiungtuyen(TrangThaiUngTuyen.CHO);
 		u.setTrangthaicongno(TrangThaiCongNo.KHONG);
-		u.setGiasu(giaSuRepository.findById(ungtuyenDTO.getGiasuid()).get());
+		GiaSu giaSu = giaSuRepository.findById(ungtuyenDTO.getGiasuid()).get();
+		if(giaSu.getTrangthai()!=TrangThaiUser.DAPHEDUYET) {
+			throw new UserException("Tài khoản gia sư chưa được phê duyệt");
+		}
+		u.setGiasu(giaSu);
 		Lop lop = lopRepository.findById(ungtuyenDTO.getLopid()).get();
+		if(lop.getTrangthailop()!=TrangThaiLop.DANGTIM) {
+			throw new UserException("Lớp không tìm gia sư");
+		}
 		u.setLop(lop);
 		Optional<LoiMoi> loimoi = loiMoiRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLopid());
 		if(loimoi.isPresent()) {
@@ -101,6 +110,10 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 
 	@Override
 	public void deleteUngTuyen(Long id) {
+		UngTuyen u = ungTuyenRepository.findById(id).get();
+		LoiMoi l = u.getLoimoi();
+		l.setTrangthailoimoi(TrangThaiLoiMoi.CHO);
+		loiMoiRepository.save(l);
 		ungTuyenRepository.deleteById(id);
 	}
 
@@ -178,6 +191,7 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 	public List<UngTuyen> sapXepGiaSu(Long ungtuyenid) {
 		UngTuyen u = ungTuyenRepository.findById(ungtuyenid).get();
 		Lop lop = u.getLop();
+		lop.setNgaygiao(new Date());
 		lop.setTrangthailop(TrangThaiLop.DAGIAO);
 		
 		List<UngTuyen> list = lop.getDsungtuyen();
@@ -204,6 +218,13 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 		}
 		lop.setDsungtuyen(list);
 		lopRepository.save(lop);
+		return list;
+	}
+
+	@Override
+	public List<UngTuyen> findByGiaSuAndTrangThaiCongNo(Long giasuid, TrangThaiCongNo trangThaiCongNo) {
+		GiaSu giaSu = giaSuRepository.findById(giasuid).get();
+		List<UngTuyen> list = ungTuyenRepository.findByGiasuAndTrangthaicongno(giaSu, trangThaiCongNo);
 		return list;
 	}
 

@@ -114,4 +114,16 @@ public class ThanhToanController {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping(value = "/giasu/{giasuid}", produces = "application/json")
+	public BaseResponse<?> getListThanhToanByGiaSuId(
+			@PathVariable("giasuid") Long giasuid){
+		try {
+			List<ThanhToan> listThanhToan = thanhToanService.getListThanhToanByGiaSuId(giasuid);
+			List<ThanhToanDTO> data = ThanhToanMapper.toListDTO(listThanhToan);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		} catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
 }

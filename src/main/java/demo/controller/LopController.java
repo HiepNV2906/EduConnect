@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import demo.Enum.TrangThaiLop;
+import demo.Enum.TrangThaiUngTuyen;
 import demo.dto.LopDTO;
 import demo.entity.Lop;
 import demo.mapper.LopMapper;
@@ -200,12 +201,27 @@ public class LopController {
 		}
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('HOCVIEN')")
 	@GetMapping(value = "/hocvien", produces = "application/json")
 	public BaseResponse<?> getListLopByHocVienAndTrangThai(
 			@RequestParam(name = "hocvienid", defaultValue = "") Long hocvienid,
 			@RequestParam(name = "status", defaultValue = "") String status){
 		try {
 			List<Lop> listLop = lopService.findByHocVienAndTrangThai(hocvienid, TrangThaiLop.valueOf(status));
+			List<LopDTO> data = LopMapper.toListDTO(listLop);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('GIASU')")
+	@GetMapping(value = "/giasu", produces = "application/json")
+	public BaseResponse<?> getListLopByGiasuAndUngTuyenThanhcong(
+			@RequestParam(name = "giasuid", defaultValue = "") Long giasuid,
+			@RequestParam(name = "status", defaultValue = "") String status){
+		try {
+			List<Lop> listLop = lopService.findByGiaSuAndTrangThaiUngTuyen(giasuid, TrangThaiUngTuyen.valueOf(status));
 			List<LopDTO> data = LopMapper.toListDTO(listLop);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		}catch (Exception e) {

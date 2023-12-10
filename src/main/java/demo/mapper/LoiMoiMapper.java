@@ -15,8 +15,12 @@ public class LoiMoiMapper {
 		LoiMoiDTO u = new LoiMoiDTO();
 		u.setId(loiMoi.getId());
 		u.setGiasuid(loiMoi.getGiasu().getId());
+		u.setTengs(loiMoi.getGiasu().getHoten());
 		u.setLopid(loiMoi.getLop().getId());
-		u.setUngtuyenid(loiMoi.getUngTuyen().getId());
+		u.setTieudelop(loiMoi.getLop().getTieude());
+		if(loiMoi.getUngTuyen()!=null) {
+			u.setUngtuyenid(loiMoi.getUngTuyen().getId());
+		}
 		u.setNgaymoi(loiMoi.getNgaymoi());
 		u.setTrangthailoimoi(loiMoi.getTrangthailoimoi().toString());
 		return u;

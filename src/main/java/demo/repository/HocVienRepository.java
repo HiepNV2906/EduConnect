@@ -24,4 +24,11 @@ public interface HocVienRepository extends JpaRepository<HocVien, Long>{
 	
 	public List<HocVien> findByTrangthai(TrangThaiUser trangthai);
 	public Page<HocVien> findByTrangthai(TrangThaiUser trangthai, Pageable pageable);
+	
+	@Query(value = "SELECT DATE_FORMAT(ngaytao, '%m/%Y'), COUNT(*) "
+			+ "FROM hocvien "
+			+ "WHERE trangthai=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
+			+ "GROUP BY DATE_FORMAT(ngaytao, '%m/%Y') "
+			+ "ORDER BY DATE_FORMAT(ngaytao, '%m/%Y')", nativeQuery = true)
+	public List<Object[]> thongkehocvienmoitheothang(String from, String to, String trangthai);
 }

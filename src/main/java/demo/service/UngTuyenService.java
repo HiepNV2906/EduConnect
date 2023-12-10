@@ -25,6 +25,6 @@ public interface UngTuyenService {
 	public Page<UngTuyen> findByTrangThaiCongNo(TrangThaiCongNo trangThaiCongNo, Pageable pageable);
 	public UngTuyen updateTrangThaiUngTuyen(Long ungTuyenId, TrangThaiUngTuyen trangThaiUngTuyen);
 	public UngTuyen updateTrangThaiCongNo(Long ungTuyenId, TrangThaiCongNo trangThaiCongNo);
-	
+	public List<UngTuyen> findByGiaSuAndTrangThaiCongNo(Long giasuid, TrangThaiCongNo trangThaiCongNo);
 	public List<UngTuyen> sapXepGiaSu(Long ungtuyenid);
 }

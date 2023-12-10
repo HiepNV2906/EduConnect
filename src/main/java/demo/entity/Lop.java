@@ -86,6 +86,10 @@ public class Lop {
 	@Temporal(TemporalType.DATE)
 	private Date ngaytao;
 	
+	@Column(name = "ngaygiao", nullable = true)
+	@Temporal(TemporalType.DATE)
+	private Date ngaygiao;
+	
 	@Column(name = "hanungtuyen", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date hanungtuyen;

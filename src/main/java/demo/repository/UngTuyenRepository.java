@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import demo.Enum.TrangThaiCongNo;
 import demo.Enum.TrangThaiUngTuyen;
+import demo.entity.GiaSu;
 import demo.entity.UngTuyen;
 
 @Repository
@@ -41,4 +42,6 @@ public interface UngTuyenRepository extends JpaRepository<UngTuyen, Long>{
 	public List<UngTuyen> findByTrangthaicongno(TrangThaiCongNo trangThaiCongNo);
 	
 	public Page<UngTuyen> findByTrangthaicongno(TrangThaiCongNo trangThaiCongNo, Pageable pageable);
+	
+	public List<UngTuyen> findByGiasuAndTrangthaicongno(GiaSu giaSu, TrangThaiCongNo trangThaiCongNo);
 }

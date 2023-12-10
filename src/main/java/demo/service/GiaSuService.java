@@ -26,5 +26,5 @@ public interface GiaSuService {
 	public Page<GiaSu> findByTrangThai(TrangThaiUser trangThaiUser, Pageable pageable);
 	public List<GiaSu> findByTrangThai(TrangThaiUser trangThaiUser);
 	public GiaSu updateTrangThai(Long giasuId, TrangThaiUser trangThaiUser);
-	public List<GiaSu> findTop10New();
+	public List<GiaSu> findTop8New();
 }

@@ -187,8 +187,8 @@ public class GiaSuServiceImpl implements GiaSuService{
 	}
 
 	@Override
-	public List<GiaSu> findTop10New() {
-		List<GiaSu> list = giaSuRepository.findTop10ByOrderByNgaytaoDesc();
+	public List<GiaSu> findTop8New() {
+		List<GiaSu> list = giaSuRepository.findTop8ByTrangthaiOrderByNgaytaoDesc(TrangThaiUser.DAPHEDUYET);
 		return list;
 	}
 

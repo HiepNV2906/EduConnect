@@ -16,4 +16,5 @@ public interface ThanhToanService {
 	public List<ThanhToan> getListThanhToan();
 	public Page<ThanhToan> getListThanhToan(Pageable pageable);
 	public ThanhToan getListThanhToanByUngTuyenId(Long id);
+	public List<ThanhToan> getListThanhToanByGiaSuId(Long giasuid);
 }

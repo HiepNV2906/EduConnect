@@ -1,5 +1,6 @@
 package demo.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,10 +10,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import demo.Enum.TrangThaiLoiMoi;
+import demo.Enum.TrangThaiLop;
+import demo.Enum.TrangThaiUser;
 import demo.dto.LoiMoiDTO;
+import demo.entity.GiaSu;
 import demo.entity.LoiMoi;
+import demo.entity.Lop;
 import demo.entity.UngTuyen;
 import demo.exception.LoiMoiException;
+import demo.exception.UserException;
 import demo.mapper.LoiMoiMapper;
 import demo.mapper.ThongBaoModel;
 import demo.repository.GiaSuRepository;
@@ -44,8 +50,17 @@ public class LoiMoiServiceImpl implements LoiMoiService{
 		}
 		LoiMoi l = LoiMoiMapper.toEntity(loiMoiDTO);
 		l.setId(null);
-		l.setGiasu(giaSuRepository.findById(loiMoiDTO.getGiasuid()).get());
-		l.setLop(lopRepository.findById(loiMoiDTO.getLopid()).get());
+		l.setNgaymoi(new Date());
+		GiaSu giaSu = giaSuRepository.findById(loiMoiDTO.getGiasuid()).get();
+		if(giaSu.getTrangthai()!=TrangThaiUser.DAPHEDUYET) {
+			throw new UserException("Tài khoản gia sư chưa được phê duyệt");
+		}
+		l.setGiasu(giaSu);
+		Lop lop = lopRepository.findById(loiMoiDTO.getLopid()).get();
+		if(lop.getTrangthailop()!=TrangThaiLop.DANGTIM) {
+			throw new UserException("Lớp không tìm gia sư");
+		}
+		l.setLop(lop);
 		Optional<UngTuyen> ungtuyen = ungTuyenRepository.findByGiaSuIdAndLopId(loiMoiDTO.getGiasuid(), loiMoiDTO.getLopid());
 		if(ungtuyen.isPresent()) {
 			l.setUngTuyen(ungtuyen.get());
@@ -56,7 +71,7 @@ public class LoiMoiServiceImpl implements LoiMoiService{
 		l = loiMoiRepository.save(l);
 		
 //		Thông báo
-		thongBaoRepository.save(ThongBaoModel.nhanLoiMoiUngTuyen(l.getGiasu(), l.getId()));
+		thongBaoRepository.save(ThongBaoModel.nhanLoiMoiUngTuyen(l.getGiasu(), l.getLop().getId()));
 		
 		return l;
 	}
