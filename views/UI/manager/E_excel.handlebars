@@ -1,0 +1,89 @@
+<body class="animsition">
+    <div class="page-wrapper">
+
+        {{> navbarmanager}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            {{> headerdesktopmanager}}
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <h4>Xuất dữ liệu</h4>
+                        <div class="form-horizontal mt-4">
+                            <div class="row form-group">
+                                <div class="col-3 col-md-2">
+                                    <label for="text-input" class=" form-control-label">Nội dung</label>
+                                </div>
+                                <div class="col-9 col-md-10 loaibaocao">
+                                    <select name="select" id="select" class="form-control">
+                                        <option value="1">Báo cáo doanh thu</option>
+                                        <option value="2">Danh sách gia sư mới</option>
+                                        <option value="3">Danh sách học viên mới</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-3 col-md-2">
+                                    <label for="text-input" class=" form-control-label">Từ ngày</label>
+                                </div>
+                                <div class="col-9 col-md-4 from">
+                                    <input type="date" id="text-input" name="text-input" placeholder=""
+                                        class="form-control">
+                                </div>
+                                <div class="col-3 col-md-2">
+                                    <label for="text-input" class=" form-control-label">Đến ngày</label>
+                                </div>
+                                <div class="col-9 col-md-4 to">
+                                    <input type="date" id="text-input" name="text-input" placeholder=""
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <button id="nutxuatExcel" class="btn btn-success ml-3">Xuất Excel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="../../vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="../../vendor/slick/slick.min.js">
+    </script>
+    <script src="../../vendor/wow/wow.min.js"></script>
+    <script src="../../vendor/animsition/animsition.min.js"></script>
+    <script src="../../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="../../vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="../../vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../vendor/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="../../vendor/xlsx/dist/xlsx-populate.min.js"></script>
+    <script src="../../vendor/xlsx/dist/exceljs.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!-- Main JS-->
+    <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/manager/E_excel.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

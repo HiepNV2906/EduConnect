@@ -1,0 +1,69 @@
+* {
+    font-family: sans-serif;
+}
+
+#header-table {
+    margin-top: 80px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#history-table {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(190, 133, 8);
+    font-size: 24px;
+    text-align: center;
+}
+
+.history-header {
+    border-top: 2px solid #000;
+    color: aliceblue;
+    border-right: 2px solid #000;
+
+}
+
+.stt {
+    width: 14%;
+}
+
+.history-time {
+    width: 32%;
+}
+
+.history-temp {
+    width: 18%;
+}
+
+.history-hum {
+    width: 18%;
+}
+
+.history-lux {
+    width: 18%;
+}
+
+.h-para {
+    border-top: 2px solid #000;
+    color: #000;
+}
+
+#id-content {
+    background-color: rgb(175, 180, 180);
+}
+
+#time-content {
+    background-color: rgb(111, 102, 243);
+}
+
+#temp-content {
+    background-color: rgb(243, 108, 66);
+}
+
+#hum-content {
+    background-color: rgb(136, 245, 245);
+}
+
+#lux-content {
+    background-color: rgb(233, 230, 90);
+}

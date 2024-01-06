@@ -1,0 +1,180 @@
+<body class="animsition">
+    <div class="page-wrapper">
+        {{> navbaradmin}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            {{> headerdesktopadmin}}
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Chi tiết học viên</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-horizontal">
+                                            <div class="row form-group mb-5">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="row text-center">
+                                                        <label for="file-input" class="col-12 form-control-label">Ảnh
+                                                            đại diện</label>
+                                                        <div class="col-12 avata">
+                                                            <img src="../../img/user.jpg" class="form-avata" alt="">
+                                                        </div>
+                                                        <input type="file" id="file-input" name="file-input"
+                                                            class="col-12 form-control-file ipavata">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="row text-center">
+                                                        <label for="file-input" class="col-12 form-control-label">Mặt
+                                                            trước CCCD</label>
+                                                        <div class="col-12 cccd">
+                                                            <img src="../../img/bg-title-01.jpg" class="form-cccd"
+                                                                alt="">
+                                                        </div>
+                                                        <input type="file" id="file-input" name="file-input"
+                                                            class="col-12 form-control-file ipcccd">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">ID</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 maId">
+                                                    <p class="form-control-static">Username</p>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Họ tên</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 hoten">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Email</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 emailacc">
+                                                    <input type="email" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Giới tính</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 gioitinh">
+                                                    <select name="select" id="gender" class="form-control">
+                                                        <option value="Nam">Nam</option>
+                                                        <option value="Nữ">Nữ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Ngày sinh</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 ngaysinh">
+                                                    <input type="date" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Số điện
+                                                        thoại</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 sdt">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Quận/Huyện</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 quanhuyen">
+                                                    <select name="select" id="quan" class="form-control">
+                                                        <option value=" 1">Nam</option>
+                                                        <option value="1">Nữ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Địa chỉ</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 diachi">
+                                                    <input type="text" id="text-input" name="text-input" placeholder=""
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Trạng thái</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 trangthai">
+                                                    <select name="select" id="status" class="form-control quanhuyen">
+                                                        <option value="CHUAPHEDUYET">Chưa phê duyệt</option>
+                                                        <option value="DAPHEDUYET">Phê duyệt</option>
+                                                        <option value="DINHCHI">Đình chỉ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button id="nutcapnhat" class="btn btn-primary">Cập nhật</button>
+                                    <button id="nutxoa" class="btn btn-danger">Xoá</button>
+                                    <button id="nutquaylai" class="btn btn-warning">Quay lại</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="../../vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="../../vendor/slick/slick.min.js">
+    </script>
+    <script src="../../vendor/wow/wow.min.js"></script>
+    <script src="../../vendor/animsition/animsition.min.js"></script>
+    <script src="../../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="../../vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="../../vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!-- Main JS-->
+    <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/admin/E_detailStudent.js"></script>
+
+</body>

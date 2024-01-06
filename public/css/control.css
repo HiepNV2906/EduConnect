@@ -1,0 +1,242 @@
+.data {
+  width: 100%;
+  position: relative;
+}
+
+.container1 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 52px;
+  background-image: linear-gradient(rgb(45, 48, 45), rgb(173, 238, 151));
+}
+
+h4 {
+  margin: 20px 0;
+  text-align: center;
+  padding-top: 32px;
+}
+
+/* table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 12px 12px;
+  background-color: burlywood;
+  margin: 20px;
+} */
+
+.field {
+  font-size: 20px;
+  /* margin: 16px 32px; */
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: auto;
+}
+
+.field span {
+  color: red;
+  font-weight: 600;
+}
+
+.control {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-image: linear-gradient(rgb(212, 247, 14), rgb(235, 146, 14));
+  margin: 20px 20px 20px 0px;
+  border-radius: 20px;
+}
+
+.water {
+  display: flex;
+  justify-content: space-around;
+}
+
+.be-nuoc {
+  width: 200px;
+  height: 250px;
+  background-color: rgb(17, 206, 240);
+  border: #000 2px solid;
+  border-top: none;
+}
+
+.nuoc {
+  background-color: aliceblue;
+  height: 20%;
+}
+
+.infor-water {
+  margin: 0px 12px;
+}
+
+.control h3 {
+  margin-top: 20px;
+}
+
+.machines {
+  margin-top: 20px;
+}
+
+.machine {
+  width: 50px;
+}
+
+.device {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.onoff {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.onoff:hover {
+  opacity: 0.7;
+}
+
+.on {
+  background-color: green;
+}
+
+.off {
+  background-color: red;
+}
+
+.hidden {
+  background-color: gray !important;
+  /* cursor: alias; */
+}
+
+.device_label {
+  width: 150px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin: 0 0 0 40px;
+  font-size: 20px;
+}
+
+.device_label img {
+  width: 80px;
+  height: 80px;
+  margin-right: 16px;
+}
+
+/* #light1,
+#light2,
+#pump1,
+#air {
+  background-color: rgb(60, 235, 54);
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 12px;
+} */
+
+.date {
+  width: 50%;
+  background-color: rgb(255, 255, 255);
+  margin: 20px 20px 20px 0px;
+  border-radius: 20px;
+}
+
+.infor-user {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.show-time {
+  background-color: rgb(81, 156, 175);
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 0px 10px;
+}
+
+.backDoor {
+  background-color: #333;
+  position: relative;
+  width: 100px;
+  height: 200px;
+
+  margin: 0 auto;
+}
+
+#door {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.door {
+  background-color: brown;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 200px;
+  transform-origin: left;
+  /*Speed of the Door animation*/
+  transition: all 0.5s ease-in-out;
+}
+
+.doorOpen {
+  /*prespectiv creates the door open effect*/
+  transform: perspective(1000px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}
+
+.doorClose {
+  transform: perspective(1000px) translateZ(0px) translateX(0px) translateY(0px) rotateY(0deg);
+}
+
+#passdoor {
+  border: #000 solid 1px;
+  padding: 8px;
+  width: 200px;
+}
+
+#form {
+  text-align: center;
+  margin-top: 12px;
+}
+
+#open-door {
+  padding: 8px 12px;
+  background-color: rgb(58, 231, 101);
+  margin: 8px auto;
+  border-radius: 10%;
+  color: aliceblue;
+  display: block;
+}
+
+.warning,
+.export {
+  margin: 48px auto;
+  text-align: center;
+}
+
+.warning_control {
+  padding: 20px 32px;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.warning_control:hover {
+  opacity: 0.9;
+}

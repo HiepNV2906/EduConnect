@@ -1,0 +1,154 @@
+<body class="animsition">
+    <div class="page-wrapper">
+        {{> navbarmanager}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            {{> headerdesktopmanager}}
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-12 from">
+                                                <label for="text-input" class=" form-control-label">Từ ngày: </label>
+                                                <input type="date" id="text-input" name="text-input" placeholder=""
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-12 to">
+                                                <label for="text-input" class=" form-control-label">Đến ngày: </label>
+                                                <input type="date" id="text-input" name="text-input" placeholder=""
+                                                    class="form-control">
+                                            </div>
+                                            <div class="col-md-4 col-12" style="align-self: self-end;">
+                                                <button id="nutxemthongke" class="btn btn-primary">Xem</button>
+                                                <!-- <button id="nutxuatexcel" class="btn btn-success ml-2">Xuất
+                                                    Excel</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="default-tab">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab"
+                                                        href="#nav-home" role="tab" aria-controls="nav-home"
+                                                        aria-selected="false">Doanh thu</a>
+                                                    <a class="nav-item nav-link active show" id="nav-profile-tab"
+                                                        data-toggle="tab" href="#nav-profile" role="tab"
+                                                        aria-controls="nav-profile" aria-selected="true">Thành viên
+                                                        mới</a>
+                                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
+                                                        href="#nav-contact" role="tab" aria-controls="nav-contact"
+                                                        aria-selected="false">Lớp</a>
+                                                    <a class="nav-item nav-link" id="nav-tutor-tab" data-toggle="tab"
+                                                        href="#nav-tutor" role="tab" aria-controls="nav-tutor"
+                                                        aria-selected="false">Phân bố theo Quận/Huyện</a>
+                                                    <a class="nav-item nav-link" id="nav-class-tab" data-toggle="tab"
+                                                        href="#nav-class" role="tab" aria-controls="nav-class"
+                                                        aria-selected="false">Phân bố theo Học phí</a>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                                <div class="row tab-pane fade" id="nav-home" role="tabpanel"
+                                                    aria-labelledby="nav-home-tab">
+                                                    <div class="col-12">
+                                                        <div class="au-card m-b-30">
+                                                            <div class="au-card-inner" style="height:600px;">
+                                                                <h3 class="title-2 m-b-40">Doanh thu</h3>
+                                                                <canvas id="revenue-chart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade active show" id="nav-profile" role="tabpanel"
+                                                    aria-labelledby="nav-profile-tab">
+                                                    <div class="col-12">
+                                                        <div class="au-card m-b-30">
+                                                            <div class="au-card-inner" style="height:600px;">
+                                                                <h3 class="title-2 m-b-40">Thành viên mới</h3>
+                                                                <canvas id="member-chart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                                    aria-labelledby="nav-contact-tab">
+                                                    <div class="col-12">
+                                                        <div class="au-card m-b-30">
+                                                            <div class="au-card-inner" style="height:600px;">
+                                                                <h3 class="title-2 m-b-40">Lớp</h3>
+                                                                <canvas id="class-chart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="nav-tutor" role="tabpanel"
+                                                    aria-labelledby="nav-tutor-tab">
+                                                    <div class="col-12">
+                                                        <div class="au-card m-b-30">
+                                                            <div class="au-card-inner" style="height:800px;">
+                                                                <h3 class="title-2 m-b-40">Phân bố theo quận huyện</h3>
+                                                                <canvas id="district-chart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="nav-class" role="tabpanel"
+                                                    aria-labelledby="nav-class-tab">
+                                                    <div class="col-12">
+                                                        <div class="au-card m-b-30">
+                                                            <div class="au-card-inner" style="height:600px;">
+                                                                <h3 class="title-2 m-b-40">Phân bố theo học phí</h3>
+                                                                <canvas id="tuition-chart"></canvas>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="../../vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="../../vendor/slick/slick.min.js">
+    </script>
+    <script src="../../vendor/wow/wow.min.js"></script>
+    <script src="../../vendor/animsition/animsition.min.js"></script>
+    <script src="../../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="../../vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="../../vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!-- Main JS-->
+    <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/manager/E_static.js"></script>
+
+</body>

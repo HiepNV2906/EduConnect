@@ -1,0 +1,258 @@
+<body>
+    {{> navbarhome}}
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Đăng ký làm gia sư</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <!-- form start -->
+    <div class="section-top-border container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h3 class="mb-30">Ảnh đại diện</h3>
+                <form action="#">
+                    <div class="mt-10 row avata_set">
+                        <img src="../../img/avatadefault.png" alt="" class="imgavata">
+                    </div>
+                    <div class="mt-10 row avata_set">
+                        <input type="file" name="avata" required class="ipavata single-input col-lg-6">
+                    </div>
+                    <script>
+                        var imgAvataTag = document.querySelector(".imgavata");
+                        var ipAvataTag = document.querySelector(".ipavata");
+
+                        ipAvataTag.addEventListener('change', handleOnchange);
+
+                        function handleOnchange(event) {
+                            const file = event.target.files[0];
+
+                            // Create a FileReader object
+                            const reader = new FileReader();
+
+                            // Set up the reader onload event
+                            reader.onload = function (e) {
+                                // Set the preview image source to the data URL
+                                imgAvataTag.src = e.target.result;
+                            };
+
+                            // Read the file as a data URL
+                            reader.readAsDataURL(file);
+                        } 
+                    </script>
+                </form>
+                <h3 class="mb-30 mt-30">Thông tin cá nhân</h3>
+                <form action="#">
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Họ tên*:</span>
+                        <input type="text" name="first_name" required class="single-input col-lg-9 hoten">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Giới tính*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="gioitinh">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Ngày sinh*:</span>
+                        <input type="date" name="date_of_birth" required class="single-input col-lg-9 ngaysinh">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số điện thoại*:</span>
+                        <input type="text" name="last_name" required class="single-input col-lg-9 sdt">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Quận/Huyện*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="quanhuyen">
+                                <option value=" 1">Nam</option>
+                                <option value="1">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Địa chỉ*:</span>
+                        <input type="text" name="address" required class="single-input col-lg-9 diachi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Quê quán*:</span>
+                        <input type="text" name="hometown" required class="single-input col-lg-9 quequan">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Mặt trước CCCD*:</span>
+                        <input type="file" name="cccd" required class="single-input col-lg-9 cccd">
+                    </div>
+                </form>
+                <h3 class="mb-30 mt-30">Tài khoản</h3>
+                <form action="#">
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Email*:</span>
+                        <input type="email" name="email" required class="single-input col-lg-9 email">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Mật khẩu*:</span>
+                        <input type="password" name="password" required class="single-input col-lg-9 password">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Nhập lại mật khẩu*:</span>
+                        <input type="password" name="repassword" required class="single-input col-lg-9 repassword">
+                    </div>
+                </form>
+                <h3 class="mb-30 mt-30">Học vấn</h3>
+                <form action="#">
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Nghề nghiệp*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="nghenghiep">
+                                <option value="Sinh viên">Sinh viên</option>
+                                <option value="Giáo viên">Giáo viên</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row nghenghiepkhac" style="display: none;">
+                        <span class="col-lg-3 label_form"> Nghề nghiệp khác:</span>
+                        <input type="text" class="single-input col-lg-9">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Trường (Đại học/Cao đẳng)*:</span>
+                        <input type="text" name="university" required class="single-input col-lg-9 truong">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Giới thiệu bản thân:</span>
+                        <textarea class="single-textarea col-lg-9 introduction gioithieu"></textarea>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Kinh nghiệm:</span>
+                        <textarea class="single-textarea col-lg-9 experiences kinhnghiem"></textarea>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Thành tích:</span>
+                        <textarea class="single-textarea col-lg-9 achievements thanhtich"></textarea>
+                    </div>
+                </form>
+                <h3 class="mb-30 mt-30">Khu vực có thể dạy</h3>
+                <form action="#">
+                    <span>Quận</span>
+                    <div class="mt-10 mb-30 row quanHN">
+                        <!-- JS -->
+                    </div>
+                    <span>Huyện</span>
+                    <div class="mt-10 row huyenHN">
+                        <!-- JS -->
+                    </div>
+                </form>
+                <h3 class="mb-30 mt-30">
+                    <span class="">Chủ đề dạy</span>
+                    <span class="genric-btn warning-border circle medium addSubjectBtn"
+                        onclick="addNewSubject()">+</span>
+                </h3>
+                <form action="#" class="multi_subject">
+                    <div class="mt-10 row chude" id="subject_row1">
+                        <span class="col-lg-1 label_form"> 1:</span>
+                        <div class="default-select col-lg-3" id="default-select">
+                            <select class="mon" onchange="reloadSubjectLevel('subject_row1')">
+                                <option value="1">Toán</option>
+                                <option value="1">Văn</option>
+                                <option value="1">Tiếng Anh</option>
+                                <option value="1">Tiếng Việt</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                                <option value="1">Lịch Sử</option>
+                            </select>
+                        </div>
+                        <div class="default-select col-lg-3" id="default-select">
+                            <select class="trinhdo">
+                                <option value="" data-display="Trình độ">Trình độ</option>
+                            </select>
+                        </div>
+                        <span class="col-lg-1 genric-btn danger-border circle medium deleteSubjectBtn"
+                            onclick="removeSubject('subject_row1')">
+                            x</span>
+                    </div>
+
+                </form>
+            </div>
+            <div class="mt-30 col-12 text-center">
+                <div id="nutdangky" class="boxed-btn3">Đăng ký</div>
+            </div>
+        </div>
+    </div>
+    <!-- form end -->
+
+    <!-- footer start -->
+    {{> footerhome}}
+    <!--/ footer end  -->
+
+
+    <!-- JS here -->
+    <script src="../../js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/owl.carousel.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
+    <script src="../../js/ajax-form.js"></script>
+    <script src="../../js/waypoints.min.js"></script>
+    <script src="../../js/jquery.counterup.min.js"></script>
+    <script src="../../js/imagesloaded.pkgd.min.js"></script>
+    <script src="../../js/scrollIt.js"></script>
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <script src="../../js/wow.min.js"></script>
+    <script src="../../js/nice-select.min.js"></script>
+    <script src="../../js/jquery.slicknav.min.js"></script>
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/gijgo.min.js"></script>
+
+
+    <!--contact js-->
+    <script src="../../js/contact.js"></script>
+    <script src="../../js/jquery.ajaxchimp.min.js"></script>
+    <script src="../../js/jquery.form.js"></script>
+    <script src="../../js/jquery.validate.min.js"></script>
+    <script src="../../js/mail-script.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/home/E_register_tutor.js"></script>
+
+</body>

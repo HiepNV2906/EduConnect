@@ -1,0 +1,189 @@
+<body>
+    {{> navbarhome}}
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Đăng bài tìm gia sư</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <!-- form start -->
+    <div class="section-top-border container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <h3 class="mb-30 mt-30">Thông tin lớp</h3>
+                <form action="#">
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Tiêu đề*:</span>
+                        <input type="text" name="title" required class="single-input col-lg-9 tieude">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Quận/Huyện*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="quanhuyen">
+                                <option value=" 1">Nam</option>
+                                <option value="1">Nữ</option>
+                                <option value="1">Nam + Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Địa chỉ*:</span>
+                        <input type="text" name="address" required class="single-input col-lg-9 diachi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Học phí/buổi*:</span>
+                        <input type="number" name="tuition" min="1000" step="1000" value="1000" required
+                            class="single-input col-lg-9 hocphi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số buổi/tuần*:</span>
+                        <input type="number" name="numlession" min="1" max="7" value="1" required
+                            class="single-input col-lg-9 sobuoi">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số giờ/buổi*:</span>
+                        <input type="number" name="numhour" min="1" max="5" step="0.5" value="1" required
+                            class="single-input col-lg-9 sogio">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Số HS*:</span>
+                        <input type="number" name="numstudent" min="1" value="1" required
+                            class="single-input col-lg-9 sohs">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Giới tính HS*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="gioitinhhs">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Nam + Nữ">Nam + Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Mô tả học sinh:</span>
+                        <textarea class="single-textarea col-lg-9 detailstudent motahs"></textarea>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Hình thức*:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="hinhthuc">
+                                <option value="Online">Online</option>
+                                <option value="Offline">Offline</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Chủ đề dạy*:</span>
+                        <div class="default-select col-lg-3" id="default-select">
+                            <select class="mon">
+                                <option value=" 1">Toán</option>
+                                <option value="1">Văn</option>
+                                <option value="1">Tiếng Anh</option>
+                                <option value="1">Tiếng Việt</option>
+                                <option value="1">Lịch Sử</option>
+                            </select>
+                        </div>
+                        <div class="default-select col-lg-3" id="default-select">
+                            <select class="trinhdo">
+                                <option value="" data-display="Trình độ">Trình độ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Hạn ứng tuyển*:</span>
+                        <input type="date" name="numstudent" required class="single-input col-lg-9 hanungtuyen">
+                    </div>
+                </form>
+                <h3 class="mb-30 mt-30">Yêu cầu gia sư</h3>
+                <form action="#">
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Nghề nghiệp:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="nghenghiepgs">
+                                <option value="">Không</option>
+                                <option value="Sinh viên">Sinh viên</option>
+                                <option value="Giáo viên">Giáo viên</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Giới tính GS:</span>
+                        <div class="default-select col-lg-9" id="default-select">
+                            <select class="gioitinhgs">
+                                <option value="">Không</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Trường:</span>
+                        <input type="text" name="university" required class="single-input col-lg-9 truonggs">
+                    </div>
+                    <div class="mt-10 row">
+                        <span class="col-lg-3 label_form"> Yêu cầu khác:</span>
+                        <textarea class="single-textarea col-lg-9 morerequirement yeucaukhac"></textarea>
+                    </div>
+                </form>
+                <h3 class="mb-30 mt-30">Thời gian có thể học</h3>
+                <div class="single_wrap">
+                    <div class="block-calender">
+                        <!-- JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-30 col-12 text-center">
+                <div id="nutdangbai" class="boxed-btn3">Đăng bài</div>
+            </div>
+        </div>
+    </div>
+    <!-- form end -->
+
+    <!-- footer start -->
+    {{> footerhome}}
+    <!--/ footer end  -->
+
+
+    <!-- JS here -->
+    <script src="../../js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../../js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/owl.carousel.min.js"></script>
+    <script src="../../js/isotope.pkgd.min.js"></script>
+    <script src="../../js/ajax-form.js"></script>
+    <script src="../../js/waypoints.min.js"></script>
+    <script src="../../js/jquery.counterup.min.js"></script>
+    <script src="../../js/imagesloaded.pkgd.min.js"></script>
+    <script src="../../js/scrollIt.js"></script>
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <script src="../../js/wow.min.js"></script>
+    <script src="../../js/nice-select.min.js"></script>
+    <script src="../../js/jquery.slicknav.min.js"></script>
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/gijgo.min.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!--contact js-->
+    <script src="../../js/contact.js"></script>
+    <script src="../../js/jquery.ajaxchimp.min.js"></script>
+    <script src="../../js/jquery.form.js"></script>
+    <script src="../../js/jquery.validate.min.js"></script>
+    <script src="../../js/mail-script.js"></script>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/home/E_postclass.js"></script>
+</body>

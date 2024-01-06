@@ -1,0 +1,127 @@
+<body class="animsition">
+    <div class="page-wrapper">
+        {{> navbartutor}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            {{> headerdesktoptutor}}
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Thanh toán phí nhận lớp</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <div class="form-horizontal">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Số tiền</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 sotien xacthuc">
+                                                    <span class="form-control-static">Username</span> VND
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class="form-control-label">Nội dung thanh toán</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 noidung">
+                                                    <textarea name="textarea-input" id="textarea-input" rows="9"
+                                                        placeholder="Content..." class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Ngân hàng</label>
+                                                </div>
+                                                <div class="col-12 col-md-9 nganhang">
+                                                    <select name="bankcode" id="bankcode" class="form-control">
+                                                        <option value="VNPAYQR">VNPAYQR</option>
+                                                        <option value="MBAPP">Ung dung MobileBanking</option>
+                                                        <option value="VNBANK">LOCAL BANK</option>
+                                                        <option value="IB">INTERNET BANKING</option>
+                                                        <option value="ATM">ATM CARD</option>
+                                                        <option value="INTCARD">INTERNATIONAL CARD</option>
+                                                        <option value="VISA">VISA</option>
+                                                        <option value="MASTERCARD"> MASTERCARD</option>
+                                                        <option value="JCB">JCB</option>
+                                                        <option value="UPI">UPI</option>
+                                                        <option value="VIB">VIB</option>
+                                                        <option value="VIETCAPITALBANK">VIETCAPITALBANK</option>
+                                                        <option value="SCB">Ngan hang SCB</option>
+                                                        <option value="NCB">Ngan hang NCB</option>
+                                                        <option value="SACOMBANK">Ngan hang SacomBank </option>
+                                                        <option value="EXIMBANK">Ngan hang EximBank </option>
+                                                        <option value="MSBANK">Ngan hang MSBANK </option>
+                                                        <option value="NAMABANK">Ngan hang NamABank </option>
+                                                        <option value="VNMART"> Vi dien tu VnMart</option>
+                                                        <option value="VIETINBANK">Ngan hang Vietinbank </option>
+                                                        <option value="VIETCOMBANK">Ngan hang VCB </option>
+                                                        <option value="HDBANK">Ngan hang HDBank</option>
+                                                        <option value="DONGABANK">Ngan hang Dong A</option>
+                                                        <option value="TPBANK">Ngan hang TPBank </option>
+                                                        <option value="OJB">Ngan hang OceanBank</option>
+                                                        <option value="BIDV">Ngan hang BIDV </option>
+                                                        <option value="TECHCOMBANK">Ngan hang Techcombank </option>
+                                                        <option value="VPBANK">Ngan hang VPBank </option>
+                                                        <option value="AGRIBANK">Ngan hang Agribank </option>
+                                                        <option value="MBBANK">Ngan hang MBBank </option>
+                                                        <option value="ACB">Ngan hang ACB </option>
+                                                        <option value="OCB">Ngan hang OCB </option>
+                                                        <option value="IVB">Ngan hang IVB </option>
+                                                        <option value="SHB">Ngan hang SHB </option>
+                                                        <option value="APPLEPAY">Apple Pay </option>
+                                                    </select>
+                                                </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <button id='nutthanhtoan' class="btn btn-success">Tiếp tục >></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="../../vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="../../vendor/slick/slick.min.js">
+    </script>
+    <script src="../../vendor/wow/wow.min.js"></script>
+    <script src="../../vendor/animsition/animsition.min.js"></script>
+    <script src="../../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="../../vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="../../vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!-- Main JS-->
+    <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/tutor/E_payment.js"></script>
+
+</body>

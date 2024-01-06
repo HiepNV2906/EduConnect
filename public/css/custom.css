@@ -1,0 +1,359 @@
+/* Style for page candidates details */
+.basic-information {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 30px 30px 20px;
+    -webkit-box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .07);
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .07);
+    border: 1px solid #eaecf1;
+    display: table;
+    width: 100%;
+}
+
+.profile-content {
+    margin-left: 7%;
+}
+
+.profile-detail img {
+    border: 4px solid rgba(107, 121, 124, 0.2);
+}
+
+.basic-information h2 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #404b4d;
+}
+
+.basic-information h2 span {
+    color: #da0833;
+    font-size: 15.5px;
+    display: block;
+}
+
+.basic-information p {
+    font-size: 17px;
+}
+
+.basic-information img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.information {
+    margin: 0;
+    padding: 0;
+}
+
+.information li {
+    display: block;
+    padding: 10px 0;
+    font-size: 15.5;
+    list-style: none;
+    border-bottom: 1px solid rgba(107, 121, 124, 0.1);
+}
+
+.information li span {
+    display: inline-block;
+    font-weight: bold;
+    width: 150px;
+}
+
+.social {
+    margin: 0;
+    padding: 50px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.social li {
+    list-style: none;
+    float: left;
+    margin-bottom: 7px;
+}
+
+.social li a {
+    font-size: 15px;
+    color: #6b797c;
+}
+
+.social li:hover a,
+.social li:focus a {
+    text-decoration: none;
+}
+
+a.facebook {
+    width: 90%;
+    display: inline-block;
+    padding: 4px 5px;
+    border-radius: 50px;
+}
+
+a.google {
+    border: 1px solid #d6201f;
+    width: 90%;
+    display: inline-block;
+    padding: 4px 5px;
+    border-radius: 50px;
+}
+
+a.twitter {
+    border: 1px solid #1da0f2;
+    width: 90%;
+    display: inline-block;
+    padding: 4px 5px;
+    border-radius: 50px;
+}
+
+a.linkedin {
+    border: 1px solid #0077b5;
+    width: 90%;
+    display: inline-block;
+    padding: 4px 5px;
+    border-radius: 50px;
+}
+
+a.instagram {
+    border: 1px solid #d3368c;
+    width: 90%;
+    display: inline-block;
+    padding: 4px 5px;
+    border-radius: 50px;
+}
+
+.social li i {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #ffffff;
+    line-height: 50px;
+    text-align: center;
+    margin-right: 7px;
+}
+
+.social li .facebook i {
+    background: #295396;
+}
+
+.social li .google i {
+    background: #d6201f;
+}
+
+.social li .twitter i {
+    background: #1da0f2;
+}
+
+.social li .linkedin i {
+    background: #0077b5;
+}
+
+.social li .instagram i {
+    background: #d3368c;
+    ;
+}
+
+.panel {
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    box-shadow: none;
+    border: none;
+    width: 100%;
+}
+
+.panel-default>.panel-heading {
+    background: #0581ef;
+    box-shadow: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 4px;
+    margin: 16px 0;
+}
+
+.basic-information p {
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.service-tag {
+    background-color: #da0833;
+    border-radius: 0 2px 2px 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2727272727;
+    margin: 2px 4px 2px 10px;
+    padding: 3px 7px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.service-tag:after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 4px;
+    position: absolute;
+    top: 8px;
+    left: -2px;
+    width: 4px;
+}
+
+.service-tag:before {
+    border-top: 10px solid transparent;
+    border-right: 8px solid #da0833;
+    border-bottom: 10px solid transparent;
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: -8px;
+    width: 0;
+}
+
+.panel-body ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.panel-body ul li {
+    list-style: none;
+    line-height: 1.7;
+    padding: 0 0 6px 10px;
+    margin: 10px 0;
+    margin-left: 16px;
+}
+
+.panel-body ul li:before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: "\f067";
+    color: #da0833;
+    padding: 8px 12px 8px 5px;
+    margin-left: -31px;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .social li {
+        width: 100%;
+    }
+
+    .main-banner select {
+        margin-bottom: 10px;
+    }
+
+    .company-content p span {
+        display: block;
+    }
+
+    .input-group {
+        width: 100%;
+        display: block;
+    }
+
+    .newsletter button.btn.btn-default {
+        margin: 5px 0;
+        width: 100%;
+        height: 42px;
+        border-radius: 2px;
+    }
+
+    .input-group-addon,
+    .input-group-btn {
+        display: table;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .inner-banner h2 {
+        margin-bottom: 2px;
+    }
+
+    .inner-banner p {
+        margin-top: 2px;
+    }
+
+    .basic-information p {
+        font-size: 14px;
+        line-height: 1.9;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .main-banner h2 {
+        font-size: 82px;
+    }
+
+    .inner-banner h2 {
+        font-size: 82px;
+    }
+
+    /* .social li {
+        width: 20%;
+    } */
+
+    .newsletter button.btn.btn-default,
+    .newsletter input.form-control {
+        height: 60px;
+        padding: 0 20px;
+    }
+}
+
+
+/* CSS for calendar */
+.genric-btn.primary-border.ng-view:hover {
+    color: #ff5e13;
+    border: 1px solid #ff5e13;
+    background: #fff;
+    cursor: auto;
+}
+
+.genric-btn.primary-border.ng-view.calendar-active {
+    color: #fff;
+    background: #ff5e13;
+    border: 1px solid transparent;
+}
+
+.time-in-day {
+    justify-content: space-around;
+}
+
+.time-in-day label {
+    font-size: 16px;
+}
+
+.ng-binding {
+    font-size: 16px;
+    color: #474a4d;
+    font-weight: 400;
+    padding-left: 25px;
+}
+
+.day-in-week {
+    padding: 8px 0;
+}
+
+.label_form {
+    display: flex;
+    align-items: center;
+}
+
+.avata_set {
+    justify-content: center;
+}
+
+.avata_set img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #0683f1;
+}
