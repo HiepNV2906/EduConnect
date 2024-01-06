@@ -1,5 +1,6 @@
 package demo.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -17,4 +18,5 @@ public interface ThanhToanService {
 	public Page<ThanhToan> getListThanhToan(Pageable pageable);
 	public ThanhToan getListThanhToanByUngTuyenId(Long id);
 	public List<ThanhToan> getListThanhToanByGiaSuId(Long giasuid);
+	public List<ThanhToan> getThanhToanFromTo(String from, String to) throws ParseException;
 }

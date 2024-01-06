@@ -15,11 +15,11 @@ public class ThongBaoModel{
 		String noidung = "Bạn đã đăng ký thông tin và tài khoản thành công. Tài khoản của bạn đang chờ xác thực và phê duyệt.";
 		String link = "";
 		if(user.getVaitro()==VaiTro.ADMIN) {
-			link = "E_profileAdmin.html";
+			link = "/admin";
 		} else if(user.getVaitro()==VaiTro.HOCVIEN) {
-			link = "E_profileStudent.html";
+			link = "/hocvien";
 		} else {
-			link = "E_profileTutor.html";
+			link = "/giasu";
 		}
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -30,11 +30,11 @@ public class ThongBaoModel{
 		String noidung = "Tài khoản của bạn vừa được cập nhật thông tin.";
 		String link = "";
 		if(user.getVaitro()==VaiTro.ADMIN) {
-			link = "E_profileAdmin.html";
+			link = "/admin";
 		} else if(user.getVaitro()==VaiTro.HOCVIEN) {
-			link = "E_profileStudent.html";
+			link = "/hocvien";
 		} else {
-			link = "E_profileTutor.html";
+			link = "/giasu";
 		}
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -45,11 +45,11 @@ public class ThongBaoModel{
 		String noidung = "Tài khoản của bạn đã được xác thực và phê duyệt thành công.";
 		String link = "";
 		if(user.getVaitro()==VaiTro.ADMIN) {
-			link = "E_profileAdmin.html";
+			link = "/admin";
 		} else if(user.getVaitro()==VaiTro.HOCVIEN) {
-			link = "E_profileStudent.html";
+			link = "/hocvien";
 		} else {
-			link = "E_profileTutor.html";
+			link = "/giasu";
 		}	
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -58,7 +58,7 @@ public class ThongBaoModel{
 	public static ThongBao ycDangKyTaiKhoanGiasu(User user) {
 		String tieude = "Gia sư mới";
 		String noidung = "Một tài khoản gia sư vừa được tạo và đang chờ xác thực.";
-		String link = "E_listRegisterTutor.html";
+		String link = "/admin/dangkygiasu";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -67,7 +67,7 @@ public class ThongBaoModel{
 	public static ThongBao ycDangKyTaiKhoanHocVien(User user) {
 		String tieude = "Học viên mới";
 		String noidung = "Một tài khoản học viên vừa được tạo và đang chờ xác thực.";
-		String link = "E_listRegisterStudent.html";
+		String link = "/admin/danhsachhocvien";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -85,7 +85,7 @@ public class ThongBaoModel{
 	public static ThongBao taoLopThanhCong(User user) {
 		String tieude = "Gửi yêu cầu tìm gia sư thành công";
 		String noidung = "Yêu cầu tạo lớp tìm gia sư mới được tạo. Vui lòng chờ phê duyệt";
-		String link = "E_postWaiting.html";
+		String link = "/hocvien/lopchoduyet";
 
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -93,7 +93,7 @@ public class ThongBaoModel{
 	public static ThongBao capNhatLop(User user) {
 		String tieude = "Lớp của bạn vừa được cập nhật";
 		String noidung = "Thông tin về lớp của bạn vừa được nhật";
-		String link = "E_postWaiting.html";
+		String link = "/hocvien/lopchoduyet";
 
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -101,7 +101,7 @@ public class ThongBaoModel{
 	public static ThongBao ycTaoLop(User user) {
 		String tieude = "Yêu cầu tạo lớp";
 		String noidung = "Một yêu cầu tạo lớp mới được tạo và đang chờ phê duyệt";
-		String link = "E_listRegisterClass.html";
+		String link = "/admin/yeucautaolop";
 
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -109,7 +109,7 @@ public class ThongBaoModel{
 	public static ThongBao pheDuyetLop(User user) {
 		String tieude = "Phê duyệt yêu cầu tạo lớp";
 		String noidung = "Lớp của bạn đã được phê duyệt và bắt đầu có thể tìm kiếm gia sư.";
-		String link = "E_postFinding.html";
+		String link = "/hocvien/lopdangtim";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -118,7 +118,7 @@ public class ThongBaoModel{
 	public static ThongBao nhanLoiMoiUngTuyen(User user, Long idlop) {
 		String tieude = "Lời mời ứng tuyển";
 		String noidung = "Bạn nhận được một lời mời ứng tuyển nhận lớp từ học viên.";
-		String link = "../home/E_job_details.html?id="+idlop;
+		String link = "/chitietlop?id="+idlop;
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -130,7 +130,7 @@ public class ThongBaoModel{
 		if(invited) {
 			noidung = "Một gia sư mà bạn mời ứng tuyển đã ứng tuyển nhận lớp của bạn.";
 		}
-		String link = "E_postTutorApplying.html?id="+lopid;
+		String link = "/hocvien/lop/ungtuyen?id="+lopid;
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -142,7 +142,7 @@ public class ThongBaoModel{
 			noidung = "Chúc mừng! Ứng tuyển nhận lớp của bạn thành công. Bạn vui lòng liên hệ với học viên "
 					+ "thông báo nhận lớp và thanh toán phí nhận lớp trong thời gian quy định.";
 		}
-		String link = "E_classApplied.html";
+		String link = "/giasu/lichsuungtuyen";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -154,7 +154,7 @@ public class ThongBaoModel{
 		if(fullslot) {
 			noidung = "Một lớp có số lượng gia sư ứng tuyển đạt tối đa và có thể sắp xếp gia sư nhận lớp.";
 		}
-		String link = "E_listClassHanding.html";
+		String link = "/admin/lopcangiao";
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -162,7 +162,7 @@ public class ThongBaoModel{
 	public static ThongBao khongCoUngTuyen(User user) {
 		String tieude = "Không có gia sư ứng tuyển";
 		String noidung = "Một lớp đã hết hạn ứng tuyển nhưng chưa có gia sư ứng tuyển nhận lớp.";
-		String link = "E_postHanded.html";
+		String link = "/hocvien/lopdagiao";
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -171,7 +171,7 @@ public class ThongBaoModel{
 		String tieude = "Lớp đã chọn được gia sư";
 		String noidung = "Một lớp của bạn đã chọn được gia sư.";
 		
-		String link = "E_postHanded.html";
+		String link = "/hocvien/lopdagiao";
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
@@ -179,7 +179,7 @@ public class ThongBaoModel{
 	public static ThongBao ycThanhToan(User user, String date) {
 		String tieude = "Yêu cầu thanh toán";
 		String noidung = "Vui lòng thanh toán phí nhận lớp trước " + date;
-		String link = "E_listDebt.html";
+		String link = "/giasu/congno";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
@@ -188,7 +188,7 @@ public class ThongBaoModel{
 	public static ThongBao lichSuThanhToan(User user) {
 		String tieude = "Lịch sử thanh toán";
 		String noidung = "Tài khoản " + user.getEmail() + " vừa thanh toán phí nhận lớp";
-		String link = "E_listTransaction.html";
+		String link = "/admin/lichsugiaodich";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);

@@ -18,6 +18,7 @@ import demo.entity.LoiMoi;
 import demo.entity.Lop;
 import demo.entity.UngTuyen;
 import demo.exception.LoiMoiException;
+import demo.exception.LopException;
 import demo.exception.UserException;
 import demo.mapper.LoiMoiMapper;
 import demo.mapper.ThongBaoModel;
@@ -58,7 +59,7 @@ public class LoiMoiServiceImpl implements LoiMoiService{
 		l.setGiasu(giaSu);
 		Lop lop = lopRepository.findById(loiMoiDTO.getLopid()).get();
 		if(lop.getTrangthailop()!=TrangThaiLop.DANGTIM) {
-			throw new UserException("Lớp không tìm gia sư");
+			throw new LopException("Lớp không tìm gia sư");
 		}
 		l.setLop(lop);
 		Optional<UngTuyen> ungtuyen = ungTuyenRepository.findByGiaSuIdAndLopId(loiMoiDTO.getGiasuid(), loiMoiDTO.getLopid());

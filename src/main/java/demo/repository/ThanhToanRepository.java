@@ -1,5 +1,6 @@
 package demo.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,4 +26,10 @@ public interface ThanhToanRepository extends JpaRepository<ThanhToan, String>{
 			+ "GROUP BY DATE_FORMAT(ngaythanhtoan, '%m/%Y') "
 			+ "ORDER BY DATE_FORMAT(ngaythanhtoan, '%m/%Y')", nativeQuery = true)
 	public List<Object[]> thongKeDoanhThuTheoThang(String from, String to);
+	
+	@Query(value = "SELECT * "
+			+ "FROM thanhtoan "
+			+ "WHERE ngaythanhtoan BETWEEN ?1 AND ?2 "
+			+ "ORDER BY ngaythanhtoan", nativeQuery = true)
+	public List<ThanhToan> findByNgayThanhToan(Date from, Date to);
 }

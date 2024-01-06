@@ -48,7 +48,8 @@ public class UserServiceImpl implements UserService{
 		User u = registerUserRequest.toUserEntity();
 		u.setId(null);
 		u.setNgaytao(new Date());
-		u.setPassword(bCryptPasswordEncoder.encode(registerUserRequest.getPassword()));
+		String randomPassword = RandomStringUtils.random(10, true, true);
+		u.setPassword(bCryptPasswordEncoder.encode(randomPassword));
 		u.setVaitro(VaiTro.ADMIN);
 		
 		if(registerUserRequest.getAvata()!=null) {
@@ -63,6 +64,11 @@ public class UserServiceImpl implements UserService{
 		
 		User user = userRepository.save(u);
 		
+		String mailSubject = "Khôi phục mật khẩu";
+		String mailContent = "<h2>Mật khẩu mới của bạn</h2>"
+				+ "<h3>Email: " + registerUserRequest.getEmail() +  "<br/> Mật khẩu mới: " + randomPassword + "</h3>";
+			
+		emailService.sendSimpleMail(new demo.response.EmailDetails(registerUserRequest.getEmail(), mailContent, mailSubject, null));
 		return user;
 	}
 

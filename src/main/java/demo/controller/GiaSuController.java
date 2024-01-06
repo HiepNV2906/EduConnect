@@ -23,6 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.Enum.TrangThaiUser;
 import demo.dto.GiaSuDTO;
 import demo.entity.GiaSu;
+import demo.exception.StorageException;
+import demo.exception.UserException;
 import demo.mapper.GiaSuMapper;
 import demo.request.Status;
 import demo.request.RegisterGiaSuRequest;
@@ -51,9 +53,13 @@ public class GiaSuController {
 			registerGiaSuRequest.setCccd(cccd);
 			GiaSu g = giaSuService.addGiaSu(registerGiaSuRequest);
 			GiaSuDTO data = GiaSuMapper.toDTO(g);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		} catch (Exception e){
+			return new BaseResponse<>("Đăng ký tài khoản thành công!", data, HttpStatus.CREATED);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}  catch (Exception e){
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -84,9 +90,13 @@ public class GiaSuController {
 			registerGiaSuRequest.setCccd(cccd);
 			GiaSu g = giaSuService.updateGiaSu(registerGiaSuRequest);
 			GiaSuDTO data = GiaSuMapper.toDTO(g);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
-		} catch (Exception e){
+			return new BaseResponse<>("Cập nhật thông tin thành công!", data, HttpStatus.OK);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}  catch (Exception e){
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -95,9 +105,10 @@ public class GiaSuController {
 	public BaseResponse<?> deleteGiaSu(@PathVariable("id") Long id){
 		try {
 			giaSuService.deleteGiaSu(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		} catch (Exception e){
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			System.out.println(e.getMessage());
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

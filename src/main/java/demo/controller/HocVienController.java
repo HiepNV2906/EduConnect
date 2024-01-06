@@ -24,6 +24,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.Enum.TrangThaiUser;
 import demo.dto.HocVienDTO;
 import demo.entity.HocVien;
+import demo.exception.StorageException;
+import demo.exception.UserException;
 import demo.mapper.HocVienMapper;
 import demo.request.Status;
 import demo.request.RegisterHocVienRequest;
@@ -50,10 +52,14 @@ public class HocVienController {
 			registerHocVienRequest.setCccd(cccd);
 			HocVien h = hocVienService.addHocVien(registerHocVienRequest);
 			HocVienDTO data = HocVienMapper.toDTO(h);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
+			return new BaseResponse<>("Đăng ký tài khoản thành công!", data, HttpStatus.CREATED);
+		} catch (UserException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		} catch(Exception e) {
 			System.out.println(e);
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -65,9 +71,9 @@ public class HocVienController {
 		try {
 			HocVien h = hocVienService.updateHocVien(id, TrangThaiUser.valueOf(changeStatus.getStatus()));
 			HocVienDTO data = HocVienMapper.toDTO(h);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+			return new BaseResponse<>("Cập nhật trạng thái thành công!", data, HttpStatus.OK);
 		} catch(Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -86,9 +92,13 @@ public class HocVienController {
 			registerHocVienRequest.setCccd(cccd);
 			HocVien h = hocVienService.updateHocVien(registerHocVienRequest);
 			HocVienDTO data = HocVienMapper.toDTO(h);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
-		} catch(Exception e) {
+			return new BaseResponse<>("Cập nhật thông tin thành công!", data, HttpStatus.OK);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}  catch(Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -98,9 +108,9 @@ public class HocVienController {
 			@PathVariable("id") Long id){
 		try {
 			hocVienService.deleteHocVien(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		} catch(Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

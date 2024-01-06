@@ -29,4 +29,5 @@ public interface LopService {
 	public List<Lop> getTopNewListLop();
 	public List<Lop> findByHocVienAndTrangThai(Long hocvienid, TrangThaiLop trangThaiLop);
 	public List<Lop> findByGiaSuAndTrangThaiUngTuyen(Long giasuid, TrangThaiUngTuyen trangThaiUngTuyen);
+	public List<Lop> findByHocVienAndKetThuc(Long hocvienid);
 }

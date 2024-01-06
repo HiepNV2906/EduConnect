@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import demo.Enum.TrangThaiLoiMoi;
 import demo.dto.LoiMoiDTO;
 import demo.entity.LoiMoi;
+import demo.exception.LoiMoiException;
+import demo.exception.LopException;
+import demo.exception.UserException;
 import demo.mapper.LoiMoiMapper;
 import demo.request.Status;
 import demo.response.BaseResponse;
@@ -41,9 +44,15 @@ public class LoiMoiController {
 		try {
 			LoiMoi u = loiMoiService.addLoiMoi(loiMoiDTO);
 			LoiMoiDTO data = LoiMoiMapper.toDTO(u);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		}catch (Exception e) {
+			return new BaseResponse<>("Gửi lời mời gia sư ứng tuyển thành công!", data, HttpStatus.CREATED);
+		} catch (LoiMoiException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (UserException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (LopException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -72,7 +81,7 @@ public class LoiMoiController {
 			LoiMoiDTO data = LoiMoiMapper.toDTO(u);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		}catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -82,7 +91,7 @@ public class LoiMoiController {
 			@PathVariable("id") Long id){
 		try {
 			loiMoiService.deleteLoiMoi(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		}catch (Exception e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}

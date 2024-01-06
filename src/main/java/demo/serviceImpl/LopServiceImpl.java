@@ -191,5 +191,11 @@ public class LopServiceImpl implements LopService{
 		List<Lop> list = lopRepository.findByGiaSuAndTrangThaiUngTuyen(giasuid, trangThaiUngTuyen.toString());
 		return list;
 	}
+	
+	public List<Lop> findByHocVienAndKetThuc(Long hocvienid){
+		List<Lop> list = lopRepository.findByHocVienAndKetThuc(hocvienid, 
+				TrangThaiLop.CANGIAO.toString(), TrangThaiLop.DAGIAO.toString());
+		return list;
+	}
 
 }

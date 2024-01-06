@@ -1,5 +1,6 @@
 package demo.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -30,12 +31,12 @@ public interface GiaSuRepository extends JpaRepository<GiaSu, Long>{
 			+ "INNER JOIN chude c ON gc.dschude_id=c.id "
 			+ "WHERE (sdt LIKE %:key% OR hoten LIKE %:key% OR diachi LIKE %:key% OR "
 			+ "gioithieu LIKE %:key% OR kinhnghiem LIKE %:key% OR thanhtich LIKE %:key% OR "
-			+ "quequan LIKE %:key% OR truong LIKE %:key%) AND "
+			+ "quequan LIKE %:key% OR truong LIKE %:key%) AND g.trangthai LIKE %:trangthai% AND "
 			+ "g.khuvucday LIKE %:quan% AND g.gioitinh LIKE %:gioitinh% "
 			+ "AND c.tenmonhoc LIKE %:mon% AND c.trinhdo LIKE %:trinhdo%", nativeQuery = true)
 	public List<GiaSu> findByFilter(@Param("key") String keyword, @Param("quan") String quan, 
 			@Param("gioitinh") String gioitinh, 
-			@Param("mon") String mon, @Param("trinhdo") String trinhdo);
+			@Param("mon") String mon, @Param("trinhdo") String trinhdo, @Param("trangthai") String trangthai);
 	
 	@Query(value = "SELECT DISTINCT g.* FROM giasu_chude gc "
 			+ "INNER JOIN giasu g ON gc.dsgiasu_id=g.id "
@@ -63,6 +64,12 @@ public interface GiaSuRepository extends JpaRepository<GiaSu, Long>{
 			+ "GROUP BY DATE_FORMAT(ngaytao, '%m/%Y') "
 			+ "ORDER BY DATE_FORMAT(ngaytao, '%m/%Y')", nativeQuery = true)
 	public List<Object[]> thongkegiasumoitheothang(String from, String to, String trangthai);
+	
+	@Query(value = "SELECT * "
+			+ "FROM giasu "
+			+ "WHERE ngaytao BETWEEN ?1 AND ?2 "
+			+ "ORDER BY ngaytao", nativeQuery = true)
+	public List<GiaSu> giasumoi(Date from, Date to);
 	
 	@Query(value = "SELECT quan, COUNT(*) "
 			+ "FROM giasu "

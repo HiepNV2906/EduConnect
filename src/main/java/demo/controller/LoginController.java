@@ -26,6 +26,8 @@ import demo.dto.HocVienDTO;
 import demo.entity.GiaSu;
 import demo.entity.HocVien;
 import demo.entity.RefreshToken;
+import demo.exception.StorageException;
+import demo.exception.UserException;
 import demo.mapper.GiaSuMapper;
 import demo.mapper.HocVienMapper;
 import demo.request.ChangePassword;
@@ -74,12 +76,12 @@ public class LoginController {
 			String jwt = jwtUtil.generateToken(userDetailsImpl);
 			String refresh = refreshTokenService.createRefreshToken(userDetailsImpl.getId()).getToken();
 			List<String> roles = userDetailsImpl.getAuthorities().stream().map(role -> role.getAuthority()).collect(Collectors.toList());
-			return new BaseResponse<>("Successful", 
+			return new BaseResponse<>("Đăng nhập thành công!", 
 					new JwtResponse(jwt, refresh, "Bearer", userDetailsImpl.getId(),
 							userDetailsImpl.getUsername(), roles), HttpStatus.OK);
 		}
 		catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Đăng nhập thất bại", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -106,10 +108,14 @@ public class LoginController {
 			registerHocVienRequest.setCccd(cccd);
 			HocVien h = hocVienService.addHocVien(registerHocVienRequest);
 			HocVienDTO data = HocVienMapper.toDTO(h);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
+			return new BaseResponse<>("Đăng ký tài khoản thành công!", data, HttpStatus.CREATED);
+		} catch (UserException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		} catch(Exception e) {
 			System.out.println(e);
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -125,9 +131,13 @@ public class LoginController {
 			registerGiaSuRequest.setCccd(cccd);
 			GiaSu g = giaSuService.addGiaSu(registerGiaSuRequest);
 			GiaSuDTO data = GiaSuMapper.toDTO(g);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		} catch (Exception e){
+			return new BaseResponse<>("Đăng ký tài khoản thành công!", data, HttpStatus.CREATED);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e){
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -152,10 +162,11 @@ public class LoginController {
 			@RequestBody ChangePassword changePassword) {
 		try {
 			userService.changePassword(userid, changePassword);
-			return new BaseResponse<>("Successful",null, HttpStatus.OK);
-		}
-		catch (Exception e) {
+			return new BaseResponse<>("Thay đổi mật khẩu thành công!",null, HttpStatus.OK);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -163,10 +174,11 @@ public class LoginController {
 	public BaseResponse<?> forgetPassword(@RequestBody ForgetPassword forgetPassword) {
 		try {
 			userService.forgetPassword(forgetPassword);
-			return new BaseResponse<>("Successful",null, HttpStatus.OK);
-		}
-		catch (Exception e) {
+			return new BaseResponse<>("Vui lòng kiểm tra email!",null, HttpStatus.OK);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 }

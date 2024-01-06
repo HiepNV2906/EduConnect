@@ -38,9 +38,9 @@ public class ThanhToanController {
 		try {
 			ThanhToan t = thanhToanService.addThanhToan(thanhToanDTO);
 			ThanhToanDTO data = ThanhToanMapper.toDTO(t);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
+			return new BaseResponse<>("Thành công!", data, HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -65,9 +65,9 @@ public class ThanhToanController {
 			@PathVariable("id") String id){
 		try {
 			thanhToanService.deleteThanhToan(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		} catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

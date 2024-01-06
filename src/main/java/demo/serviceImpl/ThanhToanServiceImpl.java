@@ -1,5 +1,8 @@
 package demo.serviceImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,6 +92,15 @@ public class ThanhToanServiceImpl implements ThanhToanService{
 	@Override
 	public List<ThanhToan> getListThanhToanByGiaSuId(Long giasuid) {
 		List<ThanhToan> list = thanhToanRepository.findByGiaSuId(giasuid);
+		return list;
+	}
+
+	@Override
+	public List<ThanhToan> getThanhToanFromTo(String from, String to) throws ParseException{
+		String pattern = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		List<ThanhToan> list = thanhToanRepository.findByNgayThanhToan(sdf.parse(from), sdf.parse(to));
+		System.out.println(list.size());
 		return list;
 	}
 

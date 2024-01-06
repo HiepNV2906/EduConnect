@@ -1,5 +1,6 @@
 package demo.service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -27,4 +28,5 @@ public interface GiaSuService {
 	public List<GiaSu> findByTrangThai(TrangThaiUser trangThaiUser);
 	public GiaSu updateTrangThai(Long giasuId, TrangThaiUser trangThaiUser);
 	public List<GiaSu> findTop8New();
+	public List<GiaSu> giasumoi(String from, String to) throws ParseException;
 }

@@ -21,6 +21,9 @@ import demo.Enum.TrangThaiCongNo;
 import demo.Enum.TrangThaiUngTuyen;
 import demo.dto.UngTuyenDTO;
 import demo.entity.UngTuyen;
+import demo.exception.LopException;
+import demo.exception.UngTuyenException;
+import demo.exception.UserException;
 import demo.mapper.UngTuyenMapper;
 import demo.request.Status;
 import demo.response.BaseResponse;
@@ -42,9 +45,15 @@ public class UngTuyenController {
 		try {
 			UngTuyen u = ungTuyenService.addUngTuyen(ungTuyenDTO);
 			UngTuyenDTO data = UngTuyenMapper.toDTO(u);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		}catch (Exception e) {
+			return new BaseResponse<>("Ứng tuyển nhận lớp thành công!", data, HttpStatus.CREATED);
+		} catch (UngTuyenException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (UserException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (LopException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -97,9 +106,9 @@ public class UngTuyenController {
 			@PathVariable("id") Long id){
 		try {
 			ungTuyenService.deleteUngTuyen(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		}catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import demo.dto.ChuDeDTO;
 import demo.entity.ChuDe;
+import demo.exception.ChuDeException;
 import demo.mapper.ChuDeMapper;
 import demo.response.BaseResponse;
 import demo.service.ChuDeService;
@@ -34,9 +35,11 @@ public class ChuDeController {
 		try {
 			ChuDe c = chuDeService.addChuDe(chuDeDTO);
 			ChuDeDTO data = ChuDeMapper.toDTO(c);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		} catch (Exception e) {
+			return new BaseResponse<>("Thêm chủ đề dạy thành công!", data, HttpStatus.CREATED);
+		} catch (ChuDeException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -49,9 +52,11 @@ public class ChuDeController {
 			chuDeDTO.setId(id);
 			ChuDe c = chuDeService.updateChuDe(chuDeDTO);
 			ChuDeDTO data = ChuDeMapper.toDTO(c);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
-		} catch (Exception e) {
+			return new BaseResponse<>("Cập nhật chủ đề dạy thành công!", data, HttpStatus.OK);
+		} catch (ChuDeException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -61,9 +66,9 @@ public class ChuDeController {
 			@PathVariable("id") Long id){
 		try {
 			chuDeService.deleteChuDe(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		} catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

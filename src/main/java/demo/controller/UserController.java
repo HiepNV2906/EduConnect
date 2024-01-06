@@ -23,6 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.Enum.VaiTro;
 import demo.dto.UserDTO;
 import demo.entity.User;
+import demo.exception.StorageException;
+import demo.exception.UserException;
 import demo.mapper.UserMapper;
 import demo.request.Status;
 import demo.request.RegisterUserRequest;
@@ -40,7 +42,7 @@ public class UserController {
 	UserService userService;
 	
 	@PreAuthorize("hasAuthority('MANAGER')")
-	@PostMapping(value = "")
+	@PostMapping(value = "/admin")
 	public BaseResponse<?> addUser(
 			@RequestParam("infoGS") String infoGS,
             @RequestParam(name = "avata") MultipartFile avata){
@@ -50,14 +52,19 @@ public class UserController {
 			registerUserRequest.setAvata(avata);
 			User u = userService.addUser(registerUserRequest);
 			UserDTO data = UserMapper.toDTO(u);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		}catch (Exception e) {
+			return new BaseResponse<>("Tạo tài khoản thành công!", data, HttpStatus.CREATED);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
-	@PutMapping(value = "/{id}", produces = "application/json")
+	@PutMapping(value = "/admin/{id}", produces = "application/json")
 	public BaseResponse<?> updateUser(
 			@RequestParam("infoGS") String infoGS,
             @RequestParam(name = "avata", required = false) MultipartFile avata,
@@ -69,21 +76,25 @@ public class UserController {
 			registerUserRequest.setAvata(avata);
 			User u = userService.updateUser(registerUserRequest);
 			UserDTO data = UserMapper.toDTO(u);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
-		}catch (Exception e) {
+			return new BaseResponse<>("Cập nhật thông tin thành công!", data, HttpStatus.OK);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (StorageException e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@PreAuthorize("hasAuthority('MANAGER')")
-	@DeleteMapping(value = "/{id}", produces = "application/json")
+	@DeleteMapping(value = "/admin/{id}", produces = "application/json")
 	public BaseResponse<?> deleteUser(
 			@PathVariable("id") Long id){
 		try {
 			userService.deleteUser(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		}catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -123,16 +134,16 @@ public class UserController {
 	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('MANAGER')")
 	@GetMapping(value = "/role", produces = "application/json")
 	public BaseResponse<?> getListUserByVaiTro(
-			@RequestBody Status status,
+			@RequestParam(name="vaitro") String vaitro,
 			@RequestParam(name="page") Optional<Integer> page){
 		try {
 			if(page.isPresent()) {
-				Page<User> pageUser = userService.findByVaitro(VaiTro.valueOf(status.getStatus()), PageRequest.of(page.orElse(0), sizeOfPage));
+				Page<User> pageUser = userService.findByVaitro(VaiTro.valueOf(vaitro), PageRequest.of(page.orElse(0), sizeOfPage));
 				Page<UserDTO> data = UserMapper.toPageDTO(pageUser);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}
 			else {
-				List<User> listUser = userService.findByVaitro(VaiTro.valueOf(status.getStatus()));
+				List<User> listUser = userService.findByVaitro(VaiTro.valueOf(vaitro));
 				List<UserDTO> data = UserMapper.toListDTO(listUser);
 				return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 			}

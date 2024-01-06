@@ -78,7 +78,7 @@ public class WebSecurityConfig{
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.addAllowedOrigin("http://127.0.0.1:5500");
+		configuration.addAllowedOrigin("http://localhost:5000");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);

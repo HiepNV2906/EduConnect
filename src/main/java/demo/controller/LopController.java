@@ -21,6 +21,7 @@ import demo.Enum.TrangThaiLop;
 import demo.Enum.TrangThaiUngTuyen;
 import demo.dto.LopDTO;
 import demo.entity.Lop;
+import demo.exception.UserException;
 import demo.mapper.LopMapper;
 import demo.request.Status;
 import demo.response.BaseResponse;
@@ -42,9 +43,11 @@ public class LopController {
 		try {
 			Lop l = lopService.addLop(lopDTO);
 			LopDTO data = LopMapper.toDTO(l);
-			return new BaseResponse<>("Successful!", data, HttpStatus.CREATED);
-		}catch (Exception e) {
+			return new BaseResponse<>("Gửi yêu cầu tạo lớp thành công!", data, HttpStatus.CREATED);
+		} catch (UserException e) {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -57,9 +60,9 @@ public class LopController {
 			lopDTO.setId(id);
 			Lop l = lopService.updateLop(lopDTO);
 			LopDTO data = LopMapper.toDTO(l);
-			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+			return new BaseResponse<>("Cập nhật thông tin lớp thành công!", data, HttpStatus.OK);
 		}catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -83,9 +86,9 @@ public class LopController {
 			@PathVariable("id") Long id){
 		try {
 			lopService.deleteLop(id);
-			return new BaseResponse<>("Successful!", null, HttpStatus.OK);
+			return new BaseResponse<>("Xoá thành công!", null, HttpStatus.OK);
 		}catch (Exception e) {
-			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+			return new BaseResponse<>("Có lỗi xảy ra!", null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
@@ -208,6 +211,19 @@ public class LopController {
 			@RequestParam(name = "status", defaultValue = "") String status){
 		try {
 			List<Lop> listLop = lopService.findByHocVienAndTrangThai(hocvienid, TrangThaiLop.valueOf(status));
+			List<LopDTO> data = LopMapper.toListDTO(listLop);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN') || hasAuthority('HOCVIEN')")
+	@GetMapping(value = "/hocvien/ketthuc", produces = "application/json")
+	public BaseResponse<?> getListLopByHocVienAndKetThuc(
+			@RequestParam(name = "hocvienid", defaultValue = "") Long hocvienid){
+		try {
+			List<Lop> listLop = lopService.findByHocVienAndKetThuc(hocvienid);
 			List<LopDTO> data = LopMapper.toListDTO(listLop);
 			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
 		}catch (Exception e) {

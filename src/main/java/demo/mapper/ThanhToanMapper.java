@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
+import demo.dto.BCDoanhThuDTO;
 import demo.dto.ThanhToanDTO;
 import demo.entity.ThanhToan;
 
@@ -51,5 +52,21 @@ public class ThanhToanMapper {
 			return null;
 		List<ThanhToanDTO> pageDTO = page.stream().map(t -> toDTO(t)).collect(Collectors.toList());
 		return new PageImpl<>(pageDTO, page.getPageable(), page.getSize());
+	}
+	
+	public static BCDoanhThuDTO toBCDoanhThuDTO(ThanhToan t){
+		BCDoanhThuDTO b = new BCDoanhThuDTO();
+		b.setMags(t.getUngtuyen().getGiasu().getId());
+		b.setHotengs(t.getUngtuyen().getGiasu().getHoten());
+		b.setMalop(t.getUngtuyen().getLop().getId());
+		b.setChudeday(t.getUngtuyen().getLop().getChude().getTenmonhoc() + " " + t.getUngtuyen().getLop().getChude().getTrinhdo());
+		b.setHocphi(t.getUngtuyen().getLop().getHocphi());
+		b.setPhinhanlop(t.getUngtuyen().getLop().getPhiungtuyen());
+		b.setNgaythanhtoan(t.getNgaythanhtoan());
+		return b;
+	}
+	
+	public static List<BCDoanhThuDTO> toListBCDoanhThuDTO(List<ThanhToan> list){
+		return list.stream().map(t -> toBCDoanhThuDTO(t)).collect(Collectors.toList());
 	}
 }

@@ -62,6 +62,11 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 	
 	public List<Lop> findByHocvienAndTrangthailopOrderByNgaytaoDesc(HocVien hocvien, TrangThaiLop trangthailop);
 	
+	@Query(value = "SELECT * FROM lop l "
+			+ "WHERE l.hocvienid=?1 AND (l.trangthailop=?2 OR l.trangthailop=?3) "
+			+ "ORDER BY ngaytao DESC", nativeQuery = true)
+	public List<Lop> findByHocVienAndKetThuc(Long hocvienid, String trangthailop1, String trangthailop2);
+	
 	public List<Lop> findAllByOrderByNgaytaoDesc();
 	public Page<Lop> findAllByOrderByNgaytaoDesc(Pageable pageable);
 	

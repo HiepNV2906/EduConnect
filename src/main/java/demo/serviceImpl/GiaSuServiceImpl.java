@@ -1,5 +1,7 @@
 package demo.serviceImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -154,7 +156,7 @@ public class GiaSuServiceImpl implements GiaSuService{
 	@Override
 	public List<GiaSu> findByFilter(String key, String quan, String gioitinh, String mon, String trinhdo) {
 		List<GiaSu> list = giaSuRepository.findByFilter(key, quan, gioitinh, 
-				mon, trinhdo);
+				mon, trinhdo, TrangThaiUser.DAPHEDUYET.toString());
 		return list;
 	}
 
@@ -189,6 +191,14 @@ public class GiaSuServiceImpl implements GiaSuService{
 	@Override
 	public List<GiaSu> findTop8New() {
 		List<GiaSu> list = giaSuRepository.findTop8ByTrangthaiOrderByNgaytaoDesc(TrangThaiUser.DAPHEDUYET);
+		return list;
+	}
+
+	@Override
+	public List<GiaSu> giasumoi(String from, String to)  throws ParseException{
+		String pattern = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        List<GiaSu> list = giaSuRepository.giasumoi(sdf.parse(from), sdf.parse(to));
 		return list;
 	}
 

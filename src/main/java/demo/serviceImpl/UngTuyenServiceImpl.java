@@ -23,6 +23,8 @@ import demo.entity.LoiMoi;
 import demo.entity.Lop;
 import demo.entity.UngTuyen;
 import demo.entity.User;
+import demo.exception.LopException;
+import demo.exception.UngTuyenException;
 import demo.exception.UserException;
 import demo.mapper.ThongBaoModel;
 import demo.mapper.UngTuyenMapper;
@@ -56,7 +58,10 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 	public UngTuyen addUngTuyen(UngTuyenDTO ungtuyenDTO) {
 		Integer count = ungTuyenRepository.countByLopId(ungtuyenDTO.getLopid());
 		if(count>=maxsizeListUngTuyen) {
-			throw new UserException("Số lượng ứng tuyển cho lớp đã đạt tối đa");
+			throw new UngTuyenException("Số lượng ứng tuyển cho lớp đã đạt tối đa");
+		}
+		if(ungTuyenRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLopid()).isPresent()) {
+			throw new UngTuyenException("Ứng tuyển nhận lớp đã tồn tại");
 		}
 		UngTuyen u = UngTuyenMapper.toEntity(ungtuyenDTO);
 		u.setId(null);
@@ -70,7 +75,7 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 		u.setGiasu(giaSu);
 		Lop lop = lopRepository.findById(ungtuyenDTO.getLopid()).get();
 		if(lop.getTrangthailop()!=TrangThaiLop.DANGTIM) {
-			throw new UserException("Lớp không tìm gia sư");
+			throw new LopException("Lớp không tìm gia sư");
 		}
 		u.setLop(lop);
 		Optional<LoiMoi> loimoi = loiMoiRepository.findByGiaSuIdAndLopId(ungtuyenDTO.getGiasuid(), ungtuyenDTO.getLopid());
@@ -112,8 +117,10 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 	public void deleteUngTuyen(Long id) {
 		UngTuyen u = ungTuyenRepository.findById(id).get();
 		LoiMoi l = u.getLoimoi();
-		l.setTrangthailoimoi(TrangThaiLoiMoi.CHO);
-		loiMoiRepository.save(l);
+		if(l!=null) {
+			l.setTrangthailoimoi(TrangThaiLoiMoi.CHO);
+			loiMoiRepository.save(l);
+		}
 		ungTuyenRepository.deleteById(id);
 	}
 
@@ -210,6 +217,7 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 				thongBaoRepository.save(ThongBaoModel.chonDuocGiaSu(ungTuyen.getLop().getHocvien()));
 			} else {
 				ungTuyen.setTrangthaiungtuyen(TrangThaiUngTuyen.TUCHOI);
+				ungTuyen.setTrangthaicongno(TrangThaiCongNo.KHONG);
 				ungTuyenRepository.save(ungTuyen);
 				
 				//	Thông Báo
