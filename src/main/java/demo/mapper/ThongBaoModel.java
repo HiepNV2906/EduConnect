@@ -1,10 +1,12 @@
 package demo.mapper;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 import demo.Enum.TrangThaiThongBao;
 import demo.Enum.VaiTro;
+import demo.entity.GiaSu;
 import demo.entity.ThongBao;
 import demo.entity.User;
 
@@ -176,18 +178,20 @@ public class ThongBaoModel{
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
 	
-	public static ThongBao ycThanhToan(User user, String date) {
+	public static ThongBao ycThanhToan(User user, Date date) {
 		String tieude = "Yêu cầu thanh toán";
-		String noidung = "Vui lòng thanh toán phí nhận lớp trước " + date;
+		String pattern = "dd-MM-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		String noidung = "Vui lòng thanh toán phí nhận lớp trước " + (sdf.format(date));
 		String link = "/giasu/congno";
 		
 		
 		return new ThongBao(null, tieude, noidung, new Date(), TrangThaiThongBao.CHUAXEM, user, link);
 	}
 	
-	public static ThongBao lichSuThanhToan(User user) {
+	public static ThongBao lichSuThanhToan(User user, String email) {
 		String tieude = "Lịch sử thanh toán";
-		String noidung = "Tài khoản " + user.getEmail() + " vừa thanh toán phí nhận lớp";
+		String noidung = "Tài khoản " + email + " vừa thanh toán phí nhận lớp";
 		String link = "/admin/lichsugiaodich";
 		
 		

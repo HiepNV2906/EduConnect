@@ -64,8 +64,8 @@ public class UserServiceImpl implements UserService{
 		
 		User user = userRepository.save(u);
 		
-		String mailSubject = "Khôi phục mật khẩu";
-		String mailContent = "<h2>Mật khẩu mới của bạn</h2>"
+		String mailSubject = "Admin EduConnect";
+		String mailContent = "<h2>Tài khoản Admin của bạn</h2>"
 				+ "<h3>Email: " + registerUserRequest.getEmail() +  "<br/> Mật khẩu mới: " + randomPassword + "</h3>";
 			
 		emailService.sendSimpleMail(new demo.response.EmailDetails(registerUserRequest.getEmail(), mailContent, mailSubject, null));

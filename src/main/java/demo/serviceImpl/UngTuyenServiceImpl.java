@@ -213,7 +213,7 @@ public class UngTuyenServiceImpl implements UngTuyenService{
 				
 				//	Thông Báo
 				thongBaoRepository.save(ThongBaoModel.ketQuaUngTuyen(ungTuyen.getGiasu(), true));
-				thongBaoRepository.save(ThongBaoModel.ycThanhToan(ungTuyen.getGiasu(), ungTuyen.getHanthanhtoan().toString()));
+				thongBaoRepository.save(ThongBaoModel.ycThanhToan(ungTuyen.getGiasu(), ungTuyen.getHanthanhtoan()));
 				thongBaoRepository.save(ThongBaoModel.chonDuocGiaSu(ungTuyen.getLop().getHocvien()));
 			} else {
 				ungTuyen.setTrangthaiungtuyen(TrangThaiUngTuyen.TUCHOI);

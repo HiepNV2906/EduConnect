@@ -46,7 +46,7 @@ public class ScheduleTask {
 			LocalDate hanthanhtoan = LocalDate.parse(ungTuyen.getHanthanhtoan().toString());
 			LocalDate today = LocalDate.parse(now.toString());
 			if(today.isEqual(hanthanhtoan.minusDays(7))) {
-				thongBaoRepository.save(ThongBaoModel.ycThanhToan(ungTuyen.getGiasu(), ungTuyen.getHanthanhtoan().toString()));
+				thongBaoRepository.save(ThongBaoModel.ycThanhToan(ungTuyen.getGiasu(), ungTuyen.getHanthanhtoan()));
 			}
 		}
     }

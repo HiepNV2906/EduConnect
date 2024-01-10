@@ -89,6 +89,9 @@ public class GiaSuServiceImpl implements GiaSuService{
 
 	@Override
 	public GiaSu updateGiaSu(RegisterGiaSuRequest registerGiaSuRequest) throws StorageException {
+		if(registerGiaSuRequest.getEmail()!=null && userRepository.findByEmail(registerGiaSuRequest.getEmail()).isPresent()) {
+			throw new UserException("Email đã tồn tại!!!");
+		}
 		GiaSu g = GiaSuMapper.update(getGiaSuById(registerGiaSuRequest.getId()), registerGiaSuRequest);
 		List<ChuDe> listChuDe = registerGiaSuRequest.getDschude().stream().map(c -> 
 			chuDeRepository.findById(c.getId()).get()).collect(Collectors.toList());

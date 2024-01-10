@@ -24,7 +24,7 @@ public interface ThanhToanRepository extends JpaRepository<ThanhToan, String>{
 			+ "FROM thanhtoan "
 			+ "WHERE ngaythanhtoan BETWEEN ?1 AND ?2 "
 			+ "GROUP BY DATE_FORMAT(ngaythanhtoan, '%m/%Y') "
-			+ "ORDER BY DATE_FORMAT(ngaythanhtoan, '%m/%Y')", nativeQuery = true)
+			+ "ORDER BY ngaythanhtoan", nativeQuery = true)
 	public List<Object[]> thongKeDoanhThuTheoThang(String from, String to);
 	
 	@Query(value = "SELECT * "

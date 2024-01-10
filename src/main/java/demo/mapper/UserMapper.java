@@ -42,6 +42,7 @@ public class UserMapper {
 	}
 	
 	public static User update(User user, RegisterUserRequest registerUserRequest) {
+		user.setEmail(registerUserRequest.getEmail());
 		user.setHoten(registerUserRequest.getHoten());
 		user.setSdt(registerUserRequest.getSdt());
 		user.setGioitinh(registerUserRequest.getGioitinh());

@@ -76,14 +76,14 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 			+ "FROM lop "
 			+ "WHERE trangthailop!=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
 			+ "GROUP BY DATE_FORMAT(ngaytao, '%m/%Y') "
-			+ "ORDER BY DATE_FORMAT(ngaytao, '%m/%Y')", nativeQuery = true)
+			+ "ORDER BY ngaytao", nativeQuery = true)
 	public List<Object[]> thongKeLopMoiTheoThang(String from, String to, String trangthai);
 	
 	@Query(value = "SELECT DATE_FORMAT(ngaygiao, '%m/%Y'), COUNT(*) "
 			+ "FROM lop "
 			+ "WHERE trangthailop=?3 AND (ngaygiao BETWEEN ?1 AND ?2) "
 			+ "GROUP BY DATE_FORMAT(ngaygiao, '%m/%Y') "
-			+ "ORDER BY DATE_FORMAT(ngaygiao, '%m/%Y')", nativeQuery = true)
+			+ "ORDER BY ngaygiao", nativeQuery = true)
 	public List<Object[]> thongKeLopDaGiaoTheoThang(String from, String to, String trangthai);
 	
 	@Query(value = "SELECT quan, COUNT(*) "

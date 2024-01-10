@@ -47,7 +47,7 @@ public class ThanhToanServiceImpl implements ThanhToanService{
 //		Thông báo
 		List<User> users = userRepository.findByVaitro(VaiTro.ADMIN);
 		for (User user : users) {
-			thongBaoRepository.save(ThongBaoModel.lichSuThanhToan(user));
+			thongBaoRepository.save(ThongBaoModel.lichSuThanhToan(user, u.getGiasu().getEmail()));
 		}
 		return thanhToan;
 	}

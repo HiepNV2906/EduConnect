@@ -67,7 +67,7 @@ public class VNPayController {
 	        String bankCode = thanhToanDTO.getNganhang();
 	        
 	        String vnp_TxnRef = VNPayConfig.getRandomNumber(8);
-	        String vnp_IpAddr = "127.0.0.1";
+	        String vnp_IpAddr = "localhost:5000";
 	
 	        String vnp_TmnCode = VNPayConfig.vnp_TmnCode;
 	        
@@ -166,13 +166,15 @@ public class VNPayController {
 	        String signValue = VNPayConfig.hashAllFields(fields);
 	        System.out.println("***********************************");
 	        System.out.println(signValue);
+	        
+            String targetURL = "http://localhost:5000/giasu/giaodichthatbai";
 	        if (signValue.equals(vnp_SecureHash)) {
 
 	            boolean checkOrderId = true; // vnp_TxnRef exists in your database
 	            boolean checkAmount = true; // vnp_Amount is valid (Check vnp_Amount VNPAY returns compared to the amount of the code (vnp_TxnRef) in the Your database).
 	            boolean checkOrderStatus = true; // PaymnentStatus = 0 (pending)
-				
-				
+
+	            
 	            if(checkOrderId) {
 	                if(checkAmount) {
 	                    if (checkOrderStatus) {
@@ -188,12 +190,12 @@ public class VNPayController {
 	                			ThanhToanDTO t = new ThanhToanDTO(vnp_TransactionNo, vnp_BankCode, vnp_BankTranNo, vnp_OrderInfo,
 	                					vnp_Amount, dateFormat.parse(vnp_PayDate), ungtuyenid);
 	                			ThanhToan thanhToan = thanhToanService.addThanhToan(t);
-	                			response.sendRedirect("http://127.0.0.1:5500/UI/tutor/E_success.html?id=" + thanhToan.getId());
+	                			targetURL = "http://localhost:5000/giasu/giaodichthanhcong?id=" + thanhToan.getId();
 	                        }
-	                        else {
+//	                        else {
 	                            // Here Code update PaymnentStatus = 2 into your Database
-	                        	response.sendRedirect("http://127.0.0.1:5500/UI/tutor/E_error.html");
-	                        }
+//	                        	response.sendRedirect("http://localhost:5000/giasu/giaodichthatbai");
+//	                        }
 	                    } else { 
 	                    	System.out.print("{\"RspCode\":\"02\",\"Message\":\"Order already confirmed\"}");
 	                    }
@@ -206,12 +208,14 @@ public class VNPayController {
 	        } else {
 	        	System.out.print("{\"RspCode\":\"97\",\"Message\":\"Invalid Checksum\"}");
 	        }
-	        response.sendRedirect("http://127.0.0.1:5500/UI/tutor/E_error.html");
+	        System.out.print(targetURL);
+	        response.sendRedirect(targetURL);
 	    }
 	    catch(Exception e)
 	    {
 	    	System.out.print("{\"RspCode\":\"99\",\"Message\":\"Unknow error\"}");
-	    	response.sendRedirect("http://127.0.0.1:5500/UI/tutor/E_error.html");
+	    	System.out.print(e);
+	    	response.sendRedirect("http://localhost:5000/giasu/giaodichthatbai");
 	    }
 	}
 }

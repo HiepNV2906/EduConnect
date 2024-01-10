@@ -62,7 +62,7 @@ public interface GiaSuRepository extends JpaRepository<GiaSu, Long>{
 			+ "FROM giasu "
 			+ "WHERE trangthai=?3 AND (ngaytao BETWEEN ?1 AND ?2) "
 			+ "GROUP BY DATE_FORMAT(ngaytao, '%m/%Y') "
-			+ "ORDER BY DATE_FORMAT(ngaytao, '%m/%Y')", nativeQuery = true)
+			+ "ORDER BY ngaytao", nativeQuery = true)
 	public List<Object[]> thongkegiasumoitheothang(String from, String to, String trangthai);
 	
 	@Query(value = "SELECT * "

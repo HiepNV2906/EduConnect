@@ -1,6 +1,7 @@
 package demo.serviceImpl;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +40,18 @@ public class ThongKeServiceImpl implements ThongKeService{
 			from = LocalDate.parse(fromday);
 		}
 		List<Object[]> list = thanhToanRepository.thongKeDoanhThuTheoThang(from.toString(), to.toString());
+		System.out.println("------------------Doanh thu----------------------");
+		for(int i=0 ; i<list.size() ; i++) {
+			System.out.println(list.get(i)[0] + "-" + list.get(i)[1]);
+		}
 		int i=0, size = list.size();
 		List<Object[]> result = new ArrayList<>();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
 		while(!from.isAfter(to)) {
-			String label = from.getMonthValue() + "/" + from.getYear();
+			String label = formatter.format(from);
+			if(label.length()<7) {
+				
+			}
 			if(i<size && label.equals(list.get(i)[0])) {
 				result.add(list.get(i));
 				i++;
@@ -70,12 +79,22 @@ public class ThongKeServiceImpl implements ThongKeService{
 		}
 		List<Object[]> giasu = giaSuRepository.thongkegiasumoitheothang(from.toString(), to.toString(), TrangThaiUser.DAPHEDUYET.toString());
 		List<Object[]> hocvien = hocVienRepository.thongkehocvienmoitheothang(from.toString(), to.toString(), TrangThaiUser.DAPHEDUYET.toString());
+		System.out.println("------------------Gia sư mới----------------------");
+		for(int i=0 ; i<giasu.size() ; i++) {
+			System.out.println(giasu.get(i)[0] + "-" + giasu.get(i)[1]);
+		}
+		System.out.println("------------------Học viên mới----------------------");
+		for(int i=0 ; i<hocvien.size() ; i++) {
+			System.out.println(hocvien.get(i)[0] + "-" + hocvien.get(i)[1]);
+		}
 		int i=0, sizegiasu = giasu.size();
 		int j=0, sizehocvien = hocvien.size();
 		List<Object[]> result = new ArrayList<>();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
 		while(!from.isAfter(to)) {
-			String label = from.getMonthValue() + "/" + from.getYear();
+			String label = formatter.format(from);
 			Long gsval = Long.valueOf("0"), hvval = Long.valueOf("0");
+			System.out.println(label + "-" + giasu.get(i)[0] + "-" + hocvien.get(j)[0]);
 			if(i<sizegiasu && label.equals(giasu.get(i)[0])) {
 				gsval = (Long) giasu.get(i)[1];
 				i++;
@@ -88,6 +107,7 @@ public class ThongKeServiceImpl implements ThongKeService{
 			o[0] = label;
 			o[1] = gsval;
 			o[2] = hvval;
+			
 			result.add(o);
 			from = from.plusMonths(1);
 		}
@@ -107,11 +127,20 @@ public class ThongKeServiceImpl implements ThongKeService{
 		}
 		List<Object[]> lopmoi = lopRepository.thongKeLopMoiTheoThang(from.toString(), to.toString(), TrangThaiLop.CHOPHEDUYET.toString());
 		List<Object[]> lopdagiao = lopRepository.thongKeLopDaGiaoTheoThang(from.toString(), to.toString(), TrangThaiLop.DAGIAO.toString());
+		System.out.println("------------------Lớp mới----------------------");
+		for(int i=0 ; i<lopmoi.size() ; i++) {
+			System.out.println(lopmoi.get(i)[0] + "-" + lopmoi.get(i)[1]);
+		}
+		System.out.println("------------------Lớp đã giao----------------------");
+		for(int i=0 ; i<lopdagiao.size() ; i++) {
+			System.out.println(lopdagiao.get(i)[0] + "-" + lopdagiao.get(i)[1]);
+		}
 		int i=0, sizelopmoi = lopmoi.size();
 		int j=0, sizelopdagiao = lopdagiao.size();
 		List<Object[]> result = new ArrayList<>();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
 		while(!from.isAfter(to)) {
-			String label = from.getMonthValue() + "/" + from.getYear();
+			String label = formatter.format(from);
 			Long lopmoival = Long.valueOf("0"), lopdagiaoval = Long.valueOf("0");
 			if(i<sizelopmoi && label.equals(lopmoi.get(i)[0])) {
 				lopmoival = (Long) lopmoi.get(i)[1];
