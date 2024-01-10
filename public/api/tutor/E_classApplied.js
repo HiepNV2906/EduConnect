@@ -10,8 +10,8 @@ $(document).ready(function () {
     getAPIListApplyByTutor($.cookie('id'), '.classApplied');
 });
 
-function viewDetailClass(classid) {
-    window.location.href = '/chitietlop?id=' + classid;
+function viewDetailApply(id) {
+    window.location.href = '/giasu/ungtuyen?id=' + id;
 }
 
 function cancelApplication(id) {
@@ -43,7 +43,7 @@ function createListDataHTML(data, start, end) {
                         <td class='${statusLM}'>${trangthaiungtuyen}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailClass(${data[i].lopid})">Xem lớp</button>
+                                onClick="viewDetailApply(${data[i].id})">Xem ứng tuyển</button>
                             ${statusLM == 'choxacthuc' ? huyhtml : ''}
                         </td>
                     </tr>`

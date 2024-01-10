@@ -171,6 +171,9 @@ app.get("/giasu/thanhtoan", (req, res) => {
 app.get("/giasu/giaodichthanhcong", (req, res) => {
   res.render("UI/tutor/E_success", modeacc);
 });
+app.get("/giasu/ungtuyen", (req, res) => {
+  res.render("UI/tutor/E_detailApply", modeacc);
+});
 //  route tutor: End
 
 //  route admin: Begin

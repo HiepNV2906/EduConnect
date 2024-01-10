@@ -631,7 +631,7 @@ function getAPIListNotificationByUser(cssSelector) {
         url: "http://localhost:8080/api/thongbao/user/" + id,
         success: function (response) {
             console.log(response);
-            listItem = response.data;
+            listItem = response.data ? response.data : [];
             totalPages = Math.ceil(listItem.length / sizeOfPage);
             renderData(listItem, totalPages, 1, sizeOfPage, cssSelector);
         },

@@ -126,7 +126,7 @@ function getAPINewTutor() {
                     chudearr.add(dschude[i].tenmonhoc);
                 }
                 chudearr = [...chudearr];
-                html += `<div class="col-lg-3 col-md-6 col-1 mb-4">
+                html += `<div class="col-lg-3 col-md-6 col-12 mb-4">
                             <div class="single_candidates">
                                 <div class="thumb">
                                     <img src=${data[i].avata ? 'http://localhost:8080/uploads/images/' + data[i].avata : '../../img/avatadefault.png'} alt="">

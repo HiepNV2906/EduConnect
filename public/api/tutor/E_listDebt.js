@@ -19,7 +19,7 @@ function viewDetailClass(classid) {
 }
 
 function viewDetailUngtuyen(ungtuyenid) {
-    window.location.href = 'E_detailApply.html?id=' + ungtuyenid;
+    window.location.href = '/giasu/ungtuyen?id=' + ungtuyenid;
 }
 
 function createListDataHTML(data, start, end) {

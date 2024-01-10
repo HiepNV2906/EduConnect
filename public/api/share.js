@@ -142,9 +142,9 @@ function refreshToken() {
             if (response.httpStatus == 'OK') {
                 var data = response.data;
                 $.cookie('token', data.type + ' ' + data.token, { expires: expirationDateToken });
-                alert('refresh');
+                console.log('refresh');
             } else {
-                alert(response.message);
+                window.location.href = "/";
             }
         },
         error: function (xhr, status, error) {

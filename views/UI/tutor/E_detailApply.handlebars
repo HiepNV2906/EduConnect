@@ -1,0 +1,330 @@
+<body class="animsition">
+    <div class="page-wrapper">
+        {{> navbartutor}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            {{> headerdesktoptutor}}
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="card col-12">
+                                <div class="row card-header" style="align-items: center;">
+                                    <div class="col-8">
+                                        <h4>Thông tin ứng tuyển nhận lớp</h4>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="default-tab">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                <a class="nav-item nav-link active show" id="nav-home-tab"
+                                                    data-toggle="tab" href="#nav-home" role="tab"
+                                                    aria-controls="nav-home" aria-selected="false">Ứng tuyển</a>
+                                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                                    href="#nav-profile" role="tab" aria-controls="nav-profile"
+                                                    aria-selected="false">Lớp ứng tuyển</a>
+                                                <a class="nav-item nav-link" id="nav-payment-tab" data-toggle="tab"
+                                                    href="#nav-payment" role="tab" aria-controls="nav-payment"
+                                                    aria-selected="true">Thanh toán</a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content pl-5 pt-4" id="nav-tabContent">
+                                            <div class="tab-pane fade active show" id="nav-home" role="tabpanel"
+                                                aria-labelledby="nav-home-tab">
+                                                <h4 class="xacthuc pb-4">Chi tiết ứng tuyển</h4>
+                                                <div class="form-horizontal ungtuyen pl-5">
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Mã ứng tuyển</label>
+                                                        </div>
+                                                        <div class="col-8 maungtuyen">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Ngày ứng tuyển</label>
+                                                        </div>
+                                                        <div class="col-8 ngayungtuyen">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Mời ứng tuyển</label>
+                                                        </div>
+                                                        <div class="col-8 loimoiut">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Trạng thái ứng
+                                                                tuyển</label>
+                                                        </div>
+                                                        <div class="col-8 trangthaiungtuyen">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Trạng thái công
+                                                                nợ</label>
+                                                        </div>
+                                                        <div class="col-8 trangthaicongno">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Hạn thanh toán</label>
+                                                        </div>
+                                                        <div class="col-8 hanthanhtoan">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                                aria-labelledby="nav-profile-tab">
+                                                <h4 class="xacthuc pb-4">Thông tin lớp ứng tuyển</h4>
+                                                <div class="form-horizontal lop pl-5">
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">ID</label>
+                                                        </div>
+                                                        <div class="col-7 malop">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Tiêu đề</label>
+                                                        </div>
+                                                        <div class="col-7 tieude">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Chủ đề</label>
+                                                        </div>
+                                                        <div class="col-7 chude">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Số buổi/tuần</label>
+                                                        </div>
+                                                        <div class="col-7 sobuoi">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Số giờ/buổi</label>
+                                                        </div>
+                                                        <div class="col-7 sogio">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Địa chỉ</label>
+                                                        </div>
+                                                        <div class="col-7 diachi">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Học phí</label>
+                                                        </div>
+                                                        <div class="col-7 hocphi">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Phí ứng tuyển</label>
+                                                        </div>
+                                                        <div class="col-7 phiungtuyen">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Hạn ứng tuyển</label>
+                                                        </div>
+                                                        <div class="col-7 hanungtuyen">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Hình thức</label>
+                                                        </div>
+                                                        <div class="col-7 hinhthuc">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Số HS</label>
+                                                        </div>
+                                                        <div class="col-7 sohs">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Giới tính HS</label>
+                                                        </div>
+                                                        <div class="col-7 gioitinhhs">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Mô tả HS</label>
+                                                        </div>
+                                                        <div class="col-7 motahs">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Nghề nghiệp GS</label>
+                                                        </div>
+                                                        <div class="col-7 nghenghiepgs">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Giới tính GS</label>
+                                                        </div>
+                                                        <div class="col-7 gioitinhgs">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Trường GS</label>
+                                                        </div>
+                                                        <div class="col-7 truonggs">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Yêu cầu khác</label>
+                                                        </div>
+                                                        <div class="col-7 yeucaukhac">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-payment" role="tabpanel"
+                                                aria-labelledby="nav-payment-tab">
+                                                <h4 class="xacthuc pb-4">Thông tin thanh toán phí nhận lớp</h4>
+                                                <div class="form-horizontal thanhtoan pl-5">
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Mã thanh toán</label>
+                                                        </div>
+                                                        <div class="col-7 mathanhtoan">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Ngân hàng</label>
+                                                        </div>
+                                                        <div class="col-7 nganhang">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Mã giao dịch</label>
+                                                        </div>
+                                                        <div class="col-7 magiaodich">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Số tiền</label>
+                                                        </div>
+                                                        <div class="col-7 sotien">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Ngày thanh toán</label>
+                                                        </div>
+                                                        <div class="col-7 ngaythanhtoan">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group border-bottom">
+                                                        <div class="col-4">
+                                                            <label class=" form-control-label">Nội dung</label>
+                                                        </div>
+                                                        <div class="col-7 noidung">
+                                                            <p class="form-control-static">Username</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../../vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="../../vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="../../vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="../../vendor/slick/slick.min.js">
+    </script>
+    <script src="../../vendor/wow/wow.min.js"></script>
+    <script src="../../vendor/animsition/animsition.min.js"></script>
+    <script src="../../vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="../../vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="../../vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="../../vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="../../vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../../vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="../../vendor/select2/select2.min.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+
+    <!-- Main JS-->
+    <script src="../../js/main1.js"></script>
+    <script src="../../api/share.js"></script>
+    <script src="../../api/account.js"></script>
+    <script src="../../api/admin/E_detailApply.js"></script>
+
+</body>

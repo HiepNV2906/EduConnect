@@ -20,37 +20,86 @@ $('#nutfilter').click(function () {
 
 $(".sapxep").change(function (event) {
     listClass.sortBy = function (prop, asc) {
+        console.log('sort')
         if (asc) {
             return this.sort(function (a, b) {
-                if (a[prop] < b[prop]) {
-                    return -1;
-                } else if (a[prop] > b[prop]) {
-                    return 1;
-                } else {
-                    return 0;
+                for (let i = 0; i < prop.length; i++) {
+                    if (a[prop[i]] < b[prop[i]]) {
+                        return -1;
+                    }
+                    if (a[prop[i]] > b[prop[i]]) {
+                        return 1;
+                    }
                 }
+                return 0;
             });
         }
         return this.sort(function (a, b) {
-            if (a[prop] < b[prop]) {
-                return 1;
-            } else if (a[prop] > b[prop]) {
-                return -1;
-            } else {
-                return 0;
+            for (let i = 0; i < prop.length; i++) {
+                if (a[prop[i]] < b[prop[i]]) {
+                    return 1;
+                }
+                if (a[prop[i]] > b[prop[i]]) {
+                    return -1;
+                }
             }
+            return 0;
         });
     };
     var select = event.target.value;
     if (select == 0) {
-        listClass.sortBy('ngaytao', false);
+        listClass.sortBy(['ngaytao'], false);
+        renderData(listClass, totalPages, 1, sizeOfPage);
     } else if (select == 1) {
-        listClass.sortBy('hocphi', true);
-    } else {
-        listClass.sortBy('hocphi', false);
+        listClass.sortBy(['hocphi'], true);
+        renderData(listClass, totalPages, 1, sizeOfPage);
+    } else if (select == 2) {
+        listClass.sortBy(['hocphi'], false);
+        renderData(listClass, totalPages, 1, sizeOfPage);
     }
-    renderData(listClass, totalPages, 1, sizeOfPage);
+    else {
+        comparation(function () {
+            listClass.sortBy(['phuhop', 'hocphi'], false);
+            renderData(listClass, totalPages, 1, sizeOfPage);
+        });
+    }
 })
+
+function comparation(callback) {
+    var token = $.cookie('token');
+    var id = $.cookie('id');
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token ? token : ''
+        },
+        method: "GET",
+        url: "http://localhost:8080/api/giasu/" + id,
+        success: function (response) {
+            console.log(response);
+            var me = response.data;
+            var chudeday = me.dschude.map((value) => value.tenmonhoc + ' ' + value.trinhdo).join(', ');
+            for (let i = 0; i < listClass.length; i++) {
+                let lop = listClass[i];
+                let point = 0;
+                if (me.khuvucday.includes(lop.quan)) point += 1;
+                if (lop.gioitinhgs == "" || lop.gioitinhgs == me.gioitinh) point += 1;
+                if (lop.nghenghiepgs == "" || lop.nghenghiepgs == "Khac" || lop.nghenghiepgs == me.nghenghiep) point += 1;
+                if (chudeday.includes(lop.chude.tenmonhoc)) point += 1;
+                if (chudeday.includes(lop.chude.tenmonhoc + ' ' + lop.chude.trinhdo)) point += 1;
+                listClass[i]['phuhop'] = point;
+            }
+            callback();
+            console.log(listClass);
+        },
+        error: function (xhr, status, error) {
+            // Xử lý lỗi
+            console.log(error);
+            alert("Có lỗi xảy ra!!!");
+        }
+    });
+}
 
 // Function handle event
 function handlePage(currentPage) {
@@ -279,4 +328,3 @@ function createPageNavHTML(totalPages, pageNumber) {
     }
     return pagenav;
 }
-
