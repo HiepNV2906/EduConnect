@@ -192,9 +192,18 @@ public class LopServiceImpl implements LopService{
 		return list;
 	}
 	
+	@Override
 	public List<Lop> findByHocVienAndKetThuc(Long hocvienid){
 		List<Lop> list = lopRepository.findByHocVienAndKetThuc(hocvienid, 
 				TrangThaiLop.CANGIAO.toString(), TrangThaiLop.DAGIAO.toString());
+		return list;
+	}
+
+	@Override
+	public List<Lop> loplienquan(Long lopid) {
+		Lop l = getLopById(lopid);
+		List<Lop> list = lopRepository.findLopLienQuan(TrangThaiLop.DANGTIM.toString(), 
+				l.getChude().getTenmonhoc(), l.getChude().getTrinhdo(), l.getQuan(), l.getId());
 		return list;
 	}
 

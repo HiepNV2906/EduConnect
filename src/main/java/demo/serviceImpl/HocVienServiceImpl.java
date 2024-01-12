@@ -79,9 +79,9 @@ public class HocVienServiceImpl implements HocVienService{
 
 	@Override
 	public HocVien updateHocVien(RegisterHocVienRequest registerHocVienRequest) throws StorageException {
-		if(registerHocVienRequest.getEmail()!=null && userRepository.findByEmail(registerHocVienRequest.getEmail()).isPresent()) {
-			throw new UserException("Email đã tồn tại!!!");
-		}
+//		if(registerHocVienRequest.getEmail()!=null && userRepository.findByEmail(registerHocVienRequest.getEmail()).isPresent()) {
+//			throw new UserException("Email đã tồn tại!!!");
+//		}
 		HocVien h = HocVienMapper.update(getHocVienById(registerHocVienRequest.getId()), registerHocVienRequest);
 		
 		if(registerHocVienRequest.getAvata()!=null) {

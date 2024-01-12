@@ -78,7 +78,7 @@ public class GiaSuMapper {
 	public static GiaSu update(GiaSu giaSu, RegisterGiaSuRequest registerGiaSuRequest) {
 		giaSu.setHoten(registerGiaSuRequest.getHoten());
 		giaSu.setSdt(registerGiaSuRequest.getSdt());
-		giaSu.setEmail(registerGiaSuRequest.getEmail());
+//		giaSu.setEmail(registerGiaSuRequest.getEmail());
 		giaSu.setGioitinh(registerGiaSuRequest.getGioitinh());
 		giaSu.setNgaysinh(registerGiaSuRequest.getNgaysinh());
 		giaSu.setQuan(registerGiaSuRequest.getQuan());

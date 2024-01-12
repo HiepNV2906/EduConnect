@@ -30,7 +30,8 @@ public interface LoiMoiRepository extends JpaRepository<LoiMoi, Long>{
 	public Optional<LoiMoi> findByGiaSuIdAndLopId(Long giasuid, Long lopid);
 	
 	@Query(value = "SELECT DISTINCT m.* FROM loimoi m "
-			+ "INNER JOIN lop l ON m.lopid=l.id WHERE l.hocvienid = ?1", nativeQuery = true)
+			+ "INNER JOIN lop l ON m.lopid=l.id WHERE l.hocvienid = ?1 "
+			+ "ORDER BY m.ngaymoi DESC", nativeQuery = true)
 	public List<LoiMoi> findByHocVienId(Long hocvienid);
 	
 	public List<LoiMoi> findByTrangthailoimoi(TrangThaiLoiMoi trangThaiLoiMoi);

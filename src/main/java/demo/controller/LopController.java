@@ -244,4 +244,16 @@ public class LopController {
 			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping(value = "/lienquan/{id}", produces = "application/json")
+	public BaseResponse<?> getListLopLienQuan(
+			@PathVariable("id") Long id){
+		try {
+			List<Lop> listLop = lopService.loplienquan(id);
+			List<LopDTO> data = LopMapper.toListDTO(listLop);
+			return new BaseResponse<>("Successful!", data, HttpStatus.OK);
+		}catch (Exception e) {
+			return new BaseResponse<>(e.getMessage(), null, HttpStatus.BAD_REQUEST);
+		}
+	}
 }

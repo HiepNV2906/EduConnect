@@ -73,7 +73,7 @@ public class ThanhToanServiceImpl implements ThanhToanService{
 
 	@Override
 	public List<ThanhToan> getListThanhToan() {
-		List<ThanhToan> list = thanhToanRepository.findAll();
+		List<ThanhToan> list = thanhToanRepository.findAllByOrderByNgaythanhtoanDesc();
 		return list;
 	}
 

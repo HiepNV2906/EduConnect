@@ -17,7 +17,8 @@ public interface ThanhToanRepository extends JpaRepository<ThanhToan, String>{
 	
 	@Query(value = "SELECT DISTINCT t.* FROM thanhtoan t "
 			+ "INNER JOIN ungtuyen u ON t.ungtuyenid=u.id "
-			+ "WHERE u.giasuid = ?1", nativeQuery = true)
+			+ "WHERE u.giasuid = ?1 "
+			+ "ORDER BY t.ngaythanhtoan DESC", nativeQuery = true)
 	public List<ThanhToan> findByGiaSuId(Long giasuid);
 	
 	@Query(value = "SELECT DATE_FORMAT(ngaythanhtoan, '%m/%Y'), SUM(sotien) "
@@ -32,4 +33,6 @@ public interface ThanhToanRepository extends JpaRepository<ThanhToan, String>{
 			+ "WHERE ngaythanhtoan BETWEEN ?1 AND ?2 "
 			+ "ORDER BY ngaythanhtoan", nativeQuery = true)
 	public List<ThanhToan> findByNgayThanhToan(Date from, Date to);
+	
+	public List<ThanhToan> findAllByOrderByNgaythanhtoanDesc();
 }

@@ -51,7 +51,7 @@ public class ScheduleTask {
 		}
     }
 	
-	@Scheduled(cron = "0 30 22 * * *")
+	@Scheduled(cron = "0 0 0 * * *")
     public void chuyenTrangThaiLopDinhKy() {
 		Date now = new Date();
 		List<Lop> list = lopRepository.findByTrangthailopOrderByHanungtuyenAsc(TrangThaiLop.DANGTIM);

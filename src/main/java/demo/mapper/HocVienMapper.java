@@ -58,7 +58,7 @@ public class HocVienMapper {
 	public static HocVien update(HocVien hocVien, RegisterHocVienRequest registerHocVienRequest) {
 		hocVien.setHoten(registerHocVienRequest.getHoten());
 		hocVien.setSdt(registerHocVienRequest.getSdt());
-		hocVien.setEmail(registerHocVienRequest.getEmail());
+//		hocVien.setEmail(registerHocVienRequest.getEmail());
 		hocVien.setGioitinh(registerHocVienRequest.getGioitinh());
 		hocVien.setNgaysinh(registerHocVienRequest.getNgaysinh());
 		hocVien.setQuan(registerHocVienRequest.getQuan());

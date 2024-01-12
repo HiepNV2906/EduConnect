@@ -67,6 +67,20 @@ public interface LopRepository extends JpaRepository<Lop, Long>{
 			+ "ORDER BY ngaytao DESC", nativeQuery = true)
 	public List<Lop> findByHocVienAndKetThuc(Long hocvienid, String trangthailop1, String trangthailop2);
 	
+	@Query(value = "select l.* "
+			+ "from lop l "
+			+ "left join chude c "
+			+ "on l.chudeid = c.id "
+			+ "where l.trangthailop = ?1 AND l.id <> ?5 "
+			+ "ORDER BY CASE WHEN c.tenmonhoc = ?2 AND c.trinhdo = ?3 AND l.quan = ?4 THEN 1 "
+			+ "			  WHEN c.tenmonhoc = ?2 AND l.quan = ?4 THEN 2 "
+			+ "			  WHEN (c.tenmonhoc = ?2 AND c.trinhdo = ?3) OR l.quan = ?4 THEN 3 "
+			+ "           WHEN c.tenmonhoc = ?2 OR c.trinhdo = ?3 OR l.quan = ?4 THEN 4 "
+			+ "           ELSE 5 "
+			+ "         END "
+			+ "LIMIT 4", nativeQuery = true)
+	public List<Lop> findLopLienQuan(String trangthai, String tenmonhoc, String trinhdo, String quan, Long lopid);
+	
 	public List<Lop> findAllByOrderByNgaytaoDesc();
 	public Page<Lop> findAllByOrderByNgaytaoDesc(Pageable pageable);
 	
