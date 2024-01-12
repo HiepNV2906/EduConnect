@@ -1,21 +1,21 @@
 const express = require("express");
-const mysql = require("mysql2");
+// const mysql = require("mysql2");
 const path = require("path");
-const router = express.Router();
+// const router = express.Router();
 const hbs = require("express-handlebars");
 const bodyParser = require("body-parser");
-const { connection } = require("./config/db");
+// const { connection } = require("./config/db");
 const app = express();
 const port = 5000;
-const requestIp = require("request-ip");
+// const requestIp = require("request-ip");
 const user = require("./routes/user");
-const reader = require("xlsx");
+// const reader = require("xlsx");
 var server = require("http").Server(app);
-var io = require("socket.io")(server);
+// var io = require("socket.io")(server);
 
-const fs = require('fs');
+// const fs = require('fs');
 const ExcelJS = require('exceljs');
-const { saveAs } = require('file-saver');
+// const { saveAs } = require('file-saver');
 
 app.use(express.json());
 app.engine("handlebars", hbs.engine());

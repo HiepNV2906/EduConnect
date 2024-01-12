@@ -25,8 +25,16 @@ function handleStaticBtn() {
 }
 
 function createByTuitionChart(data) {
-    var labels = data.map((value) => value[0]);
-    var data0 = data.map((value) => value[1]);
+    var newConvert = [['< 100,000 VND', 0], ['100,000-200,000 VND', 0], ['200,000-300,000 VND', 0],
+    ['300,000-400,000 VND', 0], ['400,000-500,000 VND', 0], ['>= 500,000 VND', 0]];
+    for (let i = 0; i < data.length; i++) {
+        let idex = Math.floor(data[i][0] / 100000);
+        if (idex > 5) idex = 5;
+        newConvert[idex][1] += data[i][1];
+    }
+    console.log(newConvert);
+    var labels = newConvert.map((value) => value[0]);
+    var data0 = newConvert.map((value) => value[1]);
     data = [labels, data0];
     if (tuitionChart) {
         tuitionChart.destroy();
@@ -214,14 +222,16 @@ function pieChart1(elementSelector, data) {
                             "rgba(0, 255, 0,1)",
                             "rgba(0, 0, 255,1)",
                             "rgba(255,255,0,1)",
-                            "rgba(255,0,255,1)"
+                            "rgba(255,0,255,1)",
+                            "rgba(0,255,255,1)"
                         ],
                         hoverBackgroundColor: [
                             "rgba(255, 0, 0,1)",
                             "rgba(0, 255, 0,1)",
                             "rgba(0, 0, 255,1)",
                             "rgba(255,255,0,1)",
-                            "rgba(255,0,255,1)"
+                            "rgba(255,0,255,1)",
+                            "rgba(0,255,255,1)"
                         ]
 
                     }],

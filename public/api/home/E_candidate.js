@@ -169,14 +169,14 @@ function createListTutorHTML(apicontent, start, end) {
 
 function createPageNavHTML(totalPages, pageNumber) {
     var pagenav = ``;
-    var prebtn = `<li><a href="#"> <i class="ti-angle-left"></i> </a></li>`;
-    var nextbtn = `<li><a href="#"> <i class="ti-angle-right"></i> </a></li>`;
+    var prebtn = `<li onClick="handlePage(${pageNumber - 1})"><a href="#"> <i class="ti-angle-left"></i> </a></li>`;
+    var nextbtn = `<li onClick="handlePage(${pageNumber + 1})"><a href="#"> <i class="ti-angle-right"></i> </a></li>`;
     var listPageNum = createListPage(totalPages, pageNumber);
     for (let i = 0; i < listPageNum.length; i++) {
         if (i + 1 == pageNumber) {
-            pagenav += `<li><a class="page_selected" href="#"><span>${listPageNum[i]}</span></a></li>`
+            pagenav += `<li onClick="handlePage(${listPageNum[i]})"><a class="page_selected" href="#"><span>${listPageNum[i]}</span></a></li>`
         } else {
-            pagenav += `<li><a class="" href="#"><span>${listPageNum[i]}</span></a></li>`
+            pagenav += `<li onClick="handlePage(${listPageNum[i]})"><a class="" href="#"><span>${listPageNum[i]}</span></a></li>`
         }
     }
     if (totalPages > 5) {

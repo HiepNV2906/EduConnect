@@ -43,7 +43,7 @@ function createListDataHTML(data, start, end) {
                         <td class='${statusLM}'>${trangthaiungtuyen}</td>
                         <td>
                             <button type="button" class="btn btn-outline-primary btn-sm" 
-                                onClick="viewDetailApply(${data[i].id})">Xem ứng tuyển</button>
+                                onClick="viewDetailApply(${data[i].id})">Xem UT</button>
                             ${statusLM == 'choxacthuc' ? huyhtml : ''}
                         </td>
                     </tr>`

@@ -3,6 +3,7 @@
 $(document).ready(function () {
     var idLop = getParamFromURL('id');
     getInfoDetailsClass(idLop);
+    getClassRelative(idLop);
     if ($.cookie('role') != "GIASU") {
         $('#nutungtuyen').hide();
     }
@@ -39,6 +40,61 @@ function ungtuyen() {
         success: function (response) {
             console.log(response);
             alert(response.message);
+        },
+        error: function (xhr, status, error) {
+            // Xử lý lỗi
+            console.log(error);
+            alert("Có lỗi xảy ra!!!");
+        }
+    });
+}
+
+function getClassRelative(id) {
+    var token = $.cookie('token');
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': token ? token : ''
+        },
+        method: "GET",
+        url: "http://localhost:8080/api/lop/lienquan/" + id,
+        success: function (response) {
+            console.log(response);
+            var data = response.data;
+            var html = ``;
+            for (let i = 0; i < data.length; i++) {
+                html += `<div class="col-12 ml-2 mb-3" style="border: 5px solid #929c9c; border-radius: 20px;">
+                            <div class="single_jobs white-bg d-flex justify-content-between">
+                                <div class="jobs_left d-flex align-items-center">
+                                    <div class="thumb">
+                                        <img src="${data[i].chude.anh}" alt="">
+                                    </div>
+                                    <div class="jobs_conetent">
+                                        <a href="/chitietlop?id=${data[i].id}">
+                                            <h4>${data[i].tieude}</h4>
+                                        </a>
+                                        <div class="links_locat">
+                                            <div class="location">
+                                                <p> <i class="fa fa-leanpub"></i> ${data[i].chude.tenmonhoc + ' ' + data[i].chude.trinhdo}</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-money"></i> ${data[i].hocphi}/buổi</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-calendar"></i> ${data[i].sobuoi} buổi/tuần</p>
+                                            </div>
+                                            <div class="location">
+                                                <p> <i class="fa fa-map-marker"></i> ${data[i].diachi + ", " + data[i].quan}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+            }
+            $(".loplienquan").html(html);
         },
         error: function (xhr, status, error) {
             // Xử lý lỗi

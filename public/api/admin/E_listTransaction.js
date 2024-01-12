@@ -25,7 +25,7 @@ function createListDataHTML(data, start, end) {
                         <td>${data[i].id}</td>
                         <td>${data[i].nganhang}</td>
                         <td>${data[i].sotien}</td>
-                        <td>${moment(data.ngaythanhtoan).format('DD-MM-YYYY HH:mm:ss')}</td>
+                        <td>${moment(data[i].ngaythanhtoan).format('DD-MM-YYYY HH:mm:ss')}</td>
                         <td>${data[i].noidung}</td>
                     </tr>`
     }

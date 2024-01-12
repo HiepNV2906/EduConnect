@@ -1,12 +1,16 @@
 
 var listClass;
 var totalPages;
-var sizeOfPage = 10;
+var sizeOfPage = 6;
 
 
 $(document).ready(function () {
     var quanhuyenHTML = createDistrictFilterHTML();
     $("#quanfilter").html(quanhuyenHTML);
+    var role = $.cookie('role');
+    if (role == 'GIASU') {
+        $('.sapxep').append(`<option value="3">Lớp phù hợp</option>`);
+    }
     getAPIListSubject(() => renderSubject());
     getAPIListClass();
 });
@@ -222,7 +226,6 @@ function getAPIListClassBySearch() {
     });
 }
 
-
 function renderSubject() {
     var monhocHTML = createSubjectFilterHTML(listSubjects);
     $("#monhocfilter").html(monhocHTML);
@@ -269,8 +272,8 @@ function createListClassHTML(apicontent, start, end) {
     var data = ``;
     for (let i = start; i < end; i++) {
         data += `<div class="col-lg-12 col-md-12">
-                    <div class="single_jobs white-bg d-flex justify-content-between">
-                        <div class="jobs_left d-flex align-items-center">
+                    <div class="single_jobs white-bg d-flex justify-content-between row">
+                        <div class="jobs_left d-flex align-items-center col-md-9 col-12">
                             <div class="thumb">
                                 <img src=${apicontent[i].chude.anh} alt="">
                             </div>
@@ -294,7 +297,7 @@ function createListClassHTML(apicontent, start, end) {
                                 </div>
                             </div>
                         </div>
-                        <div class="jobs_right">
+                        <div class="jobs_right col-md-3 col-12">
                             <div class="apply_now">
                                 <button class="boxed-btn3" onClick="handleUngTuyen(${apicontent[i].id})">Ứng tuyển</button>
                             </div>
@@ -310,14 +313,14 @@ function createListClassHTML(apicontent, start, end) {
 
 function createPageNavHTML(totalPages, pageNumber) {
     var pagenav = ``;
-    var prebtn = `<li><a href="#"> <i class="ti-angle-left"></i> </a></li>`;
-    var nextbtn = `<li><a href="#"> <i class="ti-angle-right"></i> </a></li>`;
+    var prebtn = `<li onClick = "handlePage(${pageNumber - 1})"><a href="#"> <i class="ti-angle-left"></i> </a></li>`;
+    var nextbtn = `<li onClick = "handlePage(${pageNumber + 1})"><a href="#"> <i class="ti-angle-right"></i> </a></li>`;
     var listPageNum = createListPage(totalPages, pageNumber);
     for (let i = 0; i < listPageNum.length; i++) {
         if (i + 1 == pageNumber) {
-            pagenav += `<li><a class="page_selected" href="#"><span>${listPageNum[i]}</span></a></li>`
+            pagenav += `<li onClick = "handlePage(${listPageNum[i]})"><a class="page_selected" href="#"><span>${listPageNum[i]}</span></a></li>`
         } else {
-            pagenav += `<li><a class="" href="#"><span>${listPageNum[i]}</span></a></li>`
+            pagenav += `<li onClick = "handlePage(${listPageNum[i]})"><a class="" href="#"><span>${listPageNum[i]}</span></a></li>`
         }
     }
     if (totalPages > 5) {
